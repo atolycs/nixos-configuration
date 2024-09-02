@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../../modules/common.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -19,14 +20,6 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
-  # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
-  time.timeZone = "Asia/Tokyo";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
   # console = {
@@ -34,16 +27,6 @@
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
-
-  console = {
-   keyMap = "us";
-  };
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-
-  
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -73,28 +56,6 @@
   #   ];
   # };
 
-  users.users.atolycs = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-    packages = with pkgs; [
-      firefox-esr
-    ];
-  };
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
-  # ];
-
-  environment.systemPackages = with pkgs; [
-    git
-    neovim
-    wget
-    curl
-    github-cli
-  ];
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -103,19 +64,6 @@
   #   enableSSHSupport = true;
   # };
 
-  programs = {
-      gnupg = {
-        agent = {
-          enable = true;
-          enableSSHSupport = true;
-        };
-      };
-      nix-ld = {
-        enable = true;
-        libraries = with pkgs; [
-        ];
-      };
-  };
 
   # List services that you want to enable:
 
