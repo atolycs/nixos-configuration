@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "Atolycs nixos configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
