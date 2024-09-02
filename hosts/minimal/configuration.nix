@@ -92,6 +92,7 @@
     neovim
     wget
     curl
+    github-cli
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
