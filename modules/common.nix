@@ -12,7 +12,7 @@
   users.users.atolycs = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-  }
+  };
 
   environment.systemPackages = with pkgs; [
     github-cli
@@ -23,7 +23,7 @@
   
   console = {
    keyMap = "us";
-  }
+  };
 
   programs = {
       gnupg = {
