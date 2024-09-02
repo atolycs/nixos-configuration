@@ -91,7 +91,7 @@
   };
 
   networking = {
-    hostName = "nixos-minimal"
+    hostName = "nixos-minimal";
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
