@@ -6,7 +6,6 @@
 }: 
 {
   environment.systemPackages = with pkgs; [
-    pkgs.gnome
   ];
 
   i18n.inputMethod = {
@@ -15,14 +14,14 @@
   };
 
   fonts = {
-      fonts = with pkgs; [
+      packages = with pkgs; [
         noto-fonts-cjk-serif
         noto-fonts-cjk-sans
         noto-fonts-emoji
         nerdfonts
       ];
       fontDir.enable = true;
-      fontconfig = {
+      fontconfig.defaultFonts = {
           serif = ["Noto Serif CJK JP" "Noto Color Emoji"];
           sansSerif = ["Noto Sans CJK JP" "Noto Color Emoji"];
           monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
@@ -30,7 +29,10 @@
       };
   };
 
-  programs.gnome = {
-      enable = true
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
   };
+
 }
