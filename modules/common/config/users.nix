@@ -10,5 +10,9 @@
     ];
     shell = pkgs.zsh;
     useDefaultShell = true;
+    packages = with pkgs; [
+      gnomeExtensions.user-themes
+      gnomeExtensions.kimpanel
+    ];
   };
 }

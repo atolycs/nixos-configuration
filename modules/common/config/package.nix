@@ -14,8 +14,6 @@
       gnome.gnome-power-manager
       gnome.gnome-keyring
       gnome.gnome-disk-utility
-      gnomeExtensions.user-themes
-      gnomeExtensions.kimpanel
       (
         pkgs.wrapFirefox (pkgs.firefox-unwrapped.override {
           pipewireSupport = true;
