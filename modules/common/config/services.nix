@@ -11,7 +11,9 @@
 
     pipewire = {
      enable = true;
-     pulse.enable = true;
+     pulse = {
+      enable = true;
+     };
     };
   };
 }
