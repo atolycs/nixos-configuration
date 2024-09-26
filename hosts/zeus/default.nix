@@ -20,7 +20,7 @@ in {
           home-manager.useUserPackages = true;
           home-manager.users."${username}" = 
             import ../../modules/home-manager/advanced.nix {
-                inherit system pkgs;
+                inherit system nixpkgs;
             };
       }
     ];
