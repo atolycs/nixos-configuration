@@ -17,5 +17,21 @@
       enable = true;
       libraries = with pkgs; [];
     };
+
+    dconf = {
+      enable = true;
+      profiles.user.databases = [
+        {
+	  settings = {
+           "org/gnome/shell" = {
+	     disable-user-extensions = false;
+	     enabled-extensions = with pkgs.gnomeExtensions; [
+                "kimpanel@kde.org"
+	     ];
+	   };
+	  };
+	}
+      ];
+    };
   };
 }
