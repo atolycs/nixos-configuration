@@ -1,7 +1,7 @@
 { config, pkgs, username, ... }:
 let
   boot = import ./config/boot.nix;
-  i18n = import ./config/i18n.nix;
+  i18n = import ./config/i18n.nix { inherit pkgs; };
   nix = import ./config/nix.nix;
   hardware = import ./config/hardware.nix;
   users = import ./config/users.nix { inherit pkgs username; } ;

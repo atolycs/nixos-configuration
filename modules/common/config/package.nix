@@ -6,6 +6,14 @@
       git
       vim
       neovim
+      gnome.gnome-terminal
+      gnome.nautilus
+      gnome.gnome-tweaks
+      gnome.gnome-shell-extensions
+      gnome.gnome-screenshot
+      gnome.gnome-power-manager
+      gnome.gnome-keyring
+      gnome.gnome-disk-utility
       (
         pkgs.wrapFirefox (pkgs.firefox-unwrapped.override {
           pipewireSupport = true;
