@@ -6,7 +6,9 @@ let
   users = import ./config/users.nix { inherit pkgs username; } ;
   fonts = import ./config/fonts.nix { inherit pkgs; } ;
   programs = import ./config/programs.nix;
+  packages = import ./config/package.nix;
   services = import ./config/services.nix;
+  xdg = import ./config/xdg.nix;
 in {
   system.stateVersion = "24.05";
   imports = [
@@ -15,7 +17,9 @@ in {
     fonts
     i18n
     programs
-    users 
+    packages
+    users
     services
+    xdg
   ];
 }
