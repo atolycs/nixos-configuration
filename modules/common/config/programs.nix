@@ -2,6 +2,7 @@
 {
   programs = {
     zsh.enable = true;
+    tmux.enable = true;
 
     firefox = {
       enable = true;
