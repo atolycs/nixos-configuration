@@ -14,6 +14,6 @@ in {
     modules = [
       ../../modules/common
       ./hardware-configuration.nix
-    ]
-  }
+    ];
+  };
 }

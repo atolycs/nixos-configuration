@@ -10,5 +10,5 @@
     ];
     shell = pkgs.zsh;
     useDefaultShell = true;
-  }
+  };
 }
