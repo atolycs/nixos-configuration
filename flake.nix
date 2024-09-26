@@ -9,7 +9,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager ... }: {
+  outputs = { self, nixpkgs, home-manager, ... }: {
    nixosConfigurations = (import ./hosts/zeus {
      inherit self nixpkgs home-manager;
    });
