@@ -1,6 +1,6 @@
 {
  nix = {
-    settigs = {
+    settings = {
       experimental-features = [
         "nix-command"
         "flakes"
