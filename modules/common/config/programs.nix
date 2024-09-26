@@ -1,4 +1,5 @@
-{ pkgs }:
+{ pkgs, lib, ... }:
+with lib.hm.gvariant;
 {
   programs = {
     zsh.enable = true;
@@ -21,17 +22,17 @@
     dconf = {
       enable = true;
       profiles.user.databases = [
-        {
-	  settings = {
-           "org/gnome/shell" = {
-	     disable-user-extensions = false;
-	     enabled-extensions = with pkgs.gnomeExtensions; [
-                "kimpanel@kde.org"
-	     ];
-	   };
-	  };
-	}
-      ];
+      {
+	      settings = {
+		"org/gnome/shell" = {
+		  disable-user-extensions = false;
+		  enabled-extensions = with pkgs.gnomeExtensions; [
+		    "kimpanel@kde.org"
+		  ];
+		};
+	      };
+      }
+     ];
     };
   };
 }

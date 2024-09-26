@@ -1,4 +1,4 @@
-{ config, pkgs, username, ... }:
+{ config, pkgs, username, lib, ... }:
 let
   boot = import ./config/boot.nix;
   i18n = import ./config/i18n.nix { inherit pkgs; };
@@ -6,10 +6,11 @@ let
   hardware = import ./config/hardware.nix;
   users = import ./config/users.nix { inherit pkgs username; } ;
   fonts = import ./config/fonts.nix { inherit pkgs; } ;
-  programs = import ./config/programs.nix { inherit pkgs; };
+  programs = import ./config/programs.nix { inherit pkgs lib; };
   packages = import ./config/package.nix { inherit pkgs; };
   services = import ./config/services.nix;
   security = import ./config/security.nix;
+  time = import ./config/time.nix;
   xdg = import ./config/xdg.nix { inherit pkgs; };
 in {
   system.stateVersion = "24.05";
@@ -24,6 +25,7 @@ in {
     users
     services
     security
+    time
     xdg
   ];
 }
