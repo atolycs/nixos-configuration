@@ -12,18 +12,18 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-label/nix_root";
+    { device = "/dev/disk/by-label/nix-root";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-label/BOOT";
+    { device = "/dev/disk/by-label/NIXOS-BOOT";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-label/nix_home";
+    { device = "/dev/disk/by-label/nix-home";
       fsType = "ext4";
     };
 
