@@ -6,9 +6,9 @@
     vim
     neovim
     (
-      pkgs.wrapFirefox (pksg.firefox-unwrapped.override {
+      pkgs.wrapFirefox (pkgs.firefox-unwrapped.override {
         pipewireSupport = true;
       }) {}
     )
-  ]
+  ];
 }

@@ -2,10 +2,12 @@
 {
   programs = {
     zsh.enable = true;
+
     firefox = {
       enable = true;
-      package = pkgs.firefox.firefox-esr;
-    }
+      package = pkgs.firefox-esr;
+    };
+
     gnupg.agent = {
      enable = true;
      enableSSHSupport = true;
