@@ -1,5 +1,4 @@
 { pkgs, lib, ... }:
-with lib.hm.gvariant;
 {
   programs = {
     zsh.enable = true;
@@ -24,13 +23,14 @@ with lib.hm.gvariant;
       profiles.user.databases = [
       {
         settings = {
-        "org/gnome/desktop/wm/preferences" = {
-          button-layout = "appmenu:minimize,maximize,close";
-        };
+          "org/gnome/desktop/wm/preferences" = {
+            button-layout = "appmenu:minimize,maximize,close";
+          };
          "org/gnome/shell" = {
            disable-user-extensions = false;
-           enabled-extensions = with pkgs.gnomeExtensions; [
-            "kimpanel@kde.org"
+           enabled-extensions = [
+	    "kimpanel@kde.org"
+	    "user-theme@gnome-shell-extensions.gcampax.github.com"
            ];
          };
         };
