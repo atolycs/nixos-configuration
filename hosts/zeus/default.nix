@@ -1,7 +1,7 @@
 {
   self,
   nixpkgs,
-  home-menager,
+  home-manager,
   ...
 }:
 let
