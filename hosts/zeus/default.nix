@@ -22,7 +22,7 @@ in {
             import ../../modules/home-manager/advanced.nix {
                 inherit system pkgs;
             };
-      };
+      }
     ];
   };
 }
