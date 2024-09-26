@@ -1,9 +1,10 @@
-{ config, pkgs, username, lib, ... }:
+{ config, pkgs, username, lib, hostname, ... }:
 let
   boot = import ./config/boot.nix;
   i18n = import ./config/i18n.nix { inherit pkgs; };
   nix = import ./config/nix.nix;
   hardware = import ./config/hardware.nix;
+  network = import ./config/network.nix { inherit hostname; };
   users = import ./config/users.nix { inherit pkgs username; } ;
   fonts = import ./config/fonts.nix { inherit pkgs; } ;
   programs = import ./config/programs.nix { inherit pkgs lib; };
@@ -17,6 +18,7 @@ in {
   imports = [
     boot
     hardware
+    network
     nix
     fonts
     i18n
