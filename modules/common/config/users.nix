@@ -8,7 +8,7 @@
      "kvm"
      "libvirt"
     ];
-    shell = pkgs.zsh;
+    shell = pkgs.bash;
     useDefaultShell = true;
     packages = with pkgs; [
       gnomeExtensions.user-themes

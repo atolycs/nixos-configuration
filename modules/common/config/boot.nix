@@ -1,5 +1,6 @@
 {
   boot = {
+    kernelModules = [ "kvm-amd" "kvm-intel" ];
     hardwareScan = true;
     loader = {
      systemd-boot = {

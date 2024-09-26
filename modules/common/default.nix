@@ -13,6 +13,7 @@ let
   security = import ./config/security.nix;
   time = import ./config/time.nix;
   xdg = import ./config/xdg.nix { inherit pkgs; };
+  virtual = import ./config/virtual.nix;
 in {
   system.stateVersion = "24.05";
   imports = [
@@ -29,5 +30,6 @@ in {
     security
     time
     xdg
+    virtual
   ];
 }
