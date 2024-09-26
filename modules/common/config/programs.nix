@@ -23,14 +23,17 @@ with lib.hm.gvariant;
       enable = true;
       profiles.user.databases = [
       {
-	      settings = {
-		"org/gnome/shell" = {
-		  disable-user-extensions = false;
-		  enabled-extensions = with pkgs.gnomeExtensions; [
-		    "kimpanel@kde.org"
-		  ];
-		};
-	      };
+        settings = {
+        "org/gnome/desktop/wm/preferences" = {
+          button-layout = "appmenu:minimize,maximize,close";
+        };
+         "org/gnome/shell" = {
+           disable-user-extensions = false;
+           enabled-extensions = with pkgs.gnomeExtensions; [
+            "kimpanel@kde.org"
+           ];
+         };
+        };
       }
      ];
     };
