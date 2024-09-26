@@ -16,7 +16,7 @@ in {
     modules = [
       ../../modules/common
       ./hardware-configuration.nix
-      home-manager.nixosModules.hoem-manager {
+      home-manager.nixosModules.home-manager {
           home-manager.useUserPackages = true;
           home-manager.users."${username}" = 
             import ../../modules/home-manager/advanced.nix {
