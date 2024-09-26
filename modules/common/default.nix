@@ -8,6 +8,7 @@ let
   programs = import ./config/programs.nix;
   packages = import ./config/package.nix;
   services = import ./config/services.nix;
+  security = import ./config/security.nix;
   xdg = import ./config/xdg.nix;
 in {
   system.stateVersion = "24.05";
@@ -20,6 +21,7 @@ in {
     packages
     users
     services
+    security
     xdg
   ];
 }
