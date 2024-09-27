@@ -12,7 +12,7 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-label/nix-root";
+    { device = "/dev/disk/by-label/nixos-root";
       fsType = "ext4";
     };
 
@@ -23,7 +23,7 @@
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-label/nix-home";
+    { device = "/dev/disk/by-label/nixos-home";
       fsType = "ext4";
     };
 
