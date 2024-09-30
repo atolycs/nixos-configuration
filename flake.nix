@@ -26,6 +26,6 @@
   {
     #packages = forAllSystems (system: import ./pkgs inputs.nixpkgs-stable.legacyPackages.${system});
     nixosConfigurations = (import ./hosts inputs).nixos;
-    homeCOnfigurations = (import ./hosts inputs).hoem-manager; 
+    homeConfigurations = (import ./hosts inputs).hoem-manager; 
   };
 }
