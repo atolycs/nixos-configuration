@@ -4,6 +4,6 @@
    ./config/i18n.nix
    ./config/time.nix
    ./config/nix.nix
-#   ./config/security.nix
+   ./config/security.nix
   ];
 }
