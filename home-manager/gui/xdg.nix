@@ -1,0 +1,8 @@
+{ pkgs-stable, ... }:
+{
+  xdg = {
+   enable = true;
+  };
+
+  home.packages = with pkgs; [ xdg-utils ];
+}
