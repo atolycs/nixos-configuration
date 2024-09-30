@@ -6,7 +6,7 @@ let
    username,
    modules,
   }:
-  inputs.nixpkgs.lib.nixosSystem {
+  inputs.nixpkgs-stable.lib.nixosSystem {
     inherit system modules;
     specialArgs = {
       inherit inputs hostname username;
@@ -28,7 +28,7 @@ let
       };
       extraSpecialArgs = {
         inherit inputs username;
-        pkgs-stable = import inputs.nixpkgs-stable
+        pkgs-stable = import inputs.nixpkgs-stable;
       };
   };
 in {
@@ -37,7 +37,15 @@ in {
       system = "x86_64-linux";
       hostname = "vmware-nixos";
       username = "atolycs";
-      modules = [ ./vmware ]
-    }
-  }
+      modules = [ ./vmware/nixos.nix ];
+    };
+  };
+
+  home-manager = {
+    "atolycs@vmware" = mkHomeManagerConfiguration {
+      system = "x86_64-linux";
+      username = "atolycs";
+      modules = [ ./vmware/home-manager.nix ];
+    };
+  };
 }
