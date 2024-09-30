@@ -9,7 +9,9 @@ let
   i18n = import ./config/i18n.nix;
   nix = import ./config/nix.nix;
   systemd = import ./config/systemd.nix;
+  programs = import ./config/programs.nix { inherit pkgs; };
   time = import ./config/time.nix;
+  security = import ./config/security.nix;
   users = import ./config/users.nix { inherit pkgs username; };
   virtual = import ./config/virtual.nix;
 in {
@@ -21,6 +23,8 @@ in {
     nix
     systemd
     time
+    programs
+    security
     users
     virtual
   ];
