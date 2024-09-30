@@ -13,6 +13,8 @@ let
   time = import ./config/time.nix;
   security = import ./config/security.nix;
   users = import ./config/users.nix { inherit pkgs username; };
+  services = import ./config/services.nix; 
+  xdg = import ./config/xdg.nix { inherit pkgs; };
   virtual = import ./config/virtual.nix;
 in {
   system.stateVersion = "24.05";
