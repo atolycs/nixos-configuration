@@ -30,4 +30,14 @@ let
         inherit inputs username;
         pkgs-stable = import inputs.nixpkgs-stable
       };
+  };
+in {
+  nixos = {
+    vmware = mkNixosSystem {
+      system = "x86_64-linux";
+      hostname = "vmware-nixos";
+      username = "atolycs";
+      modules = [ ./vmware ]
+    }
   }
+}

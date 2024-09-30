@@ -14,6 +14,7 @@ let
   security = import ./config/security.nix;
   users = import ./config/users.nix { inherit pkgs username; };
   services = import ./config/services.nix; 
+  time = import ./config/time.nix;
   xdg = import ./config/xdg.nix { inherit pkgs; };
   virtual = import ./config/virtual.nix;
 in {
