@@ -1,0 +1,3 @@
+{
+  sercices.xserver.videoDrivers = [ "vmware" ];
+}
