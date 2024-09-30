@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
 
     ../../modules/core
+    ../../modules/programs/nix-ld.nix
 #    ../../modules/vmware
 #    ../../modules/config-set/desktop
   ];
@@ -22,6 +23,10 @@
     "libvirt"
     "audio"
     "video"
+   ];
+   packages = with pkgs; [
+     gnomeExtensions.user-themes
+     gnomeExtensions.kimpanel
    ];
   };
 }
