@@ -43,6 +43,10 @@
 	     "user-theme@gnome-shell-extensions.gcampax.github.com"
 	   ];
 	 };
+
+	 "org/gnome/desktop/session" = {
+           idle-delay = 0;
+	 };
 	};
        }
      ];
