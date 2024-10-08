@@ -55,6 +55,10 @@ with lib.hm.gvariant;
       "org/gtk/settings/file-chooser" = {
         show-hidden = true;
       };
+
+      "org/gnome/nautilus/icon-view" = {
+        default-zoom-level = "small-plus";
+      };
     };
   };
 }
