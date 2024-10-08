@@ -19,6 +19,7 @@ in {
 #    ../../modules/config-set/desktop
   ] ++ (desktop.${desktopManager} or [ ]);
 
+  networking.hostName = "${hostname}";
   system.stateVersion = "24.05";
   users.users."${username}" = {
    isNormalUser = true;
