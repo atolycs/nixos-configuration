@@ -40,7 +40,7 @@ let
           programs = {
            home-manager.enable = true;
           };
-        };
+        }
       ]
   };
 in {
