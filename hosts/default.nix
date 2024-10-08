@@ -21,7 +21,7 @@ let
   }:
   inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = import inputs.nixpkgs {
-        inherit system overlays;
+        inherit system;
         config = {
           allowUnfree = true;
         };
