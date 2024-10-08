@@ -8,8 +8,8 @@
 let 
   desktop = {
    "gdm" = [ (import ../../modules/config-set/desktop/gdm)];
-  }
-{
+  };
+in {
   imports = [
     ./hardware-configuration.nix
 
