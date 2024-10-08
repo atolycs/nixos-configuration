@@ -8,6 +8,5 @@
      enable = true;
      package = pkgs-stable.gh;
     };
-
-
+  };
 }
