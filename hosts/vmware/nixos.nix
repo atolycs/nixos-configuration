@@ -2,8 +2,13 @@
   inputs,
   pkgs,
   username,
+  desktopManager,
   ...
-}:
+}: 
+let 
+  desktop = {
+   "gdm" = [ (import ../../modules/config-set/desktop/gdm)];
+  }
 {
   imports = [
     ./hardware-configuration.nix
@@ -12,7 +17,7 @@
     ../../modules/programs/nix-ld.nix
 #    ../../modules/vmware
 #    ../../modules/config-set/desktop
-  ];
+  ] ++ (desktop.${desktopManager} or [ ]);
 
   system.stateVersion = "24.05";
   users.users."${username}" = {

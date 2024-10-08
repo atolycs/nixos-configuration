@@ -10,6 +10,7 @@ let
     inherit system modules;
     specialArgs = {
       inherit inputs hostname username;
+      desktopManager = "gdm";
     };
   };
   
