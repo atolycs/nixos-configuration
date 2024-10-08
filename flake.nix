@@ -51,7 +51,7 @@
               pkgs.nh
             ]) ++ formatters ++ scripts;
           }
-        }
+        };
     );
   };
 }
