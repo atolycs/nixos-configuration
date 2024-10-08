@@ -7,5 +7,5 @@ in {
   imports = [
     services
     virtual
-  ]
+  ];
 }
