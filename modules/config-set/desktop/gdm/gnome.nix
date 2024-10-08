@@ -1,12 +1,15 @@
 {
- services = {
-   xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager = {
-      gnome.enable = true;
-      runXdgAutostartIfNone = true;  
+  services = {
+    xserver = {
+      enable = true;
+      displayManager.gdm = {
+        enable = true;
+        wayland = true;
+      };
+      desktopManager = {
+        gnome.enable = true;
+        runXdgAutostartIfNone = true;
+      };
     };
-   };  
- };
+  };
 }
