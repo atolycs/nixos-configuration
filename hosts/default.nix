@@ -28,7 +28,12 @@ let
       };
       extraSpecialArgs = {
         inherit inputs username;
-        pkgs-stable = import inputs.nixpkgs-stable;
+        pkgs-stable = import inputs.nixpkgs-stable {
+          inherit system;
+          config = {
+            allowUnfree = true;
+          };
+        };
       };
       modules = modules ++ [
         {
