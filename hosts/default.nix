@@ -41,7 +41,7 @@ let
            home-manager.enable = true;
           };
         }
-      ]
+      ];
   };
 in {
   nixos = {
