@@ -9,7 +9,8 @@
       disable-user-extensions = false;
       enabled-extensions = [
         "kimpanel@kde.org"
-         "user-theme@gnome-shell-extensions.gcampax.github.com"
+        "user-theme@gnome-shell-extensions.gcampax.github.com"
+        "dash-to-dock@micxgx.gmail.com"
       ];
     };
   };
