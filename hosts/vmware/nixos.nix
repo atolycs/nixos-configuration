@@ -3,6 +3,7 @@
   pkgs,
   username,
   desktopManager,
+  hostname,
   ...
 }: 
 let 
