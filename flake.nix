@@ -29,7 +29,7 @@
   {
     #packages = forAllSystems (system: import ./pkgs inputs.nixpkgs-stable.legacyPackages.${system});
     nixosConfigurations = (import ./hosts inputs).nixos;
-    homeConfigurations = (import ./hosts inputs).hoem-manager; 
+    homeConfigurations = (import ./hosts inputs).home-manager; 
     
     devShells = forAllSystems(
       system:
