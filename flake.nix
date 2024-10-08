@@ -27,5 +27,31 @@
     #packages = forAllSystems (system: import ./pkgs inputs.nixpkgs-stable.legacyPackages.${system});
     nixosConfigurations = (import ./hosts inputs).nixos;
     homeConfigurations = (import ./hosts inputs).hoem-manager; 
+    
+    devShells = forAllSystems(
+      system:
+      let
+        pkgs = inputs.nixpkgs-stable.legacyPackages.${system};
+        formatters = with pkgs; [
+          nixfmt-rfc-style
+          rustfmt
+          stylua
+          taplo
+        ];
+
+        scripts = [
+          (pkgs.writeScriptBin "update-input" ''
+            nix flake lock --override-input "$1" "$2" 
+        '')
+        ];
+
+        in {
+          default = pkgs.mkShell { 
+            packages = ([
+              pkgs.nh
+            ]) ++ formatters ++ scripts;
+          }
+        }
+    );
   };
 }
