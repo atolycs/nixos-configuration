@@ -1,5 +1,6 @@
 {
   imports = [
-    ./fcitx5.nix
+    #    ./fcitx5.nix
+    ./ibus.nix
   ];
 }
