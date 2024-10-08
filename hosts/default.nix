@@ -17,7 +17,6 @@ let
   mkHomeManagerConfiguration = {
     system,
     username,
-    overlays,
     modules,
   }:
   inputs.home-manager.lib.homeManagerConfiguration {
@@ -31,6 +30,18 @@ let
         inherit inputs username;
         pkgs-stable = import inputs.nixpkgs-stable;
       };
+      modules = modules ++ [
+        {
+          home = {
+            inherit username;
+            homeDirectory = "/home/${username}";
+            stateVersion = "22.11";
+          };
+          programs = {
+           home-manager.enable = true
+          };
+        };
+      ]
   };
 in {
   nixos = {
