@@ -30,21 +30,22 @@ with lib.hm.gvariant;
       };
 
       "org/gnome/desktop/session" = {
-        idle-delay = 0;
+        idle-delay = mkUint32 0;
       };
 
       "org/gnome/mutter" = {
-        dynamic-workspaces = false;
+        dynamic-workspaces = true;
       };
 
       "org/gnome/desktop/interface" = {
         clock-show-seconds = true;
+        clock-show-weekday = true;
       };
 
       "org/gnome/desktop/input-sources" = {
         sources = [
           (mkTuple [ "xkb" "us" ])
-          (mkTuple [ "ibus" "mozc-jp" ])
+          (mkTuple [ "fcitx5" "mozc-jp" ])
         ];
       };
     };
