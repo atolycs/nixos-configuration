@@ -1,8 +1,8 @@
 { pkgs, username, ... }:
 {
-  users.users.${username}.packages = with pkgs; [
+  home.packages = with pkgs; [
     gnomeExtensions.user-themes
     gnomeExtensions.kimpanel
     gnomeExtensions.dash-to-dock
-  ]
+  ];
 }

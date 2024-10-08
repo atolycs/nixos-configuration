@@ -1,3 +1,5 @@
+{ lib, ... }:
+with lib.hm.gvariant;
 {
   dconf = {
     enable = true;
@@ -37,6 +39,13 @@
 
       "org/gnome/desktop/interface" = {
         clock-show-seconds = true;
+      };
+
+      "org/gnome/desktop/input-sources" = {
+        sources = [
+          (mkTuple [ "xkb" "us" ])
+          (mkTuple [ "ibus" "mozc-jp" ])
+        ];
       };
     };
   };
