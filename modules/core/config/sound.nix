@@ -7,4 +7,5 @@
       };
     };
   };
+  hardware.pulseaudio.enable = false;
 }
