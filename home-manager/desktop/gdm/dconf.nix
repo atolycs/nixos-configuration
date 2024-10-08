@@ -16,7 +16,7 @@ with lib.hm.gvariant;
         ];
         favorite-apps = [
           "firefox-esr.desktop"
-          "org.gnome.Nautilius.desktop"
+          "org.gnome.Nautilus.desktop"
           "org.gnome.Console.desktop"
           "org.gnome.Settings.desktop"
         ];
