@@ -50,8 +50,8 @@
             packages = ([
               pkgs.nh
             ]) ++ formatters ++ scripts;
-          }
-        };
+          };
+        }
     );
   };
 }
