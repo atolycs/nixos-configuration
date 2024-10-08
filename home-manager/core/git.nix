@@ -1,6 +1,6 @@
 { pkgs-stable, ... }:
 {
-  program = {
+  programs = {
     git = {
      enable = true;
     };

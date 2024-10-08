@@ -1,6 +1,6 @@
 { pkgs-stable, ... }:
 {
-  program = {
+  programs = {
     neovim = {
      enable = true;
     };
