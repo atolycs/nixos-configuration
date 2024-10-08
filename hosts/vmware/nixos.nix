@@ -16,6 +16,7 @@ in {
 
     ../../modules/core
     ../../modules/programs/nix-ld.nix
+    ../../modules/programs/git.nix
     ../../modules/vmware
 #    ../../modules/config-set/desktop
   ] ++ (desktop.${desktopManager} or [ ]);
