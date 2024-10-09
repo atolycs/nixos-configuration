@@ -1,7 +1,8 @@
 {
   imports = [
-   ./git.nix
-   ./nix.nix
-   ./neovim.nix
+    ./git.nix
+    ./nix.nix
+    ./neovim.nix
+    ./gnupg.nix
   ];
 }
