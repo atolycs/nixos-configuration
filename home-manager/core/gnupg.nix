@@ -1,6 +1,10 @@
 {
-  programs.gnupg = {
+  programs.gpg = {
     enable = true;
-    enableSSHSupport = true;
+  };
+
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
   };
 }
