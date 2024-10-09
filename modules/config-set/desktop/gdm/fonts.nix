@@ -3,7 +3,7 @@
   fonts = {
     packages = with pkgs; [
       noto-fonts-cjk-serif
-      noto-fonts-emoji-serif
+      noto-fonts-color-emoji
       (nerdfonts.override { fonts = [ "0xProto" "JetBrainsMono" ]; })
     ];
     fontDir.enable = true;
