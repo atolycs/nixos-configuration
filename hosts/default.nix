@@ -1,25 +1,27 @@
 inputs:
 let
-  mkNixosSystem = {
-   system,
-   hostname,
-   username,
-   modules,
-  }:
-  inputs.nixpkgs-stable.lib.nixosSystem {
-    inherit system modules;
-    specialArgs = {
-      inherit inputs hostname username;
-      desktopManager = "gdm";
+  mkNixosSystem =
+    { system
+    , hostname
+    , username
+    , modules
+    ,
+    }:
+    inputs.nixpkgs-stable.lib.nixosSystem {
+      inherit system modules;
+      specialArgs = {
+        inherit inputs hostname username;
+        desktopManager = "gdm";
+      };
     };
-  };
-  
-  mkHomeManagerConfiguration = {
-    system,
-    username,
-    modules,
-  }:
-  inputs.home-manager.lib.homeManagerConfiguration {
+
+  mkHomeManagerConfiguration =
+    { system
+    , username
+    , modules
+    ,
+    }:
+    inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = import inputs.nixpkgs {
         inherit system;
         config = {
@@ -43,12 +45,13 @@ let
             stateVersion = "22.11";
           };
           programs = {
-           home-manager.enable = true;
+            home-manager.enable = true;
           };
         }
       ];
-  };
-in {
+    };
+in
+{
   nixos = {
     vmware = mkNixosSystem {
       system = "x86_64-linux";
