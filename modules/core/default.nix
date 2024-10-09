@@ -8,5 +8,6 @@
     ./config/security.nix
     ./config/ssh.nix
     ./config/tmux.nix
+    ./config/udisks2.nix
   ];
 }
