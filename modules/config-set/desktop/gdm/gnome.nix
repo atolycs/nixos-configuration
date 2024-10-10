@@ -14,7 +14,7 @@
     };
 
     dbus.packages = with pkgs; [
-      gnome3.dconf
+      gnome.dconf-editor
     ];
   };
 }
