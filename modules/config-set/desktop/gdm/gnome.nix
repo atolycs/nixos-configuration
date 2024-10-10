@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   services = {
     xserver = {
@@ -11,5 +12,9 @@
         runXdgAutostartIfNone = true;
       };
     };
+
+    dbus.packages = with pkgs; [
+      gnome3.dconf
+    ];
   };
 }
