@@ -1,0 +1,5 @@
+results/
+**/result*
+.nixcache
+.nixcache/
+.nixcache/*
