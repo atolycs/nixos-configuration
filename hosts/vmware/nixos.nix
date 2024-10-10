@@ -5,12 +5,13 @@
   desktopManager,
   hostname,
   ...
-}: 
-let 
+}:
+let
   desktop = {
-   "gdm" = [ (import ../../modules/config-set/desktop/gdm)];
+    "gdm" = [ (import ../../modules/config-set/desktop/gdm) ];
   };
-in {
+in
+{
   imports = [
     ./hardware-configuration.nix
 
@@ -18,23 +19,23 @@ in {
     ../../modules/programs/nix-ld.nix
     ../../modules/programs/git.nix
     ../../modules/vmware
-#    ../../modules/config-set/desktop
+    #    ../../modules/config-set/desktop
   ] ++ (desktop.${desktopManager} or [ ]);
 
   networking.hostName = "${hostname}";
   system.stateVersion = "24.05";
   users.users."${username}" = {
-   isNormalUser = true;
-   shell = pkgs.bash;
-   extraGroups = [
-    "wheel"
-    "libvirt"
-    "audio"
-    "video"
-   ];
-   packages = with pkgs; [
-     gnomeExtensions.user-themes
-     gnomeExtensions.kimpanel
-   ];
+    isNormalUser = true;
+    shell = pkgs.bash;
+    extraGroups = [
+      "wheel"
+      "libvirt"
+      "audio"
+      "video"
+    ];
+    packages = with pkgs; [
+      gnomeExtensions.user-themes
+      gnomeExtensions.kimpanel
+    ];
   };
 }

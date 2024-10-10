@@ -1,7 +1,7 @@
 {
   imports = [
-   ./browser.nix
-   ./xdg.nix
-   ./archive.nix
+    ./browser.nix
+    ./xdg.nix
+    ./archive.nix
   ];
 }

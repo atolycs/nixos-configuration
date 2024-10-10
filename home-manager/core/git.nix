@@ -2,11 +2,11 @@
 {
   programs = {
     git = {
-     enable = true;
+      enable = true;
     };
     gh = {
-     enable = true;
-     package = pkgs-stable.gh;
+      enable = true;
+      package = pkgs-stable.gh;
     };
   };
 }

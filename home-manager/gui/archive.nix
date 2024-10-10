@@ -1,6 +1,4 @@
 { pkgs-stable, ... }:
 {
-  home.packages = with pkgs-stable; [
-    unzip
-  ];
+  home.packages = with pkgs-stable; [ unzip ];
 }

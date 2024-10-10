@@ -44,8 +44,14 @@ with lib.hm.gvariant;
 
       "org/gnome/desktop/input-sources" = {
         sources = [
-          (mkTuple [ "xkb" "us" ])
-          (mkTuple [ "fcitx5" "mozc-jp" ])
+          (mkTuple [
+            "xkb"
+            "us"
+          ])
+          (mkTuple [
+            "fcitx5"
+            "mozc-jp"
+          ])
         ];
       };
 

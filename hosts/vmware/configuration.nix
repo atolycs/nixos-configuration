@@ -2,15 +2,20 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../modules/common.nix
-      ../../modules/desktop.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../../modules/common.nix
+    ../../modules/desktop.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -39,9 +44,9 @@
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
-   services.pipewire = {
-     enable = true;
-   };
+  services.pipewire = {
+    enable = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -64,7 +69,6 @@
   #   enableSSHSupport = true;
   # };
 
-
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
@@ -83,9 +87,9 @@
 
   nix = {
     settings = {
-      experimental-features = [ 
-        "nix-command" 
-      	"flakes"
+      experimental-features = [
+        "nix-command"
+        "flakes"
       ];
     };
   };
@@ -113,4 +117,3 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.05"; # Did you read the comment?
 }
-

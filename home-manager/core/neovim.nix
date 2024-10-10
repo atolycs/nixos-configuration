@@ -2,11 +2,14 @@
 {
   programs = {
     neovim = {
-     enable = true;
+      enable = true;
     };
   };
 
   home.packages = with pkgs-stable; [
     gcc
+    cargo
+    rustc
+    rustfmt
   ];
 }

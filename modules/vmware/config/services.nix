@@ -1,3 +1,1 @@
-{
-  services.xserver.videoDrivers = [ "vmware" ];
-}
+{ services.xserver.videoDrivers = [ "vmware" ]; }
