@@ -10,6 +10,10 @@
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
             installation_mode = "normal_installed";
           };
+          "@testpilot-containers" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/latest.xpi";
+            installation_mode = "normal_installed";
+          };
         };
       };
     };
