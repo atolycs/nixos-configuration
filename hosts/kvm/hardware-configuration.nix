@@ -18,7 +18,11 @@
     "ehci_pci"
     "ahci"
     "nvme"
-    "sr_mod"
+    "sd_mod"
+    "virtio_balloon"
+    "virtio_blk"
+    "virtio_pci"
+    "virtio_ring"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
