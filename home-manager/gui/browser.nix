@@ -15,6 +15,15 @@
             installation_mode = "normal_installed";
           };
         };
+        FirefoxHome = {
+          SponsoredTopSites = false;
+        };
+        SearchEngines = {
+          Default = "DuckDuckGo";
+        };
+        ShowHomeButton = true;
+        PromptForDownloadLocation = true;
+        DontCheckDefaultBrowser = true;
       };
     };
   };
