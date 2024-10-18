@@ -17,6 +17,7 @@ in
     ../../modules/core
     ../../modules/programs/nix-ld.nix
     ../../modules/programs/git.nix
+    ../../modules/programs/neovim.nix
     ../../modules/kvm
     #    ../../modules/config-set/desktop
   ] ++ (desktop.${desktopManager} or [ ]);

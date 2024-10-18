@@ -1,10 +1,9 @@
-{
-  inputs,
-  pkgs,
-  username,
-  desktopManager,
-  hostname,
-  ...
+{ inputs
+, pkgs
+, username
+, desktopManager
+, hostname
+, ...
 }:
 let
   desktop = {
@@ -18,6 +17,7 @@ in
     ../../modules/core
     ../../modules/programs/nix-ld.nix
     ../../modules/programs/git.nix
+    ../../modules/programs/neovim.nix
     ../../modules/vmware
     #    ../../modules/config-set/desktop
   ] ++ (desktop.${desktopManager} or [ ]);
