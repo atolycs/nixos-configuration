@@ -17,4 +17,14 @@
       gnome.dconf-editor
     ];
   };
+  environment.gnome.excludePackages = (
+    with pkgs; [
+      gnome-tour
+      hitori
+      iagno
+      gnome-music
+      epiphany
+      geary
+    ]
+  )
 }
