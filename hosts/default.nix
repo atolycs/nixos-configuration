@@ -70,10 +70,16 @@ in
   };
 
   home-manager = {
-    "atolycs@vmware" = mkHomeManagerConfiguration {
+    "atolycs@vmware-nixos" = mkHomeManagerConfiguration {
       system = "x86_64-linux";
       username = "atolycs";
       modules = [ ./vmware/home-manager.nix ];
     };
+    "atolycs@kvm-nixos" = mkHomeManagerConfiguration {
+      system = "x86_64-linux";
+      username = "atolycs";
+      modules = [ ./kvm/home-manager.nix ];
+    };
+
   };
 }
