@@ -1,11 +1,11 @@
 inputs:
 let
   mkNixosSystem =
-    { system
-    , hostname
-    , username
-    , modules
-    ,
+    {
+      system,
+      hostname,
+      username,
+      modules,
     }:
     inputs.nixpkgs-stable.lib.nixosSystem {
       inherit system modules;
@@ -16,10 +16,10 @@ let
     };
 
   mkHomeManagerConfiguration =
-    { system
-    , username
-    , modules
-    ,
+    {
+      system,
+      username,
+      modules,
     }:
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = import inputs.nixpkgs {
@@ -60,13 +60,12 @@ in
       modules = [ ./vmware/nixos.nix ];
     };
 
-    kvm = mkNixosSystem
-      {
-        system = "x86_64-linux";
-        hostname = "kvm-nixos";
-        username = "atolycs";
-        modules = [ ./kvm/nixos.nix ];
-      };
+    kvm = mkNixosSystem {
+      system = "x86_64-linux";
+      hostname = "kvm-nixos";
+      username = "atolycs";
+      modules = [ ./kvm/nixos.nix ];
+    };
   };
 
   home-manager = {

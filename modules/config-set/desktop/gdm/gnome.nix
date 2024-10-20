@@ -13,12 +13,11 @@
       };
     };
 
-    dbus.packages = with pkgs; [
-      gnome.dconf-editor
-    ];
+    dbus.packages = with pkgs; [ gnome.dconf-editor ];
   };
   environment.gnome.excludePackages = (
-    with pkgs; [
+    with pkgs;
+    [
       gnome-tour
       hitori
       iagno
@@ -26,5 +25,5 @@
       epiphany
       geary
     ]
-  )
+  );
 }

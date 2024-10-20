@@ -1,9 +1,10 @@
-{ inputs
-, pkgs
-, username
-, desktopManager
-, hostname
-, ...
+{
+  inputs,
+  pkgs,
+  username,
+  desktopManager,
+  hostname,
+  ...
 }:
 let
   desktop = {

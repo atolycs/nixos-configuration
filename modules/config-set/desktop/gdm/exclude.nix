@@ -1,6 +1,4 @@
 { pkgs, ... }:
 {
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-tour
-  ]);
+  environment.gnome.excludePackages = (with pkgs; [ gnome-tour ]);
 }
