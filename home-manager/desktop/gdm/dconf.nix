@@ -65,6 +65,14 @@ with lib.hm.gvariant;
       "org/gnome/nautilus/icon-view" = {
         default-zoom-level = "small-plus";
       };
+      "org/gnome/Console" = {
+        last-window-size = (
+          mkTuple [
+            938
+            465
+          ]
+        );
+      };
     };
   };
 }
