@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  import = ./exclude.nix;
+  imports = [ ./exclude.nix ];
   services = {
     xserver = {
       enable = true;

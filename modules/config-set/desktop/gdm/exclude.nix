@@ -4,11 +4,12 @@
     with pkgs;
     [
       gnome-tour
-      gnome.hitori
-      iagno
-      gnome-music
       epiphany
-      geary
     ]
-  );
+  ) ++ (with pkgs.gnome;  [
+    hitori
+    iagno
+    gnome-music
+    geary
+  ]);
 }
