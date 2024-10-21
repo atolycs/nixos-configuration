@@ -4,5 +4,8 @@
     enable = true;
   };
 
-  home.packages = with pkgs-stable; [ xdg-utils ];
+  home.packages = with pkgs-stable; [
+    xdg-utils
+    xdg-desktop-portal-gnome
+  ];
 }
