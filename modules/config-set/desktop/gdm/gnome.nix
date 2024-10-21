@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  import = ./exclude.nix;
   services = {
     xserver = {
       enable = true;
@@ -15,15 +16,4 @@
 
     dbus.packages = with pkgs; [ gnome.dconf-editor ];
   };
-  environment.gnome.excludePackages = (
-    with pkgs;
-    [
-      gnome-tour
-      hitori
-      iagno
-      gnome-music
-      epiphany
-      geary
-    ]
-  );
 }
