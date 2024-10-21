@@ -12,7 +12,7 @@ let
       inherit system modules;
       specialArgs = {
         inherit inputs hostname username desktop;
-        desktopManager = inputs.desktop or [ ];
+        desktopManager = "${desktop}";
       };
     };
 
