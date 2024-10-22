@@ -19,7 +19,7 @@
     let
       inherit (self) outputs;
       stateVersion = "24.05";
-      nix-helper = import ./lib { inherit inputs outputs stateVersion; };
+      nix-helper = import ./lib { inherit inputs outputs self stateVersion; };
       allSystems = [
         "x86_64-linux"
         "aarch64-linux"
@@ -48,6 +48,9 @@
             neovim
             git
             gh
+            cargo
+            rustc
+            python3
           ];
 
           scripts = [

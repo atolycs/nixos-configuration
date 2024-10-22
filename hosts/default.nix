@@ -10,6 +10,12 @@
   kind,
   ...
 }:
+let
+  drivers = {
+    "kvm" = [ (import ./base-nixos/config/kvm)];
+    "vmware" = [ (import ./base-nixos/config/vmware)];
+  };
+in
 {
   imports = [ ./${kind} ];
 

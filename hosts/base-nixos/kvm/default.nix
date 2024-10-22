@@ -1,0 +1,5 @@
+{
+  import = [
+    ./spice.nix
+  ];
+}
