@@ -11,6 +11,7 @@
       username ? "atolycs",
       desktop ? null,
       platform ? "x86_64-linux",
+      virtual ? null,
     }:
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {
@@ -21,6 +22,7 @@
           hostname
           username
           stateVersion
+          virtual
           ;
       };
       modules = [ ../hosts ];

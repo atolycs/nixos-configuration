@@ -32,6 +32,7 @@
         vmware = nix-helper.mkNixOS {
           hostname = "vmware-nixos";
           desktop = "gdm";
+          virtual = "vmware";
         };
       };
 
