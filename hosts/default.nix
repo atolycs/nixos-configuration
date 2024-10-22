@@ -11,7 +11,7 @@
   ...
 }:
 {
-  imports = [ "./${kind}" ];
+  imports = [ ./${kind} ];
 
   boot = {
     kernelModules = [ "vhost_vsock" ];
