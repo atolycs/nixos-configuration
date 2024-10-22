@@ -27,6 +27,14 @@
       forAllSystems = inputs.nixpkgs-stable.lib.genAttrs allSystems;
     in
     {
+
+      nixosConfigurations = {
+        vmware = nix-helper.mkNixOS {
+          hostname = "vmware-nixos";
+          desktop = "gdm";
+        };
+      };
+
       devShells = forAllSystems (
         system:
         let
