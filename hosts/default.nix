@@ -4,7 +4,7 @@ let
     { system
     , hostname
     , username
-    , desktop
+    , desktop ? null
     , modules
     ,
     }:
@@ -13,6 +13,7 @@ let
       specialArgs = {
         inherit inputs hostname username desktop;
         desktopManager = "${desktop}";
+        machine = "${virtual}";
       };
     };
 

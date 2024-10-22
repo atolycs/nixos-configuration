@@ -18,6 +18,7 @@
     "ahci"
     "nvme"
     "sd_mod"
+    "sr_mod"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];

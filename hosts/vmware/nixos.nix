@@ -19,8 +19,6 @@ in
     ../../modules/programs/nix-ld.nix
     ../../modules/programs/git.nix
     ../../modules/programs/neovim.nix
-    ../../modules/vmware
-    #    ../../modules/config-set/desktop
   ] ++ (desktop.${desktopManager} or [ ]);
 
   networking.hostName = "${hostname}";
