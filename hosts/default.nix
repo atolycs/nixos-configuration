@@ -7,10 +7,11 @@
   stateVersion,
   username,
   virtual,
+  kind,
   ...
 }:
 {
-  imports = [ ./${outputs.self} ];
+  imports = [ "./${kind}" ];
 
   boot = {
     kernelModules = [ "vhost_vsock" ];
