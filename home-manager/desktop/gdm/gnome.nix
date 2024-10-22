@@ -1,6 +1,4 @@
 { pkgs-stable, ... }:
 {
-  home.packages = with pkgs-stable; [
-    gnome.gnome-tweaks
-  ];
+  home.packages = with pkgs-stable; [ gnome.gnome-tweaks ];
 }

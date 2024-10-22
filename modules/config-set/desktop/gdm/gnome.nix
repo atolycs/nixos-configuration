@@ -2,6 +2,10 @@
 {
   imports = [ ./exclude.nix ];
   services = {
+    gnome = {
+      gnome-browser-connector.enable = true;
+
+    };
     xserver = {
       enable = true;
       displayManager.gdm = {
@@ -14,6 +18,14 @@
       };
     };
 
-    dbus.packages = with pkgs; [ gnome.dconf-editor ];
+    udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+
+    dbus = {
+      enable = true;
+      packages = with pkgs; [
+        gnome.dconf-editor
+        gnome2.GConf
+      ];
+    };
   };
 }
