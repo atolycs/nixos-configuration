@@ -15,7 +15,7 @@
     }:
     let
       #kind = builtins.substring 0 (builtins.sub (builtins.stringLength hostname) 6) hostname;
-      kind = inputs.self;
+      self = outputs;
     in
      inputs.nixpkgs.lib.nixosSystem {
        specialArgs = {
@@ -27,7 +27,6 @@
            username
            stateVersion
            virtual
-           kind
            ;
        };
        modules = [ ../hosts ];

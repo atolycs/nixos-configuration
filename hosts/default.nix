@@ -7,17 +7,21 @@
   stateVersion,
   username,
   virtual,
-  kind,
+  self,
   ...
 }:
 let
+  flake = builtins.getFlake (toString ./.);
+  select_flake = builtins.getEnv "FLAKE";
   drivers = {
     "kvm" = [ (import ./base-nixos/config/kvm)];
     "vmware" = [ (import ./base-nixos/config/vmware)];
   };
 in
 {
-  imports = [ ./${kind} ];
+  imports = [
+    "./${flake}"
+  ];
 
   boot = {
     kernelModules = [ "vhost_vsock" ];
