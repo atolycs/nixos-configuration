@@ -1,0 +1,6 @@
+# Ignore build outputs from performing a nix-build
+result
+result-*
+
+# backup file
+*.bak
