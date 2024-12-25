@@ -6,24 +6,37 @@
         url = "https://github.com/nixos/nixpkgs/archive/${lock.rev}.tar.gz";
         sha256 = lock.narHash;
       };
-
     in
     import nixpkgs { overlays = [ ]; },
   ...
-}:
+}@inputs:
+let
+  scripts = [
+    (pkgs.writeScriptBin "update-input" ''
+      nix flake lock --override-input "$1" "$2"
+    '')
+    (pkgs.writeScriptBin "switch-nixos" ''
+      sudo nixos-rebuild switch --flake ".#$@" --show-trace
+    '')
+  ];
+in
+
 pkgs.stdenv.mkDerivation {
   name = "nix";
 
-  nativeBuildInputs = with pkgs; [
-    nix
-    nil
-    nixd
-    nixpkgs-fmt
-    git
-    neovim
-    nixfmt-rfc-style
-    treefmt
-  ];
+  nativeBuildInputs =
+    with pkgs;
+    [
+      nix
+      nil
+      nixd
+      nixpkgs-fmt
+      git
+      neovim
+      nixfmt-rfc-style
+      treefmt
+    ]
+    ++ scripts;
 
   NIX_CONFIG = "extra-experimental-features = nix-command flakes";
 }
