@@ -5,11 +5,21 @@
     url = "https://github.com/nixos/nixpkgs/archive/${lock.rev}.tar.gz";
     sha256 = lock.narHash;
   };
+
 in import nixpkgs { overlays = [ ]; }, ... }:
 pkgs.stdenv.mkDerivation {
   name = "nix";
 
-  nativeBuildInputs = with pkgs; [ nix nil nixd nixpkgs-fmt git neovim nixfmt ];
+  nativeBuildInputs = with pkgs; [
+    nix
+    nil
+    nixd
+    nixpkgs-fmt
+    git
+    neovim
+    nixfmt-rfc-style
+    treefmt
+  ];
 
   NIX_CONFIG = "extra-experimental-features = nix-command flakes";
 }
