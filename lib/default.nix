@@ -1,14 +1,15 @@
 {
-    inputs,
-    outputs,
-    stateVersion,
-    ...
+  inputs,
+  outputs,
+  stateVersion,
+  ...
 }:
 let
-    mkNixos = import ./mkNixos.nix { inherit inputs outputs stateVersion; };
-in 
+  mkNixos = import ./mkNixos.nix { inherit inputs outputs stateVersion; };
+in
 {
-    inherit (mkNixos)
+  inherit (mkNixos)
 
-    mkNixos;
+    mkNixos
+    ;
 }
