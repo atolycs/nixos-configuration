@@ -9,4 +9,4 @@ let
 in 
 {
     inherit (mkNixos);
-};
+}
