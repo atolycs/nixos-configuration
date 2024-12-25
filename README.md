@@ -1,0 +1,2 @@
+# Atolycs Nixos configuration
+# WIP
