@@ -9,4 +9,5 @@ let
 in 
 {
     inherit (mkNixos);
+    mkNixos;
 }
