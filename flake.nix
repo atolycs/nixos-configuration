@@ -9,11 +9,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flake-utils = { url = "github:numtide/flake-utils"; };
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+    };
   };
 
   outputs =
-    { self, nixpkgs, nixpkgs-unstable, home-manager, flake-utils, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      flake-utils,
+      ...
+    }@inputs:
     let
       stateVersion = "24.11";
       inherit (self) outputs;
@@ -22,10 +31,17 @@
       inherit (nixpkgs.lib.path) removePrefix splitRoot;
       inherit (nixpkgs.lib.filessytem) listFilesRecursive;
 
-      # nix-helper = import ./lib {
-      #    inherit outputs self stateVersion;
-      #};
-    in flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = nixpkgs.legacyPackages.${system};
-      in { devShells.default = import ./shell.nix { inherit pkgs; }; });
+    in
+    # nix-helper = import ./lib {
+    #    inherit outputs self stateVersion;
+    #};
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        devShells.default = import ./shell.nix { inherit pkgs; };
+      }
+    );
 }
