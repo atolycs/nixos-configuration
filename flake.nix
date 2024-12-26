@@ -26,8 +26,8 @@
     let
       stateVersion = "24.11";
       inherit (self) outputs;
-      inherit (nixpkgs.lib.lists) remove;
-      inherit (nixpkgs.lib.path) removePrefix splitRoot;
+      inherit (nixpkgs.lib.lists) drop remove;
+      inherit (nixpkgs.lib.path) splitRoot;
       inherit (nixpkgs.lib.filesystem) listFilesRecursive;
       inherit (nixpkgs.lib) replaceStrings genAttrs;
       nix-helper = import ./lib {
@@ -41,7 +41,7 @@
 
       # system list
       nameOfNix = path: replaceStrings [ ".nix" ] [ "" ] (baseNameOf (toString path));
-      nameOfPath = path: (baseNameOf (dirOf (toString path)));
+      nameOfPath = path: baseNameOf (dirOf (toString path));
       nameOfPathTest = path: replaceStrings [ "hosts" ] [ "" ] (dirOf (toString path));
     in
 
