@@ -1,5 +1,6 @@
 {
   hostname,
+  pkgs,
   ...
 }:
 {
@@ -7,4 +8,8 @@
     ./mountPoint
   ];
 
+
+  packages = with pkgs; [
+   zsh
+  ];
 }

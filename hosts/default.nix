@@ -12,7 +12,9 @@ in
 {
 
   imports = [
-    (./${profileName}/nixos.nix)
+    (./${profileName}/nixos.nix) {
+     inherit pkgs;
+    }
   ];
 
   nix = {
@@ -33,10 +35,5 @@ in
   networking = {
     hostName = "${hostname}";
   };
-
-  packages = with pkgs; [
-    zsh
-  ];
-
   nixpkgs.hostPlatform = "${platform}";
 }
