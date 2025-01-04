@@ -11,6 +11,7 @@ in
           experimental-features = "flakes nix-command";
           trusted-users = [
             "root"
+	    "@wheel"
             "atolycs"
           ];
         };
