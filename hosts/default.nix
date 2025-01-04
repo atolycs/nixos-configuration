@@ -1,6 +1,6 @@
 {
   stateVersion,
-  ...,
+  ...
 }:
 let
   flake = builtins.getFlake (toString ./.);
@@ -17,6 +17,6 @@ in
     };
 
     system = {
-        inherit stateVersion
-    }
+        inherit stateVersion;
+    };
 }
