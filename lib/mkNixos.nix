@@ -15,6 +15,7 @@
     }:
     let
       self = outputs;
+      pkgs = inputs.nixpkgs;
     in
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {
@@ -24,7 +25,9 @@
           hostname
           username
           stateVersion
-	  profileName
+          profileName
+          platform
+          pkgs
           ;
       };
       modules = [ ../hosts ];

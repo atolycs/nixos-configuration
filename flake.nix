@@ -61,7 +61,7 @@
         name:
         nix-helper.mkNixos {
           hostname = "nixos-${name}";
-	  profileName = "${name}";
+          profileName = "${name}";
         }
       );
     };

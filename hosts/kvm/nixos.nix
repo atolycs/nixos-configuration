@@ -1,13 +1,10 @@
 {
-    hostname,
-    ...
-}: {
-    import = [
-      ./disks.nix
-    ];
-
-    network = {
-        hostName = ${hostname};
-    };
+  hostname,
+  ...
+}:
+{
+  imports = [
+    ./mountPoint
+  ];
 
 }
