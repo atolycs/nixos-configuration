@@ -1,12 +1,20 @@
 {
+  profileName,
   stateVersion,
+  pkgs,
   ...
 }:
 let
   flake = builtins.getFlake (toString ./.);
 in 
 {
-  nix = {
+
+   imports = [
+    (import ./${profileName})
+   ];
+
+
+   nix = {
       settings = {
           experimental-features = "flakes nix-command";
           trusted-users = [
@@ -20,4 +28,9 @@ in
     system = {
         inherit stateVersion;
     };
+
+
+    packages = with pkgs; [
+     zsh
+    ];
 }

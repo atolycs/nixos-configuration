@@ -11,6 +11,7 @@
       username ? "atolycs",
       desktop ? null,
       platform ? "x86_64-linux",
+      profileName,
     }:
     let
       self = outputs;
@@ -23,6 +24,7 @@
           hostname
           username
           stateVersion
+	  profileName
           ;
       };
       modules = [ ../hosts ];
