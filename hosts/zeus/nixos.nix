@@ -1,8 +1,9 @@
 {
     hostname,
+    pkgs,
     ...
 }: {
-    import = [
+    imports = [
       ./disks.nix
     ];
 

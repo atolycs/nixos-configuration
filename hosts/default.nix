@@ -9,7 +9,7 @@ let
   flake = builtins.getFlake (toString ./.);
 in
 {
- 
+
   nix = {
     optimise.automatic = true;
     settings = {

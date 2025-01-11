@@ -57,13 +57,15 @@
       }
     )
     // {
-      nixosConfigurations = genAttrs (remove "mountPoints" (remove "hosts" (map nameOfPath ((listFilesRecursive ./hosts))))) (
-        name:
-        nix-helper.mkNixos {
-          hostname = "nixos-${name}";
-          hostProfile = "${name}";
-        }
-      );
+      nixosConfigurations =
+        genAttrs (remove "mountPoint" (remove "hosts" (map nameOfPath ((listFilesRecursive ./hosts)))))
+          (
+            name:
+            nix-helper.mkNixos {
+              hostname = "nixos-${name}";
+              hostProfile = "${name}";
+            }
+          );
     };
 
 }
