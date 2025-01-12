@@ -46,9 +46,9 @@
     in
 
     flake-utils.lib.eachDefaultSystem (
-      system:
+      arch:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = nixpkgs.legacyPackages.${arch};
       in
       {
         devShells.default = import ./shell.nix {
@@ -66,6 +66,8 @@
               hostProfile = "${name}";
             }
           );
+       nixpkgs.hostPlatform = "x86_64-linux";
     };
+
 
 }

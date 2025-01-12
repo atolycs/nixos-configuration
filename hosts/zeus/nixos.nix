@@ -1,14 +1,15 @@
 {
-    hostname,
-    pkgs,
-    ...
-}: {
-    imports = [
-      ./disks.nix
-    ];
+  hostname,
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    ./disks.nix
+  ];
 
-    network = {
-        hostName = ${hostname};
-    };
+  network = {
+    hostName = hostname;
+  };
 
 }
