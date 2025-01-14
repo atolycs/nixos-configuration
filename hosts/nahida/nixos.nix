@@ -9,13 +9,15 @@
 }:
 {
   imports = [
+    ./mountPoint
     outputs.nixosProfiles.kvm
     outputs.nixosModules.nix
     outputs.nixosModules.ssh
     outputs.nixosModules.boot.systemd
 
     outputs.nixosModules.users.atolycs
-    ./mountPoint
+
+    (modulesPath + "/installer/scan/not-detected.nix")
     ../../os/boot
     ../../os/security
     ../../os/locale
@@ -28,15 +30,14 @@
 
   nixpkgs.hostPlatform = "x86_64-linux";
 
-  boot = {
-    initrd = {
-      availableKernelModules = [
-        "nvme"
-        "xhci_pci"
-        "sd_mod"
-      ];
-    };
-  };
+  # boot = {
+  #   initrd = {
+  #     availableKernelModules = [
+  #       "nvme"
+  #       "xhci_pci"
+  #       "sd_mod"
+  #     ];
+  #   };
+  # };
 
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

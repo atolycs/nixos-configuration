@@ -1,8 +1,9 @@
 {
-    modulesPath,
-    ...
-  }:{
-    imports = [
-      (modulesPath + "/virtualisation/qemu-guest-agent.nix")
-    ];
-  }
+  modulesPath,
+  ...
+}:
+{
+  imports = [
+    (modulesPath + "/virtualisation/qemu-guest-agent.nix")
+  ];
+}

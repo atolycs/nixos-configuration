@@ -1,6 +1,7 @@
+{ ... }:
 {
   fileSystems."/boot" = {
-    device = "/dev/disk/by-label/NIXOS-BOOT";
+    device = "/dev/disk/by-label/NIX-BOOT";
     fsType = "vfat";
     options = [
       "fmask=0022"
