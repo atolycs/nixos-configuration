@@ -36,6 +36,7 @@
           outputs
           self
           stateVersion
+          home-manager
           ;
       };
 
