@@ -32,6 +32,7 @@ pkgs.stdenv.mkDerivation {
       nixd
       nixpkgs-fmt
       git
+      gh
       neovim
       nixfmt-rfc-style
       treefmt
