@@ -4,10 +4,14 @@
   lib,
   config,
   modulesPath,
+  outputs,
   ...
 }:
 {
   imports = [
+    outputs.nixosModules.nix
+    outputs.nixosModules.boot.systemd
+
     ./mountPoint
     ../../os/boot
     ../../os/security
