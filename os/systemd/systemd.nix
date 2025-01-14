@@ -1,5 +1,5 @@
 {
-    systemd.services = {
-        "getty@tty1".enable = true;
-    };
+  systemd.services = {
+    "getty@tty1".enable = true;
+  };
 }

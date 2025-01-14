@@ -1,9 +1,9 @@
 {
   time = {
-      timeZone = "Asia/Tokyo";
+    timeZone = "Asia/Tokyo";
   };
 
   services = {
-      ntp.enable = true;
-    };
+    ntp.enable = true;
+  };
 }
