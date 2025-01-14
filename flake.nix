@@ -59,6 +59,7 @@
     )
     // {
       nixosModules = import ./modules/nixos;
+      nixosProfiles = import ./base-profiles;
       nixosConfigurations =
         genAttrs (remove "mountPoint" (remove "hosts" (map nameOfPath ((listFilesRecursive ./hosts)))))
           (

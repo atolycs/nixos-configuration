@@ -9,7 +9,7 @@
 }:
 {
   imports = [
-    outputs.nixosModules.host-hardware.vmware
+    outputs.nixosProfiles.vmware
     outputs.nixosModules.nix
     outputs.nixosModules.boot.systemd
 
@@ -21,7 +21,7 @@
   ];
 
   networking = {
-    hostName = "${hostname}";
+    hostName = "vmware-atolycs";
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";

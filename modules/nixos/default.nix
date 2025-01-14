@@ -7,4 +7,5 @@
   host-hardware = import ./host-hardware;
   machine-profile = import ./machine-profile;
   sound = import ./sound;
+  ssh = import ./ssh;
 }

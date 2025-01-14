@@ -9,7 +9,7 @@
 }:
 {
   imports = [
-    outputs.nixosModules.host-hardware.kvm
+    outputs.nixosProfiles.kvm
     outputs.nixosModules.nix
     outputs.nixosModules.boot.systemd
 
