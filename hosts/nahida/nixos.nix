@@ -11,8 +11,10 @@
   imports = [
     outputs.nixosProfiles.kvm
     outputs.nixosModules.nix
+    outputs.nixosModules.ssh
     outputs.nixosModules.boot.systemd
 
+    outputs.nixosModules.users.atolycs
     ./mountPoint
     ../../os/boot
     ../../os/security
@@ -21,7 +23,7 @@
   ];
 
   networking = {
-    hostName = "${hostname}";
+    hostName = "nahida";
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";
