@@ -3,4 +3,5 @@
   boot = import ./boot;
   fonts = import ./fonts;
   profiles = import ./profiles;
+  serial = import ./serial;
 }

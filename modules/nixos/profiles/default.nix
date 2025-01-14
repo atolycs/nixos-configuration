@@ -1,4 +1,3 @@
 {
-  desktop = import ./desktop;
-  serial = import ./serial;
+  # desktop = import ./desktop;
 }
