@@ -3,6 +3,8 @@
   hostname,
   stateVersion,
   username,
+  outputs,
+  inputs,
   ...
 }:
 let

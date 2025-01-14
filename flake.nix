@@ -25,7 +25,6 @@
     }@inputs:
     let
       stateVersion = "24.11";
-      inherit (self) outputs;
       inherit (nixpkgs.lib.lists) drop remove;
       inherit (nixpkgs.lib.path) splitRoot;
       inherit (nixpkgs.lib.filesystem) listFilesRecursive;
@@ -44,6 +43,7 @@
       nameOfNix = path: replaceStrings [ ".nix" ] [ "" ] (baseNameOf (toString path));
       nameOfPath = path: baseNameOf (dirOf (toString path));
       nameOfPathTest = path: replaceStrings [ "hosts" ] [ "" ] (dirOf (toString path));
+      outputs = self;
     in
 
     flake-utils.lib.eachDefaultSystem (
@@ -58,7 +58,7 @@
       }
     )
     // {
-      nixosModules = import ./modules;
+      nixosModules = import ./modules/nixos;
       nixosConfigurations =
         genAttrs (remove "mountPoint" (remove "hosts" (map nameOfPath ((listFilesRecursive ./hosts)))))
           (
