@@ -1,0 +1,7 @@
+{
+  security = {
+    audit = {
+      enable = true;
+    };
+  };
+}
