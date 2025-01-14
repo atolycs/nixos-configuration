@@ -10,6 +10,7 @@ let
 in
 {
   imports = [
+    ../os/boot
     (./. + "/${hostProfile}/nixos.nix")
   ];
 
@@ -33,5 +34,4 @@ in
     inherit stateVersion;
   };
 
-  nixpkgs.hostPlatform = "x86_64-linux";
 }

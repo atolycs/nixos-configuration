@@ -1,11 +1,11 @@
 {
-    nixpkgs,
-    ...
+  nixpkgs,
+  ...
 }:
 {
   imports = [
-   ./root.nix
-   ./boot.nix
-   ./home.nix
+    ./root.nix
+    ./boot.nix
+    ./home.nix
   ];
 }

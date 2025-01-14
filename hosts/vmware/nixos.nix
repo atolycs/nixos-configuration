@@ -1,15 +1,17 @@
 {
-    hostname,
-    stateSystem,
-    lib,
-    ...
-}: {
-    imports = [
-      ./mountPoint
-    ];
+  hostname,
+  stateSystem,
+  lib,
+  ...
+}:
+{
+  imports = [
+    ./mountPoint
+  ];
 
-    networking = {
-        hostName = "${hostname}";
-    };
+  networking = {
+    hostName = "${hostname}";
+  };
 
+  nixpkgs.hostPlatform = "x86_64-linux";
 }
