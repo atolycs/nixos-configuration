@@ -2,6 +2,8 @@
   modulesPath,
   ...
 }:
-[
-    (modulesPath + "/virtualisation/vmware-guest.nix")
-]
+{
+    imports = [
+      (modulesPath + "/virtualisation/vmware-guest.nix")
+    ];
+}
