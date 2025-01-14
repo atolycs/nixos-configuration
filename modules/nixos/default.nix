@@ -8,4 +8,5 @@
   machine-profile = import ./machine-profile;
   sound = import ./sound;
   ssh = import ./ssh;
+  users = import ./users;
 }

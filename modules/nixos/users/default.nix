@@ -1,0 +1,3 @@
+{
+  atolycs = import ./atolycs.nix;
+}
