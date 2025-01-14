@@ -2,13 +2,8 @@
     nixpkgs,
     ...
 }:
-let
-  inherit (nixpkgs.lib.filesystem) listFilesRecursive;
-
-  import_list = listFilesRecursive .;
-in 
 {
-  import = [
+  imports = [
    ./root.nix
    ./boot.nix
    ./home.nix

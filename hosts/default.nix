@@ -9,6 +9,9 @@ let
   flake = builtins.getFlake (toString ./.);
 in
 {
+  imports = [
+    (./. + "/${hostProfile}/nixos.nix")
+  ];
 
   nix = {
     optimise.automatic = true;
@@ -30,7 +33,5 @@ in
     inherit stateVersion;
   };
 
-  import = [
-    (./. + "/${hostProfile}/nixos.nix")
-  ];
+  nixpkgs.hostPlatform = "x86_64-linux";
 }

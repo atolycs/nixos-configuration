@@ -8,8 +8,8 @@
       ./mountPoint
     ];
 
-    network = {
-        hostName = ${hostname};
+    networking = {
+        hostName = "${hostname}";
     };
 
 }
