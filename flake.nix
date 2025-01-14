@@ -66,7 +66,6 @@
               hostProfile = "${name}";
             }
           );
-      nixpkgs.hostPlatform = "x86_64-linux";
     };
 
 }
