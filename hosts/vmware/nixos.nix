@@ -9,6 +9,7 @@
 }:
 {
   imports = [
+    outputs.nixosModules.host-hardware.vmware
     outputs.nixosModules.nix
     outputs.nixosModules.boot.systemd
 
@@ -17,7 +18,6 @@
     ../../os/security
     ../../os/locale
     ../../os/systemd/systemd.nix
-    (modulesPath + "/virtualisation/vmware-guest.nix")
   ];
 
   networking = {
