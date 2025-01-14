@@ -3,6 +3,7 @@
   stateSystem,
   lib,
   config,
+  modulesPath,
   ...
 }:
 {
@@ -12,6 +13,7 @@
     ../../os/security
     ../../os/locale
     ../../os/systemd/systemd.nix
+    (modulesPath + "/virtualisation/vmware-guest.nix")
   ];
 
   networking = {
