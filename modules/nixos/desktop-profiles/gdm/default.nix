@@ -50,7 +50,7 @@ in
     programs.dconf = {
       enable = true;
       packages = with pkgs; [
-	dconf-editor
+	      dconf-editor
         gnome2.GConf
       ];
     };
