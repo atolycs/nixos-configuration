@@ -71,12 +71,11 @@
             }
           );
       homeConfigurations = 
-        genAttrs (map nameOfPath ((listFilesRecursive ./home-manager)))
+        genAttrs (remove "home-manager" (remove "nixos" (map nameOfPath ((listFilesRecursive ./home-manager)))))
 	   (
 	     name:
 	     nix-helper.mkHomeManager {
-	       hostname = "${name}";
-	       hostProfile = "${name}";
+	       homeProfile = "${name}";
 	     }
 	   );
     };

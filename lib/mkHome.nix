@@ -8,14 +8,14 @@
 {
   mkHomeManager =
     {
-      hostProfile,
+      homeProfile,
     }:
     let
       self = outputs;
     in
      
     home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_86-linux;
+      pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
       extraSpecialArgs = { inherit inputs outputs; };
       modules = [
        ../home-manager
