@@ -9,4 +9,5 @@
   sound = import ./sound;
   ssh = import ./ssh;
   users = import ./users;
+  programs = import ./programs;
 }

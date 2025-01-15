@@ -13,6 +13,7 @@
     outputs.nixosModules.nix
     outputs.nixosModules.boot.systemd
     outputs.nixosModules.users.atolycs
+    outputs.nixosModules.programs.git
 
     ./mountPoint
     ../../os/boot
@@ -22,7 +23,7 @@
   ];
 
   networking = {
-    hostName = "vmware-atolycs";
+    hostName = "atlas";
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -38,4 +39,5 @@
   };
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

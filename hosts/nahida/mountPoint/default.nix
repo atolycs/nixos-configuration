@@ -5,8 +5,8 @@
 }:
 {
   imports = [
-    ./root.nix
-    ./boot.nix
-    ./home.nix
+    (import ./root.nix)
+    (import ./boot.nix)
+    (import ./home.nix)
   ];
 }

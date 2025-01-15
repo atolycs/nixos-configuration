@@ -16,9 +16,10 @@
     outputs.nixosModules.boot.systemd
 
     outputs.nixosModules.users.atolycs
+    outputs.nixosModules.programs.git
 
     (modulesPath + "/installer/scan/not-detected.nix")
-    ../../os/boot
+    #../../os/boot
     ../../os/security
     ../../os/locale
     ../../os/systemd/systemd.nix
