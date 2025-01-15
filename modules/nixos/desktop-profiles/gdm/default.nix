@@ -33,6 +33,10 @@ in
         desktopManager = {
           gnome.enable = true;
           runXdgAutostartIfNone = true;
+          extraGSettingsOverridePackages = [
+            pkgs.gsettings-desktop-schemas
+            pkgs.gnome-shell
+          ];
         };
       };
     };
