@@ -1,9 +1,9 @@
 {
- config = {
-  programs = {
-    git = {
-      enable = true;
+  config = {
+    programs = {
+      git = {
+        enable = true;
+      };
     };
   };
- };
 }
