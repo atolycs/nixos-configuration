@@ -1,5 +1,6 @@
-{ outputs, ... }:{
-    imports = [
-        outputs.nixosModules.desktop-profiles.gnome
-    ];
+{ outputs, ... }:
+{
+  imports = [
+    outputs.nixosModules.desktop-profiles.gnome
+  ];
 }

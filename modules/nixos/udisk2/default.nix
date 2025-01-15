@@ -1,5 +1,5 @@
 {
-    config = {
-        services.udisk2.enable = true;
-    };
+  config = {
+    services.udisk2.enable = true;
+  };
 }

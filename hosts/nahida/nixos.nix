@@ -10,6 +10,7 @@
 {
   imports = [
     ./mountPoint
+    outputs.nixosProfiles.minimal-gui
     outputs.nixosProfiles.kvm
     outputs.nixosModules.nix
     outputs.nixosModules.ssh
@@ -19,7 +20,7 @@
     outputs.nixosModules.programs.git
 
     (modulesPath + "/installer/scan/not-detected.nix")
-    #../../os/boot
+    ../../os/boot
     ../../os/security
     ../../os/locale
     ../../os/systemd/systemd.nix
