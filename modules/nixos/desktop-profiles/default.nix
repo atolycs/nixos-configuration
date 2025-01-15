@@ -1,4 +1,4 @@
 {
   description = "Desktop Profiles";
-  # desktop = import ./desktop;
+  gnome = import ./gdm;
 }
