@@ -42,7 +42,8 @@
       # system list
       nameOfNix = path: replaceStrings [ ".nix" ] [ "" ] (baseNameOf (toString path));
       nameOfPath = path: baseNameOf (dirOf (toString path));
-      nameOfPathTest = path: replaceStrings [ "hosts" ] [ "" ] (dirOf (toString path));
+      #nameOfHM = path: baseNameOf (dirOf (toString path));
+      #nameOfPathTest = path: replaceStrings [ "hosts" ] [ "" ] (dirOf (toString path));
       outputs = self;
     in
 
@@ -69,6 +70,15 @@
               hostProfile = "${name}";
             }
           );
+      homeConfigurations = 
+        genAttrs (map nameOfPath ((listFilesRecursive ./home-manager)))
+	   (
+	     name:
+	     nix-helper.mkHomeManager {
+	       hostname = "${name}";
+	       hostProfile = "${name}";
+	     }
+	   );
     };
 
 }
