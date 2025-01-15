@@ -1,68 +1,70 @@
 { pkgs, outputs, ... }:
 let
-  x86_64-graphics = 
+  x86_64-graphics =
     if (!pkgs.stdenv.hostPlatform.isAarch64) then
-    {
-      enable32Bit = true;
-    }
-    else {};
-  
-  all-graphics = { enable = true; };
+      {
+        enable32Bit = true;
+      }
+    else
+      { };
+
+  all-graphics = {
+    enable = true;
+  };
 
 in
 {
+
+  imports = [
+    outputs.nixosModules.fonts
+    outputs.nixosModules.sound
+  ];
+
   config = {
-    
-    imports = [
-      outputs.nixosModules.fonts
-      outputs.nixosModules.sound
-    ];
-    
     services = {
+      udev.packages = with pkgs; [ gnome-settings-daemon ];
       gnome = {
         gnome-browser-connector.enable = true;
       };
       xserver = {
         excludePackages = [ pkgs.xterm ];
         enable = true;
-        displayManager.gdm = { 
+        displayManager.gdm = {
           enable = true;
           wayland = true;
           autoSuspend = false;
         };
         desktopManager = {
-          gnome.enable = true;
+          gnome = {
+            enable = true;
+            extraGSettingsOverridePackages = [
+              pkgs.gsettings-desktop-schemas
+              pkgs.gnome-shell
+            ];
+          };
           runXdgAutostartIfNone = true;
-          extraGSettingsOverridePackages = [
-            pkgs.gsettings-desktop-schemas
-            pkgs.gnome-shell
-          ];
         };
       };
     };
 
-    udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
-
-    dbus = {
+    programs.dconf = {
       enable = true;
       packages = with pkgs; [
-        gnome.dconf-editor
+	dconf-editor
         gnome2.GConf
       ];
     };
-    
-    environment.gnome.excludePackages = (with pkgs; [
-      gnome-tour
-      epiphany
-    ])
-      ++ (with pkgs.gnome; [
-      hitori
-      iagno
-      gnome-music
-      geary
-      cheese
-    ]);
 
+    environment.gnome.excludePackages =
+      (with pkgs; [
+        gnome-tour
+        epiphany
+        hitori
+        iagno
+        gnome-music
+        geary
+        cheese
+      ]);
     hardware.graphics = all-graphics // x86_64-graphics;
   };
 }
