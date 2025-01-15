@@ -1,22 +1,39 @@
 {
+  hostProfile,
+  hostname,
   stateVersion,
-  ...,
+  username,
+  outputs,
+  inputs,
+  ...
 }:
 let
   flake = builtins.getFlake (toString ./.);
-in 
+in
 {
-  nix = {
-      settings = {
-          experimental-features = "flakes nix-command";
-          trusted-users = [
-            "root"
-            "atolycs"
-          ];
-        };
-    };
+  imports = [
+    ../os/boot
+    (./. + "/${hostProfile}/nixos.nix")
+  ];
 
-    system = {
-        inherit stateVersion
-    }
+  nix = {
+    optimise.automatic = true;
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+
+      trusted-users = [
+        "root"
+        "@wheel"
+        "${username}"
+      ];
+    };
+  };
+
+  system = {
+    inherit stateVersion;
+  };
+
 }

@@ -1,13 +1,19 @@
 {
-    hostname,
-    ...
-}: {
-    import = [
-      ./disks.nix
-    ];
+  outputs,
+  hostname,
+  pkgs,
+  username,
+  ...
+}:
+{
+  imports = [
+    outputs.nixosModules.udisk2
+    ./disks.nix
+  ];
 
-    network = {
-        hostName = ${hostname};
-    };
+  networking = {
+    hostName = "nix-navia";
+  };
+  nixpkgs.hostPlatform = "x86_64-linux";
 
 }
