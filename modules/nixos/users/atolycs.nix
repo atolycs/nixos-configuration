@@ -8,6 +8,10 @@
   ...
 }:
 {
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
+
   config = {
     users.users = {
       atolycs = {
