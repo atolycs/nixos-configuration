@@ -1,5 +1,5 @@
 { outputs, ... }:{
     imports = [
-        outputs.nixosModules.desktop-profiles.gdm
+        outputs.nixosModules.desktop-profiles.gnome
     ];
 }

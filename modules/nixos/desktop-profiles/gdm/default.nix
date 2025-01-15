@@ -1,8 +1,21 @@
-{ pkgs, outputs, ... }: {
+{ pkgs, outputs, ... }:
+let
+  x86_64-graphics = 
+    if (!pkgs.stdenv.hostPlatform.isAarch64) then
+    {
+      enable32Bit = true;
+    }
+    else {};
+  
+  all-graphics = { enable = true; };
+
+in
+{
   config = {
     
     imports = [
       outputs.nixosModules.fonts
+      outputs.nixosModules.sound
     ];
     
     services = {
@@ -10,10 +23,12 @@
         gnome-browser-connector.enable = true;
       };
       xserver = {
+        excludePackages = [ pkgs.xterm ];
         enable = true;
         displayManager.gdm = { 
           enable = true;
           wayland = true;
+          autoSuspend = false;
         };
         desktopManager = {
           gnome.enable = true;
@@ -41,6 +56,9 @@
       iagno
       gnome-music
       geary
+      cheese
     ]);
+
+    hardware.graphics = all-graphics // x86_64-graphics;
   };
 }
