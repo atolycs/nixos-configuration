@@ -1,15 +1,18 @@
 {
+  outputs,
   hostname,
   pkgs,
+  username,
   ...
 }:
 {
   imports = [
+    outputs.nixosModules.udisk2
     ./disks.nix
   ];
 
-  network = {
-    hostName = hostname;
+  networking = {
+    hostName = "nix-navia";
   };
 
 }

@@ -1,6 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, outputs, ... }: {
   config = {
-
+    
+    imports = [
+      outputs.nixosModules.fonts
+    ];
+    
     services = {
       gnome = {
         gnome-browser-connector.enable = true;

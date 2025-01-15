@@ -12,8 +12,9 @@
     outputs.nixosProfiles.vmware
     outputs.nixosModules.nix
     outputs.nixosModules.boot.systemd
-    outputs.nixosModules.users.atolycs
     outputs.nixosModules.programs.git
+    outputs.nixosProfiles.minimal-gui
+    outputs.nixosModules.users.atolycs
 
     ./mountPoint
     ../../os/boot
