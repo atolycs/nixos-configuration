@@ -5,6 +5,7 @@
 {
   imports = [
     (modulesPath + "/virtualisation/qemu-guest-agent.nix")
+    (modulesPath + "/profiles/qemu-guest.nix")
   ];
   boot.initrd.availableKernelModules = [
     "virtio_balloon"
