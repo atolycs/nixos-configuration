@@ -70,14 +70,15 @@
               hostProfile = "${name}";
             }
           );
-      homeConfigurations = 
-        genAttrs (remove "home-manager" (remove "nixos" (map nameOfPath ((listFilesRecursive ./home-manager)))))
-	   (
-	     name:
-	     nix-helper.mkHomeManager {
-	       homeProfile = "${name}";
-	     }
-	   );
+      homeConfigurations =
+        genAttrs
+          (remove "home-manager" (remove "nixos" (map nameOfPath ((listFilesRecursive ./home-manager)))))
+          (
+            name:
+            nix-helper.mkHomeManager {
+              homeProfile = "${name}";
+            }
+          );
     };
 
 }

@@ -3,8 +3,9 @@
   outputs,
   homeProfile,
   ...
-}: {
+}:
+{
   imports = [
-   (./. + "${homeProfile}/home-manager.nix")
+    (./. + "${homeProfile}/home-manager.nix")
   ];
 }

@@ -51,8 +51,9 @@ in
       enable = true;
     };
 
-    environment.gnome.excludePackages =
-      (with pkgs; [
+    environment.gnome.excludePackages = (
+      with pkgs;
+      [
         gnome-tour
         epiphany
         hitori
@@ -60,7 +61,8 @@ in
         gnome-music
         geary
         cheese
-      ]);
+      ]
+    );
     hardware.graphics = all-graphics // x86_64-graphics;
   };
 }
