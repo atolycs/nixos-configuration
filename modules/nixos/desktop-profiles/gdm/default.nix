@@ -49,10 +49,6 @@ in
 
     programs.dconf = {
       enable = true;
-      packages = with pkgs; [
-	      dconf-editor
-        gnome2.GConf
-      ];
     };
 
     environment.gnome.excludePackages =
