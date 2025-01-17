@@ -4,7 +4,7 @@ with lib;
   config = {
     systemd.services = {
       "serial-getty@ttyS0" = {
-        enable = false;
+        enable = true;
         wantedBy = [ "getty.target" ];
         serviceConfig.Restart = "always";
       };
