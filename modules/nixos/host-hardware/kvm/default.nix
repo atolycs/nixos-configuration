@@ -8,7 +8,13 @@
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
   config = {
-    boot.kernelParams = [ "console=ttyS0,115200n8" ];
+    services.qemuGuest = { 
+      enable = true;
+    };
+    boot.kernelParams = [ 
+      "console=tty0"
+      "console=ttyS0,115200n8"
+    ];
     boot.initrd.availableKernelModules = [
       "virtio_balloon"
       "virtio_blk"
