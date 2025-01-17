@@ -8,10 +8,10 @@
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
   config = {
-    services.qemuGuest = { 
+    services.qemuGuest = {
       enable = true;
     };
-    boot.kernelParams = [ 
+    boot.kernelParams = [
       "console=tty0"
       "console=ttyS0,115200n8"
     ];
