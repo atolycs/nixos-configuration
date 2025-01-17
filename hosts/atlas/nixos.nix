@@ -12,6 +12,7 @@
     outputs.nixosProfiles.vmware
     outputs.nixosModules.nix
     outputs.nixosModules.boot.systemd
+    outputs.nixosModules.ssh
     outputs.nixosModules.programs.git
     outputs.nixosProfiles.minimal-gui
     outputs.nixosModules.users.atolycs
