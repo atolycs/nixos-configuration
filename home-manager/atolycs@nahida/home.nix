@@ -9,5 +9,12 @@
   programs.home-manager.enable = true;
 
   systemd.user.startServices = "sd-switch";
-
+    
+  home.file = {
+    "test.txt" = {
+      text = ''
+       Hello home-manager world!
+      '';
+    };
+  };
 }
