@@ -1,3 +1,3 @@
 {
-  nahida = import ./nahida;
+  hosts = import ./hosts;
 }

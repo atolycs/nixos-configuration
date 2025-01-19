@@ -8,7 +8,6 @@
 {
   imports = [
    ./${homeProfile}/home.nix
-   outputs.homeModules.nahida
   ];
 
   home = {

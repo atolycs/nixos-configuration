@@ -2,7 +2,7 @@
 {
 
   imports = [
-    #outputs.homeModules.nahida
+    outputs.homeModules.hosts.nahida
   ];
 
   home = {
