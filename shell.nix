@@ -36,6 +36,7 @@ pkgs.stdenv.mkDerivation {
       neovim
       nixfmt-rfc-style
       treefmt
+      tmux
     ]
     ++ scripts;
 
