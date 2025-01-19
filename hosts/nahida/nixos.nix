@@ -5,6 +5,7 @@
   config,
   modulesPath,
   outputs,
+  home-manager,
   ...
 }:
 {

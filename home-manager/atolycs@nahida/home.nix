@@ -1,5 +1,10 @@
 { home-manager, nixpkgs, inputs, outputs, self, stateVersion, ... }: 
 {
+
+  imports = [
+    #outputs.homeModules.nahida
+  ];
+
   home = {
     username = "atolycs";
     homeDirectory = "/home/atolycs";
@@ -10,11 +15,11 @@
 
   systemd.user.startServices = "sd-switch";
     
-  home.file = {
-    "test.txt" = {
-      text = ''
-       Hello home-manager world!
-      '';
-    };
-  };
+  # home.file = {
+  #   "test.txt" = {
+  #     text = ''
+  #      Hello home-manager world!
+  #     '';
+  #   };
+  # };
 }

@@ -1,2 +1,3 @@
 {
+  nahida = import ./nahida;
 }
