@@ -41,6 +41,7 @@ pkgs.stdenv.mkDerivation {
 
   shellHook = ''
     source ${pkgs.git}/share/bash-completion/completions/git-prompt.sh;
+    export PROMPT_DIRTRIM=2
     export PS1='\n\[\033[1;32m\][devShell is \[\033[0;33m\]$(echo $name)\[\033[1;32m\]:\w]$(__git_ps1 "(%s)")\$\[\033[0m\] '
   '';
 
