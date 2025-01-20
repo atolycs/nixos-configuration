@@ -23,6 +23,7 @@ in
 
   config = {
     services = {
+      accounts-daemon.enable = true;
       udev.packages = with pkgs; [ gnome-settings-daemon ];
       gnome = {
         gnome-browser-connector.enable = true;

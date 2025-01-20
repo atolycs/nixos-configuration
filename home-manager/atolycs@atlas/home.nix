@@ -12,6 +12,7 @@
   imports = [
     outputs.homeModules.pkgs
     outputs.homeModules.desktop-manager.gdm
+    outputs.homeModules.avatar
   ];
 
   home = {
