@@ -4,11 +4,15 @@ let
     gnomeExtensions.user-themes
     gnomeExtensions.kimpanel
     gnomeExtensions.dash-to-dock
+    xdg-utils
+    xdg-desktop-portal-gnome
   ];
 in with lib.hm.gvariant;
 {
   config = {
     home.packages = packages;
+    xdg.enable = true;
+
     programs.firefox = {
       enable = true;
       package = pkgs.firefox-esr;
