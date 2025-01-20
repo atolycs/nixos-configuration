@@ -18,6 +18,7 @@ in
   imports = [
     outputs.nixosModules.fonts
     outputs.nixosModules.sound
+    outputs.nixosModules.udisk2
   ];
 
   config = {
