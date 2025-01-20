@@ -4,6 +4,6 @@ let
 in
 {
   config = {
-   home.packages = global;
+    home.packages = global;
   };
 }

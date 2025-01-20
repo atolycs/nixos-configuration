@@ -7,7 +7,7 @@
 }:
 {
   imports = [
-   ./${homeProfile}/home.nix
+    ./${homeProfile}/home.nix
   ];
 
   home = {
