@@ -1,14 +1,24 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   packages = with pkgs; [
     gnomeExtensions.user-themes
     gnomeExtensions.kimpanel
     gnomeExtensions.dash-to-dock
   ];
-in
+in with lib.hm.gvariant;
 {
   config = {
     home.packages = packages;
+    programs.firefox = {
+      enable = true;
+      package = pkgs.firefox-esr;
+      policies = {
+        FirefoxHome = {
+	  SponsoredTopSites = false;
+	};
+      };
+
+    };
 
     dconf = {
       enable = true;
@@ -18,11 +28,19 @@ in
         };
 
         "org/gnome/shell" = {
+	  disable-user-extensions = false;
           enabled-extensions = [
             pkgs.gnomeExtensions.user-themes.extensionUuid
             pkgs.gnomeExtensions.kimpanel.extensionUuid
             pkgs.gnomeExtensions.dash-to-dock.extensionUuid
           ];
+
+	  favorite-apps = [
+	    "firefox-esr.desktop"
+	    "org.gnome.Nautilus.desktop"
+	    "org.gnome.Console.desktop"
+	    "org.gnome.Settings.desktop"
+	  ];
         };
 
         "org/gnome/shell/extensions/dash-to-dock" = {
@@ -31,6 +49,19 @@ in
           dash-max-icon-size = 32;
           custom-theme-shrink = true;
         };
+
+        "org/gnome/desktop/session" = {
+	  idle-delay = mkUint32 0;
+	};
+
+	"org/gnome/desktop/interface" = {
+	  clock-show-seconds = true;
+	  clock-show-weekday = true;
+	};
+
+	"org/gnome/mutter" = {
+	  dynamic-workspaces = true;
+	};
       };
     };
   };
