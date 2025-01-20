@@ -1,4 +1,6 @@
-{ pkgs, ... }: with pkgs; [
+{ pkgs, ... }:
+with pkgs;
+[
   jq
   wget
   curl

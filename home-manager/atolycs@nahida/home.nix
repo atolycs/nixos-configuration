@@ -1,4 +1,12 @@
-{ home-manager, nixpkgs, inputs, outputs, self, stateVersion, ... }: 
+{
+  home-manager,
+  nixpkgs,
+  inputs,
+  outputs,
+  self,
+  stateVersion,
+  ...
+}:
 {
 
   imports = [
@@ -14,7 +22,7 @@
   programs.home-manager.enable = true;
 
   systemd.user.startServices = "sd-switch";
-    
+
   # home.file = {
   #   "test.txt" = {
   #     text = ''
