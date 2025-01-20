@@ -6,6 +6,7 @@ let
     gnomeExtensions.dash-to-dock
     xdg-utils
     xdg-desktop-portal-gnome
+    gnome.gnome-tweaks
   ];
 in with lib.hm.gvariant;
 {
@@ -65,6 +66,18 @@ in with lib.hm.gvariant;
 
 	"org/gnome/mutter" = {
 	  dynamic-workspaces = true;
+	};
+
+	"org/gtk/gtk4/settings/file-chooser" = {
+	  show-hidden = true;
+	};
+
+	"org/gtk/settings/file-chooser" = {
+	  show-hidden = true;
+	};
+
+	"org/gnome/nautilus/icon-view" = {
+	  default-zoom-level = "small-plus";
 	};
       };
     };
