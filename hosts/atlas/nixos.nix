@@ -25,7 +25,7 @@
   ];
 
   networking = {
-    hostName = "${hostname}";
+    hostName = "atlas";
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";

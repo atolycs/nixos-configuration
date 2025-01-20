@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ outputs, pkgs, lib, ... }:
 let
   packages = with pkgs; [
     gnomeExtensions.user-themes
@@ -10,20 +10,25 @@ let
   ];
 in with lib.hm.gvariant;
 {
+
+  imports = [
+    outputs.nixosModules.programs.firefox-esr
+  ];
+
   config = {
     home.packages = packages;
     xdg.enable = true;
 
-    programs.firefox = {
-      enable = true;
-      package = pkgs.firefox-esr;
-      policies = {
-        FirefoxHome = {
-	  SponsoredTopSites = false;
-	};
-      };
-
-    };
+	#    programs.firefox = {
+	#      enable = true;
+	#      package = pkgs.firefox-esr;
+	#      policies = {
+	#        FirefoxHome = {
+	#   SponsoredTopSites = false;
+	# };
+	#      };
+	#
+	#    };
 
     dconf = {
       enable = true;
