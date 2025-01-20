@@ -16,6 +16,7 @@
     outputs.nixosModules.programs.git
     outputs.nixosProfiles.minimal-gui
     outputs.nixosModules.users.atolycs
+    outputs.nixosModules.fileSystems.bindfs
 
     ./mountPoint
     ../../os/boot

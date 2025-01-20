@@ -10,5 +10,5 @@
   users = import ./users;
   programs = import ./programs;
   udisk2 = import ./udisk2;
-
+  fileSystems = import ./filesystems;
 }

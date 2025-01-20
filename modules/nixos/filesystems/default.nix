@@ -1,0 +1,3 @@
+{
+  bindfs = import ./bindfs;
+}
