@@ -1,5 +1,5 @@
 {
-  hostname,
+  hostname ? "atlas",
   stateSystem,
   lib,
   config,
@@ -25,7 +25,7 @@
   ];
 
   networking = {
-    hostName = "atlas";
+    hostName = "${hostname}";
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";
