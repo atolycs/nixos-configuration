@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  global = import ./global.nix;
+  global = import ./global.nix { inherit pkgs; };
 in
 {
   config = {
