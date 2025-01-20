@@ -15,15 +15,15 @@ in
       settings = {
         "org/gnome/desktop/wm/preferences" = {
           button-layout = "appmenu:minimize,maximize,close";
-	};
+        };
 
         "org/gnome/shell" = {
           enabled-extensions = [
             pkgs.gnomeExtensions.user-themes.extensionUuid
-	    pkgs.gnomeExtensions.kimpanel.extensionUuid
-	    pkgs.gnomeExtensions.dash-to-dock.extensionUuid
-	  ];
-	};
+            pkgs.gnomeExtensions.kimpanel.extensionUuid
+            pkgs.gnomeExtensions.dash-to-dock.extensionUuid
+          ];
+        };
 
         "org/gnome/shell/extensions/dash-to-dock" = {
           dock-position = "LEFT";
@@ -33,7 +33,5 @@ in
         };
       };
     };
-
-
   };
 }
