@@ -18,6 +18,9 @@ let
     (pkgs.writeScriptBin "switch-nixos" ''
       sudo nixos-rebuild switch --flake ".#$@" --show-trace
     '')
+    (pkgs.writeScriptBin "switch-home" ''
+      home-manager switch --flake ".#$@" --show-trace
+    '')
   ];
 in
 
@@ -36,7 +39,7 @@ pkgs.stdenv.mkDerivation {
       neovim
       nixfmt-rfc-style
       treefmt
-      tmux
+      home-manager
     ]
     ++ scripts;
 
