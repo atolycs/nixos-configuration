@@ -3,4 +3,5 @@
   pkgs = import ./pkgs;
   desktop-manager = import ./desktop-manager;
   avatar = import ./avatar;
+  programs = import ./programs;
 }
