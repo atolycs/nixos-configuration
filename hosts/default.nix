@@ -12,7 +12,6 @@ let
 in
 {
   imports = [
-    ../os/boot
     (./. + "/${hostProfile}/nixos.nix")
   ];
 

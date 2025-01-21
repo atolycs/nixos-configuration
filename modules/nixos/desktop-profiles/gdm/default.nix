@@ -18,10 +18,12 @@ in
   imports = [
     outputs.nixosModules.fonts
     outputs.nixosModules.sound
+    outputs.nixosModules.udisk2
   ];
 
   config = {
     services = {
+      accounts-daemon.enable = true;
       udev.packages = with pkgs; [ gnome-settings-daemon ];
       gnome = {
         gnome-browser-connector.enable = true;

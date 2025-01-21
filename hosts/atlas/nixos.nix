@@ -1,5 +1,5 @@
 {
-  hostname,
+  hostname ? "atlas",
   stateSystem,
   lib,
   config,

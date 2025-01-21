@@ -10,7 +10,10 @@
         "udev.log_priority=3"
       ];
       loader = {
-        systemd-boot.enable = true;
+        systemd-boot = {
+	  enable = true;
+	  graceful = true;
+	};
         efi.canTouchEfiVariables = true;
       };
     };

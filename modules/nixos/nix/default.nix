@@ -28,5 +28,7 @@
         options = "--delete-older-tahn 14d";
       };
     };
+
+    programs.nix-ld.enable = true;
   };
 }
