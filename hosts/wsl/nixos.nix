@@ -11,12 +11,12 @@
 }:
 {
   imports = [
-    
+
     outputs.nixosModules.nix
     outputs.nixosModules.ssh
-    
+
     outputs.nixosModules.wsl
-    
+
     outputs.nixosModules.users.atolycs
     outputs.nixosModules.programs.git
 
