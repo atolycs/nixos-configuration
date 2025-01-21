@@ -1,4 +1,9 @@
-{ outputs, pkgs, lib, ... }:
+{
+  outputs,
+  pkgs,
+  lib,
+  ...
+}:
 let
   packages = with pkgs; [
     gnomeExtensions.user-themes
@@ -8,7 +13,8 @@ let
     xdg-desktop-portal-gnome
     gnome.gnome-tweaks
   ];
-in with lib.hm.gvariant;
+in
+with lib.hm.gvariant;
 {
 
   imports = [
@@ -19,16 +25,16 @@ in with lib.hm.gvariant;
     home.packages = packages;
     xdg.enable = true;
 
-	#    programs.firefox = {
-	#      enable = true;
-	#      package = pkgs.firefox-esr;
-	#      policies = {
-	#        FirefoxHome = {
-	#   SponsoredTopSites = false;
-	# };
-	#      };
-	#
-	#    };
+    #    programs.firefox = {
+    #      enable = true;
+    #      package = pkgs.firefox-esr;
+    #      policies = {
+    #        FirefoxHome = {
+    #   SponsoredTopSites = false;
+    # };
+    #      };
+    #
+    #    };
 
     dconf = {
       enable = true;
@@ -38,19 +44,19 @@ in with lib.hm.gvariant;
         };
 
         "org/gnome/shell" = {
-	  disable-user-extensions = false;
+          disable-user-extensions = false;
           enabled-extensions = [
             pkgs.gnomeExtensions.user-themes.extensionUuid
             pkgs.gnomeExtensions.kimpanel.extensionUuid
             pkgs.gnomeExtensions.dash-to-dock.extensionUuid
           ];
 
-	  favorite-apps = [
-	    "firefox-esr.desktop"
-	    "org.gnome.Nautilus.desktop"
-	    "org.gnome.Console.desktop"
-	    "org.gnome.Settings.desktop"
-	  ];
+          favorite-apps = [
+            "firefox-esr.desktop"
+            "org.gnome.Nautilus.desktop"
+            "org.gnome.Console.desktop"
+            "org.gnome.Settings.desktop"
+          ];
         };
 
         "org/gnome/shell/extensions/dash-to-dock" = {
@@ -61,29 +67,29 @@ in with lib.hm.gvariant;
         };
 
         "org/gnome/desktop/session" = {
-	  idle-delay = mkUint32 0;
-	};
+          idle-delay = mkUint32 0;
+        };
 
-	"org/gnome/desktop/interface" = {
-	  clock-show-seconds = true;
-	  clock-show-weekday = true;
-	};
+        "org/gnome/desktop/interface" = {
+          clock-show-seconds = true;
+          clock-show-weekday = true;
+        };
 
-	"org/gnome/mutter" = {
-	  dynamic-workspaces = true;
-	};
+        "org/gnome/mutter" = {
+          dynamic-workspaces = true;
+        };
 
-	"org/gtk/gtk4/settings/file-chooser" = {
-	  show-hidden = true;
-	};
+        "org/gtk/gtk4/settings/file-chooser" = {
+          show-hidden = true;
+        };
 
-	"org/gtk/settings/file-chooser" = {
-	  show-hidden = true;
-	};
+        "org/gtk/settings/file-chooser" = {
+          show-hidden = true;
+        };
 
-	"org/gnome/nautilus/icon-view" = {
-	  default-zoom-level = "small-plus";
-	};
+        "org/gnome/nautilus/icon-view" = {
+          default-zoom-level = "small-plus";
+        };
       };
     };
   };

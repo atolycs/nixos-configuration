@@ -7,7 +7,10 @@
         sha256 = lock.narHash;
       };
     in
-    import nixpkgs { config.allowUnfree = true; overlays = [ ]; },
+    import nixpkgs {
+      config.allowUnfree = true;
+      overlays = [ ];
+    },
   ...
 }@inputs:
 let
