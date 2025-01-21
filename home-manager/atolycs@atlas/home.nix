@@ -13,6 +13,9 @@
     outputs.homeModules.pkgs
     outputs.homeModules.desktop-manager.gdm
     outputs.homeModules.avatar
+    outputs.homeModules.programs.gh
+    outputs.homeModules.programs.vscode
+    outputs.homeModules.programs.nvim
   ];
 
   home = {
