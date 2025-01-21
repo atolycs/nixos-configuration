@@ -1,5 +1,5 @@
 { ... }: {
   config = {
-    programs.vim = true;
-  }
+    programs.vim.enable = true;
+  };
 }
