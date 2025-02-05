@@ -16,7 +16,6 @@
     outputs.nixosModules.programs.git
     outputs.nixosProfiles.minimal-gui
     outputs.nixosModules.users.atolycs
-    outputs.nixosModules.programs.cloudflared
 
     ./mountPoint
     ../../os/boot

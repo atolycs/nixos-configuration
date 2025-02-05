@@ -12,6 +12,7 @@ let
 in
 {
   imports = [
+    outputs.nixosModules.programs.cloudflared
     (./. + "/${hostProfile}/nixos.nix")
   ];
 
