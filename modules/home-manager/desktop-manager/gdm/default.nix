@@ -75,6 +75,10 @@ with lib.hm.gvariant;
           clock-show-weekday = true;
         };
 
+        "org/gnome/desktop/screensaver" = {
+          lock-enabled = false;
+        };
+
         "org/gnome/mutter" = {
           dynamic-workspaces = true;
         };
