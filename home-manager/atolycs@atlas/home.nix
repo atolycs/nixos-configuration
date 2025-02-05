@@ -15,6 +15,7 @@
     outputs.homeModules.avatar
     outputs.homeModules.programs.gh
     outputs.homeModules.programs.nvim
+    outputs.homeModules.hosts.atlas
   ];
 
   home = {
