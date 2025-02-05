@@ -16,6 +16,7 @@
     outputs.nixosModules.programs.git
     outputs.nixosProfiles.minimal-gui
     outputs.nixosModules.users.atolycs
+    outputs.nixosModules.programs.cloudflared
 
     ./mountPoint
     ../../os/boot
@@ -42,4 +43,6 @@
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  programs.cloudflared.enable = true;
 }
