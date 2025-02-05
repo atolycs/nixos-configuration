@@ -8,7 +8,7 @@ with lib.hm.gvariant;
   # };
   dconf.settings = {
     "org/gnome/desktop/background" = {
-      picture-uri = "file:///${config.home.homeDirectory}/.config/arknights.jpg";
+      picture-uri = "file://${config.home.homeDirectory}/.config/arknights.jpg";
     };
   };
 }
