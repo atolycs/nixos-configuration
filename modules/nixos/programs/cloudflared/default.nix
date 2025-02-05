@@ -3,7 +3,7 @@
   pkgs,
   lib,
   ...
-}: 
+}:
 let
   inherit (lib)
     mkOption
@@ -12,17 +12,17 @@ let
     types
     ;
 
-    cfg = config.programs.cloudflared;
-     
+  cfg = config.programs.cloudflared;
+
 in
 {
   options = {
     programs.cloudflared = {
       enable = mkOption {
         type = types.bool;
-	default = false;
-	description = "Whenever to configure {command}`cloudflared` system-wide.";
-	relatedPackages = [ "cloudflared" ];
+        default = false;
+        description = "Whenever to configure {command}`cloudflared` system-wide.";
+        relatedPackages = [ "cloudflared" ];
       };
 
       package = mkPackageOption pkgs "cloudflared" { };
@@ -36,4 +36,3 @@ in
 
   };
 }
-
