@@ -18,6 +18,9 @@ let
     (pkgs.writeScriptBin "update-input" ''
       nix flake lock --override-input "$1" "$2"
     '')
+    (pkgs.writeScriptBin "update-flake" ''
+      nix flake update --show-trace
+    '')
     (pkgs.writeScriptBin "switch-nixos" ''
       sudo nixos-rebuild switch --flake ".#$@" --show-trace
     '')
@@ -46,6 +49,9 @@ pkgs.stdenv.mkDerivation {
       nixfmt-rfc-style
       treefmt
       home-manager
+      sops
+      age
+      ssh-to-age
     ]
     ++ scripts;
 
