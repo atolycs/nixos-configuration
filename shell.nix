@@ -49,6 +49,9 @@ pkgs.stdenv.mkDerivation {
       nixfmt-rfc-style
       treefmt
       home-manager
+      sops
+      age
+      ssh-to-age
     ]
     ++ scripts;
 
