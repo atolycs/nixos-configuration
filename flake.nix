@@ -19,6 +19,16 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # mysecrets = {
+    #   url = "git+ssh://git@github.com/atolycs/nixos-private-config?ref=main";
+    #   flake = false;
+    # };
+
+    mysecrets = {
+      url = "git+https://github.com/atolycs/nixos-private-config?ref=main";
+      flake = false;
+    };
+
   };
 
   outputs =

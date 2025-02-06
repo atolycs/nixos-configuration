@@ -26,11 +26,10 @@
     ../../os/locale
     ../../os/systemd/systemd.nix
   ];
-
   networking = {
-    hostName = "nahida";
+    #hostName = "nahida";
+    hostName = config.sops.secrets.example-test;
   };
-
   nixpkgs.hostPlatform = "x86_64-linux";
 
   # boot = {
