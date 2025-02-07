@@ -20,18 +20,18 @@ in
   };
 
   config = mkIf cfg.enable {
-    systemd.services = {
-      "serial-getty@ttyS0" = {
-        enable = true;
-        wantedBy = [ "getty.target" ];
-        serviceConfig.Restart = "always";
-      };
-      "getty@ttyS0" = {
-        enable = false;
-        wantedBy = [ "getty.target" ];
-        serviceConfig.Restart = "always";
-      };
-    };
+    # systemd.services = {
+    #   "serial-getty@ttyS0" = {
+    #     enable = true;
+    #     wantedBy = [ "getty.target" ];
+    #     serviceConfig.Restart = "always";
+    #   };
+    #   "getty@ttyS0" = {
+    #     enable = false;
+    #     wantedBy = [ "getty.target" ];
+    #     serviceConfig.Restart = "always";
+    #   };
+    # };
     boot.kernelParams = [
       "console=ttyS0,115200"
       "console=tty0"
