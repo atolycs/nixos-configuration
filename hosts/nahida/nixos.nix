@@ -8,9 +8,13 @@
   home-manager,
   ...
 }:
+let
+  secretspath = builtins.toString outputs.inputs.mysecrets;
+in
 {
   imports = [
     ./mountPoint
+    outputs.inputs.sops-nix.nixosModules.sops
     outputs.nixosProfiles.minimal-gui
     outputs.nixosProfiles.kvm
     outputs.nixosModules.nix
@@ -26,9 +30,22 @@
     ../../os/locale
     ../../os/systemd/systemd.nix
   ];
+
+  sops = {
+   defaultSopsFile = "${secretspath}/secret1.yml";
+   validateSopsFiles = false;
+   age = {
+     sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+     keyFile = "/var/lib/sops-nix/key.txt";
+     generateKey = true;
+   };
+
+   secrets = {
+    example_test = { };
+   };
+  };
   networking = {
-    #hostName = "nahida";
-    hostName = config.sops.secrets.example-test;
+    hostName = "nahida";
   };
   nixpkgs.hostPlatform = "x86_64-linux";
 

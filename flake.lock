@@ -57,11 +57,11 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1738828925,
-        "narHash": "sha256-AtHAGauwN8GVM+JGNXgSJDiZ6CFJSQL63waOzByFevc=",
+        "lastModified": 1738836443,
+        "narHash": "sha256-LtNcYrkvs/Wc0whu3babKw6SJ/AnaM0hH5MzsRRd3vw=",
         "ref": "main",
-        "rev": "8badf7861eac246d50d07a82073ebf16cf085d85",
-        "revCount": 4,
+        "rev": "9fe1bba408295155756176bc691e7c74f5618de8",
+        "revCount": 7,
         "type": "git",
         "url": "https://github.com/atolycs/nixos-private-config"
       },

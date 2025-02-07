@@ -27,6 +27,9 @@
           hostProfile
           ;
       };
-      modules = [ ../hosts ];
+      modules = [ 
+        inputs.sops-nix.nixosModules.sops
+        ../hosts
+      ];
     };
 }
