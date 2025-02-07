@@ -1,7 +1,25 @@
-{ lib, ... }:
-with lib;
+{ lib, config, ... }:
+let
+  inherit (lib)
+    mkOption
+    mkIf
+    types;
+
+  cfg = config.boot.serial-console;
+in
 {
-  config = {
+
+  options = {
+    boot.serial-console = {
+      enable = mkOption {
+        type = types.bool;
+	default = true;
+        description = "Whenever to configure serial-console system-wide.";
+      };
+    };
+  };
+
+  config = mkIf cfg.enable {
     systemd.services = {
       "serial-getty@ttyS0" = {
         enable = true;
