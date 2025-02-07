@@ -17,6 +17,8 @@
     outputs.nixosProfiles.minimal-gui
     outputs.nixosModules.users.atolycs
 
+    outputs.nixosModules.serial
+
     ./mountPoint
     ../../os/boot
     ../../os/security
@@ -37,6 +39,9 @@
         "xhci_pci"
         "sd_mod"
       ];
+    };
+    serial-console = {
+      enable = true;
     };
   };
 
