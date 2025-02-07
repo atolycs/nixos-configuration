@@ -32,5 +32,9 @@ in
         serviceConfig.Restart = "always";
       };
     };
+    boot.kernelParams = [
+      "console=ttyS0,115200"
+      "console=tty0"
+    ];
   };
 }
