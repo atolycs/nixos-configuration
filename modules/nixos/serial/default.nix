@@ -3,7 +3,8 @@ let
   inherit (lib)
     mkOption
     mkIf
-    types;
+    types
+    ;
 
   cfg = config.boot.serial-console;
 in
@@ -13,7 +14,7 @@ in
     boot.serial-console = {
       enable = mkOption {
         type = types.bool;
-	default = true;
+        default = true;
         description = "Whenever to configure serial-console system-wide.";
       };
     };
