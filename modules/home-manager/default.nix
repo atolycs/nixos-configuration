@@ -1,7 +1,12 @@
-{
-  hosts = import ./hosts;
-  pkgs = import ./pkgs;
-  desktop-manager = import ./desktop-manager;
-  avatar = import ./avatar;
-  programs = import ./programs;
-}
+let
+  hmModuleDirs = builtins.filter (x: x != "default.nix") (builtins.attrNames (builtins.readDir ./.));
+
+  dynamicAttrs = builtins.listToAttrs(
+    map (dir: {
+      name = builtins.baseNameOf dir;
+      value = import ././${dir};
+    }) hmModuleDirs
+  );
+in
+
+dynamicAttrs
