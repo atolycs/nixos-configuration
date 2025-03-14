@@ -1,14 +1,12 @@
-{
-  nix = import ./nix;
-  boot = import ./boot;
-  fonts = import ./fonts;
-  desktop-profiles = import ./desktop-profiles;
-  serial = import ./serial;
-  host-hardware = import ./host-hardware;
-  sound = import ./sound;
-  ssh = import ./ssh;
-  users = import ./users;
-  programs = import ./programs;
-  udisk2 = import ./udisk2;
-  wsl = import ./wsl;
-}
+let
+  moduleDirs = builtins.filter (x: x != "default.nix") (builtins.attrNames (builtins.readDir ./.));
+
+  dynamicAttrs = builtins.listToAttrs (
+    map (dir: {
+      name = builtins.baseNameOf dir;
+      value = import ././${dir};
+    }) moduleDirs
+  );
+in
+
+dynamicAttrs
