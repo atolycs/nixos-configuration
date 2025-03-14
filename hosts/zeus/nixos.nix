@@ -8,7 +8,7 @@
 {
   imports = [
     outputs.nixosModules.udisk2
-    ./disks.nix
+    ./mountPoint
   ];
 
   networking = {

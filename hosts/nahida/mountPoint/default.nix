@@ -1,12 +1,7 @@
 {
-  nixpkgs,
-  modulesPath,
-  ...
-}:
-{
-  imports = [
-    (import ./root.nix)
-    (import ./boot.nix)
-    (import ./home.nix)
-  ];
+  imports = (
+    builtins.map (mountPoint: ./. + "/${mountPoint}") (
+      builtins.filter (x: x != "default.nix") (builtins.attrNames (builtins.readDir ./.))
+    )
+  );
 }
