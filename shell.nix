@@ -31,7 +31,7 @@ let
       home-manager switch --flake "." --show-trace $@
     '')
     (pkgs.writeScriptBin "upgrade-nixos" ''
-      sudo nixos-rebuild switch --flake ".#$@" --show-trace --upgrade
+      sudo nixos-rebuild switch --upgrade --flake ".#$@" --show-trace
     '')
   ];
 in
