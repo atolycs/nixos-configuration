@@ -2,7 +2,7 @@
 # WIP
 
 
-Pre-Stable commit Hash: `f28a0a2`
+Pre-Stable commit Hash: `bbd7c1a`
 
 ## Hosts List
 ```shell
