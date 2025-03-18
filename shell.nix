@@ -33,6 +33,9 @@ let
     (pkgs.writeScriptBin "upgrade-nixos" ''
       sudo nixos-rebuild switch --upgrade --flake ".#$@" --show-trace
     '')
+    (pkgs.writeScriptBin "install-nixos" ''
+      sudo nixos-install --root /mnt --show-trace --no-root-password --flake ".#$@"
+    '')
   ];
 in
 
