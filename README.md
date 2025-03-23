@@ -2,7 +2,7 @@
 # WIP
 
 
-Pre-Stable commit Hash: `bbd7c1a`
+Pre-Stable commit Hash: `dd1d255`
 
 ## Hosts List
 ```shell
@@ -13,6 +13,10 @@ nix flake show github:atolycs/nixos-configuration
 
 * OS install
 ```shell
+# enable experimental commands
+curl -s https://setup.atolycs.dev/nixos/init | bash
+nix develop github:atolycs/nixos-configuration#installer
+
 mount /dev/disk/by-label/nixos-root /mnt
 mount --mkdir /dev/disk/by-label/nixos-home /mnt/home
 mount --mkdir /dev/disk/by-label/NIXOS-BOOT /mnt/boot
@@ -29,7 +33,7 @@ reboot
 
 * Home manager
 ```shell
-nix develop github:atolycs/nixos-configuration
+nix develop github:atolycs/nixos-configuration#installer
 home-manager switch --flake github:atolycs/nixos-configuration#<username>@<host> --show-trace
 reboot
 ```
