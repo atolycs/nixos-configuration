@@ -62,10 +62,13 @@
       in
       {
         devShells = {
-	  develop = import ./shell.nix {
-		  inherit pkgs;
-		};
-	};
+          develop = import ./shell.nix {
+            inherit pkgs;
+          };
+          default = import ./devshells/installer.nix {
+            inherit pkgs;
+          };
+        };
       }
     )
     // {
