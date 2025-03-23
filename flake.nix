@@ -61,16 +61,9 @@
         pkgs = nixpkgs.legacyPackages.${arch};
       in
       {
-        devShells = {
-          develop = import ./shell.nix {
-            inherit pkgs;
-          };
-          default = import ./devshells/installer.nix {
-            inherit pkgs;
-          };
-        };
+        devShells = import ./devshells { inherit pkgs; };
       }
-    )
+      )
     // {
       nixosModules = import ./modules/nixos;
       nixosProfiles = import ./base-profiles;
