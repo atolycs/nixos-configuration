@@ -61,9 +61,11 @@
         pkgs = nixpkgs.legacyPackages.${arch};
       in
       {
-        devShells.default = import ./shell.nix {
-          inherit pkgs;
-        };
+        devShells = {
+	  develop = import ./shell.nix {
+		  inherit pkgs;
+		};
+	};
       }
     )
     // {
