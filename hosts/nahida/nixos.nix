@@ -20,12 +20,20 @@
     outputs.nixosModules.users.atolycs
     outputs.nixosModules.programs.git
 
+    outputs.nixosModules.locale
+    outputs.nixosModules.timezone.JST
+
     (modulesPath + "/installer/scan/not-detected.nix")
     ../../os/boot
     ../../os/security
     ../../os/locale
     ../../os/systemd/systemd.nix
   ];
+
+  locale = {
+    additional = [ "ja_JP.UTF-8/UTF-8" ];
+    sortfix = true;
+  };
 
   networking = {
     hostName = "nahida";
