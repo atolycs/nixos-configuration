@@ -63,7 +63,7 @@
       {
         devShells = import ./devshells { inherit pkgs; };
       }
-      )
+    )
     // {
       nixosModules = import ./modules/nixos;
       nixosProfiles = import ./base-profiles;

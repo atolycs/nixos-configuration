@@ -14,5 +14,3 @@ let
 in
 
 dynamicAttrs
-
-
