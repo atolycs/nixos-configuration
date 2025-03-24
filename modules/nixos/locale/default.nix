@@ -18,7 +18,7 @@ in
        };
        additional = lib.mkOption {
          type = lib.types.listOf lib.types.str;
-	 default = [];
+	 default = [ "C" ];
 	 description = "Add Locale here";
        };
 
@@ -35,7 +35,7 @@ in
       i18n.defaultLocale = cfg.master;
     })
     (mkIf cfg.sortfix {
-      i18n.extraLocaleSettings.LC_COLLATE = "C.UTF-8";
+      i18n.extraLocaleSettings.LC_COLLATE = "C";
     })
     (mkIf (cfg.additional != null) {
       i18n.supportedLocales = cfg.additional;
