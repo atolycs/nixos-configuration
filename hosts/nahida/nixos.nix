@@ -31,7 +31,6 @@
   ];
 
   locale = {
-    additional = [ "ja_JP.UTF-8/UTF-8" ];
     sortfix = true;
   };
 

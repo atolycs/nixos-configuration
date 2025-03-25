@@ -13,13 +13,13 @@ in
   options = {
     locale = {
       master = lib.mkOption {
-        type = lib.types.string;
+        type = lib.types.str;
         default = "en_US.UTF-8";
         description = "default Main Locale";
       };
       additional = lib.mkOption {
-        type = lib.types.listOf lib.types.str;
-        default = [ "C" ];
+        type = lib.types.nullOr (lib.types.listOf lib.types.str);
+        default = [ ];
         description = "Add Locale here";
       };
 
@@ -37,7 +37,7 @@ in
         i18n.defaultLocale = cfg.master;
       })
       (mkIf cfg.sortfix {
-        i18n.extraLocaleSettings.LC_COLLATE = "C";
+        i18n.extraLocaleSettings.LC_COLLATE = "C.UTF-8";
       })
       (mkIf (cfg.additional != null) {
         i18n.supportedLocales = cfg.additional;
