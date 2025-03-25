@@ -36,6 +36,12 @@ with lib.hm.gvariant;
         default = [ ];
         description = "Enable plugin list";
       };
+
+      dconf = lib.mkOption {
+        type = lib.types.nullOr (lib.types.attrs);
+        default = { };
+        description = "Additional dconf";
+      };
     };
   };
 
@@ -112,7 +118,7 @@ with lib.hm.gvariant;
         "org/gnome/nautilus/icon-view" = {
           default-zoom-level = "small-plus";
         };
-      };
+      } // cfg.dconf;
     };
   };
 }
