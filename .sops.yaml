@@ -1,14 +1,10 @@
 keys:
-  #- &atolycs age1asmc3xd96e4xv8vwd8wk362dwxq8ydx5d5x0h4h0u59lz8eh4s9qhs9rcn
-  #- &atolycs_kvm age1jgzjnfvrfm5nhv3ew40kqfp4wlgdzm0p53y6ddk4j6kvcm4fhggsl6kaes
-  - &atolycs_kvm age1hxr580fhv6zy7w5450hh7ypcvmehw786xpkk934ryhssqx00cc2sd7fxg8
-  - &master:
-    - &atolycs_admin FEC0A5D164C7964E
-    - &atolycs_admin_backup 0B214DF8!
+  - &master age193u8a6xha7vsmefmn4cnsz6refvaasszefzcm7e2pkhn6zsx2qyssda4lw
+  - &vmware_stg age10xtc38nsfxxxmu8duu67595guq90pqvrw6ukee0e3y6sgcgwjqrsxwrfl7
+
 creation_rules:
-  - path_regex: secrets/[^/]+\.(yaml|yml)$
+  - path_regex: secrets/[^/]+\.(yaml|yml|json|env|ini)$
     key_groups:
       - age:
-        - *atolycs_kvm
-      - pgp:
-        - *atolycs_admin
+        - *master
+        - *vmware_stg
