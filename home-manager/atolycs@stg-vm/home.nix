@@ -2,6 +2,7 @@
   home-manager,
   inputs,
   outputs,
+  pkgs,
   ...
 }:
 {
@@ -14,6 +15,13 @@
 
     outputs.homeModules.hosts.stg-vm
   ];
+
+  # desktop-manager.gdm = {
+  #   packages = with pkgs; [
+  #   ];
+  #   enable-plugins = with pkgs; [
+  #   ];
+  # };
 
   home = {
     username = "atolycs";
