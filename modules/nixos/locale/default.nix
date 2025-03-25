@@ -3,44 +3,47 @@
   pkgs,
   lib,
   ...
-}: with lib;
+}:
+with lib;
 
 let
   cfg = config.locale;
 in
 {
   options = {
-     locale = {
-       master = lib.mkOption {
-         type = lib.types.string;
-	 default = "en_US.UTF-8";
-	 description = "default Main Locale";
-       };
-       additional = lib.mkOption {
-         type = lib.types.listOf lib.types.str;
-	 default = [ "C" ];
-	 description = "Add Locale here";
-       };
+    locale = {
+      master = lib.mkOption {
+        type = lib.types.string;
+        default = "en_US.UTF-8";
+        description = "default Main Locale";
+      };
+      additional = lib.mkOption {
+        type = lib.types.listOf lib.types.str;
+        default = [ "C" ];
+        description = "Add Locale here";
+      };
 
-       sortfix = lib.mkOption {
-         type = lib.types.bool;
-	 default = true;
-	 description = "Sort start on Unix code";
-       };
-     };
+      sortfix = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Sort start on Unix code";
+      };
+    };
   };
- 
-  config = (mkMerge [
-    ({
-      i18n.defaultLocale = cfg.master;
-    })
-    (mkIf cfg.sortfix {
-      i18n.extraLocaleSettings.LC_COLLATE = "C";
-    })
-    (mkIf (cfg.additional != null) {
-      i18n.supportedLocales = cfg.additional;
-    })
-  ]);
+
+  config = (
+    mkMerge [
+      ({
+        i18n.defaultLocale = cfg.master;
+      })
+      (mkIf cfg.sortfix {
+        i18n.extraLocaleSettings.LC_COLLATE = "C";
+      })
+      (mkIf (cfg.additional != null) {
+        i18n.supportedLocales = cfg.additional;
+      })
+    ]
+  );
   # config = {
   #    i18n = {
   #      defaultLocale = cfg.master;

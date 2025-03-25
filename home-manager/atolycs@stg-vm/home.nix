@@ -15,7 +15,7 @@
 
     outputs.homeModules.hosts.stg-vm
   ];
-  
+
   # desktop-manager.gdm = {
   #   packages = with pkgs; [
   #   ];

@@ -25,17 +25,17 @@ with lib.hm.gvariant;
 
   options = {
     desktop-manager.gdm = {
-	    packages = lib.mkOption {
-	       type = lib.types.nullOr (lib.types.listOf lib.types.package);
-	       default = [];
-	       description = "Additional Package list";
-	    };
+      packages = lib.mkOption {
+        type = lib.types.nullOr (lib.types.listOf lib.types.package);
+        default = [ ];
+        description = "Additional Package list";
+      };
 
-           enable-plugins = lib.mkOption {
-              type = lib.types.nullOr (lib.types.listOf lib.types.str);
-	      default = [];
-	      description = "Enable plugin list";
-	   }; 
+      enable-plugins = lib.mkOption {
+        type = lib.types.nullOr (lib.types.listOf lib.types.str);
+        default = [ ];
+        description = "Enable plugin list";
+      };
     };
   };
 
