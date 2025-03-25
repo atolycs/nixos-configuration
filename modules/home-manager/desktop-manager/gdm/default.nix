@@ -2,16 +2,18 @@
   outputs,
   pkgs,
   lib,
+  config,
   ...
 }:
 let
+  cfg = config.desktop-manager.gdm;
   packages = with pkgs; [
     gnomeExtensions.user-themes
     gnomeExtensions.kimpanel
     gnomeExtensions.dash-to-dock
     xdg-utils
     xdg-desktop-portal-gnome
-    gnome.gnome-tweaks
+    gnome-tweaks
   ];
 in
 with lib.hm.gvariant;
@@ -21,8 +23,24 @@ with lib.hm.gvariant;
     outputs.nixosModules.programs.firefox-esr
   ];
 
+  options = {
+    desktop-manager.gdm = {
+	    packages = lib.mkOption {
+	       type = lib.types.nullOr (lib.types.listOf lib.types.package);
+	       default = [];
+	       description = "Additional Package list";
+	    };
+
+           enable-plugins = lib.mkOption {
+              type = lib.types.nullOr (lib.types.listOf lib.types.str);
+	      default = [];
+	      description = "Enable plugin list";
+	   }; 
+    };
+  };
+
   config = {
-    home.packages = packages;
+    home.packages = packages ++ cfg.packages;
     xdg.enable = true;
 
     #    programs.firefox = {
@@ -49,7 +67,7 @@ with lib.hm.gvariant;
             pkgs.gnomeExtensions.user-themes.extensionUuid
             pkgs.gnomeExtensions.kimpanel.extensionUuid
             pkgs.gnomeExtensions.dash-to-dock.extensionUuid
-          ];
+          ] ++ cfg.enable-plugins;
 
           favorite-apps = [
             "firefox-esr.desktop"
