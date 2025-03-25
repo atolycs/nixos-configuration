@@ -30,6 +30,9 @@
     ];
 
     dconf = {
+      "org/gnome/desktop/interface" = {
+        accent-color = "#6b932f";
+      };
       "org/gnome/shell/extensions/openbar" = {
          bartype = "Trilands";
 	 reloadstyle = true;
