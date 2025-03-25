@@ -15,39 +15,22 @@
 }@inputs:
 let
   scripts = [
-    (pkgs.writeScriptBin "update-input" ''
-      nix flake lock --override-input "$1" "$2"
-    '')
-    (pkgs.writeScriptBin "update-flake" ''
-      nix flake update --show-trace
-    '')
-    (pkgs.writeScriptBin "switch-nixos" ''
-      sudo nixos-rebuild switch --flake ".#$@" --show-trace
-    '')
-    (pkgs.writeScriptBin "switch-home" ''
-      home-manager switch --flake ".#$@" --show-trace
-    '')
-    (pkgs.writeScriptBin "update-home" ''
-      home-manager switch --flake "." --show-trace $@
+    (pkgs.writeScriptBin "install-nixos" ''
+      sudo nixos-install --root /mnt --show-trace --no-root-password --flake ".#$@"
     '')
   ];
 in
 
 pkgs.stdenv.mkDerivation {
-  name = "nix";
+  name = "nix-installer";
 
   nativeBuildInputs =
     with pkgs;
     [
       nix
-      nil
-      nixd
-      nixpkgs-fmt
       git
       gh
       neovim
-      nixfmt-rfc-style
-      treefmt
       home-manager
       sops
       age

@@ -24,6 +24,9 @@ in
     outputs.nixosModules.users.atolycs
     outputs.nixosModules.programs.git
 
+    outputs.nixosModules.locale
+    outputs.nixosModules.timezone.JST
+
     (modulesPath + "/installer/scan/not-detected.nix")
     ../../os/boot
     ../../os/security
@@ -44,6 +47,11 @@ in
     example_test = { };
    };
   };
+
+  locale = {
+    sortfix = true;
+  };
+
   networking = {
     hostName = "nahida";
   };

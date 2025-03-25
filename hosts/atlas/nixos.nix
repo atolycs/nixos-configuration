@@ -17,13 +17,19 @@
     outputs.nixosProfiles.minimal-gui
     outputs.nixosModules.users.atolycs
 
+    outputs.nixosModules.serial
+    outputs.nixosModules.locale
+    outputs.nixosModules.timezone.JST
     ./mountPoint
     ../../os/boot
     ../../os/security
-    ../../os/locale
     ../../os/systemd/systemd.nix
   ];
 
+  locale = {
+    additional = [ "ja_JP.UTF-8/UTF-8" ];
+    sortfix = true;
+  };
   networking = {
     hostName = "atlas";
   };

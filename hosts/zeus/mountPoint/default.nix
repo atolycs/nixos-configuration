@@ -1,9 +1,7 @@
 {
-  import = [
-    ./boot.nix
-    ./home.nix
-    ./game.nix
-    ./iscsi.nix
-    ./params.nix
-  ];
+  imports = (
+    builtins.map (mountPoint: ./. + "/${mountPoint}") (
+      builtins.filter (x: x != "default.nix") (builtins.attrNames (builtins.readDir ./.))
+    )
+  );
 }

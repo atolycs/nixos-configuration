@@ -3,7 +3,7 @@
   config = {
     boot = {
       consoleLogLevel = 4;
-      initrd.verbose = false;
+      initrd.verbose = true;
       kernelParams = [
       ];
       loader = {

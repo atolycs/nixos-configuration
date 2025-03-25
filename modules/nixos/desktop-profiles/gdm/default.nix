@@ -1,4 +1,9 @@
-{ pkgs, outputs, ... }:
+{
+  pkgs,
+  outputs,
+  lib,
+  ...
+}:
 let
   x86_64-graphics =
     if (!pkgs.stdenv.hostPlatform.isAarch64) then
@@ -11,8 +16,9 @@ let
   all-graphics = {
     enable = true;
   };
-
 in
+with lib.gvariant;
+
 {
 
   imports = [
@@ -51,6 +57,14 @@ in
 
     programs.dconf = {
       enable = true;
+      profiles.gdm.databases = [
+        {
+          settings."org/gnome/settings-daemon/plugins/power" = {
+            sleep-inactive-ac-timeout = mkUint32 0;
+            sleep-inactive-ac-type = "nothing";
+          };
+        }
+      ];
     };
 
     environment.gnome.excludePackages = (
