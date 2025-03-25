@@ -16,12 +16,14 @@
     outputs.homeModules.hosts.stg-vm
   ];
 
-  # desktop-manager.gdm = {
-  #   packages = with pkgs; [
-  #   ];
-  #   enable-plugins = with pkgs; [
-  #   ];
-  # };
+  desktop-manager.gdm = {
+    packages = with pkgs; [
+      gnomeExtensions.open-bar
+    ];
+    enable-plugins = with pkgs; [
+      gnomeExtensions.open-bar.extensionUuid
+    ];
+  };
 
   home = {
     username = "atolycs";
