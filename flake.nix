@@ -8,15 +8,35 @@
     nixpkgs-unstable = {
      url = "github:nixos/nixpkgs/nixos-unstable";
     };
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+    };
+
+    hd-systems = {
+      url = "github:nix-systems/default";
+    };
+
+
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, ...}@inputs : let
-    atlibs = import ./lib;
-  in
-  {
-    nixosModules = {
-      config = import ./config/nixos;
+  outputs = 
+  	inputs@{
+	  self,
+	  nixpkgs,
+	  flake-parts,
+	  hd-systems,
+	  ...
+	}:
+	let
+	  inherit (builtins);
+	  inherit (nixpkgs.lib);
+          atllibs = import ./lib { inherit self inputs; };
+	in
 
-    };
-  }
+  {
+         nixosConfigurations = atllibs.mapHosts;
+
+  };
+
 }
