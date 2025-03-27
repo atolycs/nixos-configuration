@@ -1,7 +1,16 @@
 {
-  self,
-  config,
+  inputs,
+  outputs,
   ...
-}: let
-    
+}:
+let
+  libraryDirs = builtins.filter(x:x != "default.nix") (builtins.attrNames (builtins.readDir ./.));
+  dynamicAttrs = builtins.listToAttrs (
+     map (dir: {
+      name = builtins.replaceStrings[".nix"][""] (builtins.baseNameOf dir);
+      value = import ././${dir} { inherit inputs outputs };
+    }) libraryDirs
+  );
 in 
+
+dynamicAttrs

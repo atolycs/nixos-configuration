@@ -20,6 +20,7 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, ...}@inputs : let
+    atlibs = import ./lib;
   in
   {
 
