@@ -7,5 +7,4 @@ let
    }) hostsDirs
   );
 in
-
-dynamicAttrs
+  builtins.listToAttrs dynamicAttrs
