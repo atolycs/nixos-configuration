@@ -6,5 +6,5 @@ let
      value = import ././${dir}/nixos.nix;
    }) hostsDirs
   );
-in
-  builtins.listToAttrs dynamicAttrs
+in rec
+builtins.mapAttrs dynamicAttrs

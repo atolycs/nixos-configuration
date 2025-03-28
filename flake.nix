@@ -16,8 +16,6 @@
     hd-systems = {
       url = "github:nix-systems/default";
     };
-
-
   };
 
   outputs = 
@@ -30,13 +28,10 @@
 	}:
 	let
 	  inherit (builtins);
-	  inherit (nixpkgs.lib);
-          atllibs = import ./lib { inherit self inputs; };
-	in
-
-  {
-         nixosConfigurations = atllibs.mapHosts;
-
+	  inherit (nixpkgs) lib;
+          atllib = import ./lib { inherit lib builtins nixpkgs self inputs; };
+	in {
+         nixosConfigurations = atllib.mapHosts;
   };
 
 }
