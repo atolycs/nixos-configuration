@@ -17,6 +17,7 @@ let
   ];
 in
 with lib.hm.gvariant;
+with lib;
 {
 
   imports = [
@@ -62,7 +63,7 @@ with lib.hm.gvariant;
 
     dconf = {
       enable = true;
-      settings = {
+      settings = lib.recursiveUpdate ({
         "org/gnome/desktop/wm/preferences" = {
           button-layout = "appmenu:minimize,maximize,close";
         };
@@ -118,7 +119,7 @@ with lib.hm.gvariant;
         "org/gnome/nautilus/icon-view" = {
           default-zoom-level = "small-plus";
         };
-      } // cfg.dconf;
+      }) cfg.dconf;
     };
   };
 }

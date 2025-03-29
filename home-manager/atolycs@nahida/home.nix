@@ -34,8 +34,8 @@
         accent-color = "#6b932f";
       };
       "org/gnome/shell/extensions/openbar" = {
-         bartype = "Trilands";
-	 reloadstyle = true;
+        bartype = "Trilands";
+        reloadstyle = true;
       };
     };
   };
