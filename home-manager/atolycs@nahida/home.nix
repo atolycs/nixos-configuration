@@ -5,6 +5,7 @@
   outputs,
   self,
   stateVersion,
+  pkgs,
   ...
 }:
 {
@@ -18,6 +19,26 @@
 
     outputs.homeModules.hosts.nahida
   ];
+
+  desktop-manager.gdm = {
+    packages = with pkgs; [
+      gnomeExtensions.open-bar
+    ];
+
+    enable-plugins = with pkgs; [
+      gnomeExtensions.open-bar.extensionUuid
+    ];
+
+    dconf = {
+      "org/gnome/desktop/interface" = {
+        accent-color = "#6b932f";
+      };
+      "org/gnome/shell/extensions/openbar" = {
+        bartype = "Trilands";
+        reloadstyle = true;
+      };
+    };
+  };
 
   home = {
     username = "atolycs";
