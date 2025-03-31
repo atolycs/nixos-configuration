@@ -23,6 +23,12 @@
     enable-plugins = with pkgs; [
       gnomeExtensions.open-bar.extensionUuid
     ];
+    dconf = {
+      "org/gnome/shell/extensions/openbar" = {
+        bartype = "Trilands";
+        reloadstyle = true;
+      };
+    };
   };
 
   home = {
