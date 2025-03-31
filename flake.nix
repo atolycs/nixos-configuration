@@ -29,13 +29,12 @@
 	let
 	  inherit (builtins);
 	  inherit (nixpkgs) lib;
-          atllib = import ./lib { inherit lib builtins nixpkgs self inputs; };
+    atllib = import ./lib { inherit lib builtins nixpkgs self inputs; };
 	in {
+      cLibs = atllib; 
       nixosModules = import ./modules/nixos;
-      atllib = atllib;
+      hosts = atllib.mapHosts;
 
-
-      test_code = atllib.nameOfPath "/test/test.nix";
 
   };
 

@@ -3,8 +3,7 @@ let
   dynamicAttrs = builtins.listToAttrs(
    map (dir: {
      name = builtins.baseNameOf dir;
-     value = import ././${dir}/nixos.nix;
+     value = "../hosts/${dir}/nixos.nix";
    }) hostsDirs
   );
-in 
-fn: builtins.mapAttrs dynamicAttrs
+in dynamicAttrs
