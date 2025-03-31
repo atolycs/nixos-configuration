@@ -31,7 +31,12 @@
 	  inherit (nixpkgs) lib;
           atllib = import ./lib { inherit lib builtins nixpkgs self inputs; };
 	in {
-         nixosConfigurations = atllib.mapHosts;
+      nixosModules = import ./modules/nixos;
+      atllib = atllib;
+
+
+      test_code = atllib.nameOfPath "/test/test.nix";
+
   };
 
 }
