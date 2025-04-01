@@ -15,35 +15,59 @@
 
     hd-systems = {
       url = "github:nix-systems/default";
+      flake = false;
     };
   };
 
   outputs =
     inputs@{
       self,
-      nixpkgs,
       flake-parts,
-      hd-systems,
+      nixpkgs,
       ...
     }:
     let
-      inherit (builtins) ;
-      inherit (nixpkgs) lib;
-      atllib = import ./lib {
-        inherit
-          lib
-          builtins
-          nixpkgs
-          self
-          inputs
-          ;
-      };
     in
-    {
-      cLibs = atllib;
-      nixosModules = import ./modules/nixos;
-      hosts = atllib.mapHosts;
-
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = inputs.hd-systems;
+      flake =
+        let
+          inherit (nixpkgs) lib;
+          atllib = import ./lib {
+            inherit
+              inputs
+              lib
+              builtins
+              nixpkgs
+              self
+              ;
+          };
+        in
+        {
+          nixosModules = import ./modules/nixos;
+          nixosConfigurations = atllib.mapHosts;
+        };
     };
+  # let
+  #   inherit (builtins) ;
+  #   inherit (nixpkgs) lib;
+  #   atllib = import ./lib {
+  #     inherit
+  #       lib
+  #       builtins
+  #       nixpkgs
+  #       self
+  #       inputs
+  #       ;
+  #   };
+  # in
+  # {
+  #   cLibs = atllib;
+  #   nixosModules = import ./modules/nixos;
+  #   hosts = atllib.mapHosts;
+  #   devShells = atllib.mapDevShell;
+  #
+  #
+  # };
 
 }

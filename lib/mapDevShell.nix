@@ -1,17 +1,12 @@
-{ ...,
-  pkgs ?
-   let
-     lock = (builtins.fromJSON (builtins.readFile ./flake.lock)).nodes.nixpkgs.locked;
-     nixpkgs = fetchTarball {
-       url = "https://github.com/nixos/nixpkgs/archive/${lock.rev}.tar.gz";
-       sha256 = lock.narHash;
-     };
-   in
-   import nixpkgs {
-    config.allowUnfree = true;
-    overlays = [ ];
-   }
-}@inputs:
 let
+  hostsDirs = builtins.filter (x: x != "default.nix") (
+    builtins.attrNames (builtins.readDir ../devshells)
+  );
+  dynamicAttrs = builtins.listToAttrs (
+    map (dir: {
+      name = builtins.replaceStrings [ ".nix" ] [ "" ] (builtins.baseNameOf dir);
+      value = "../devshells/${dir}";
+    }) hostsDirs
+  );
 in
-{ }
+dynamicAttrs
