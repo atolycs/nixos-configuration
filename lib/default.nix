@@ -1,25 +1,26 @@
 {
-  inputs ? {},
-  nixpkgs ? {},
+  inputs ? { },
+  nixpkgs ? { },
   lib,
-  config ? {},
+  config ? { },
   ...
-}@ args:
+}@args:
 with lib;
 
 let
-  libraryDirs = builtins.filter(x: x != "default.nix") (builtins.attrNames (builtins.readDir ./.));
+  libraryDirs = builtins.filter (x: x != "default.nix") (builtins.attrNames (builtins.readDir ./.));
   dynamicAttrs = builtins.listToAttrs (
     map (dir: {
-        name = builtins.replaceStrings [".nix"][""] (builtins.baseNameOf dir);
-        value = import ././${dir};
+      name = builtins.replaceStrings [ ".nix" ] [ "" ] (builtins.baseNameOf dir);
+      value = import ././${dir};
     }) libraryDirs
   );
-in dynamicAttrs
+in
+dynamicAttrs
 
 # let
 #   # == EXTENSIBLE FUNCTION ==
-#   makeExtensible' = 
+#   makeExtensible' =
 #     rattrs:
 #      let self = rattrs self // {
 #         extend = f: lib.makeExtensible (lib.extends f rattrs);
@@ -28,7 +29,7 @@ in dynamicAttrs
 #   # == END FUNCTION ==
 #
 #
-#   lib = makeExtensible' (self :let 
+#   lib = makeExtensible' (self :let
 #     callLibs = file: import file { lib = self; };
 #   in {
 #       moduleDirs = builtins.filter (x: x != "default.nix") (builtins.attrNames (builtins.readDir ./.));
@@ -40,8 +41,6 @@ in dynamicAttrs
 #       );
 #     });
 # in lib
-
-
 
 # let
 #

@@ -2,9 +2,10 @@
   inputs,
   outputs,
   ...
-}: {
+}:
+{
 
   networking = {
-   hostname = "aaaa";
+    hostname = "aaaa";
   };
 }

@@ -3,10 +3,10 @@
 
   inputs = {
     nixpkgs = {
-     url = "github:nixos/nixpkgs/nixos-24.11";
+      url = "github:nixos/nixpkgs/nixos-24.11";
     };
     nixpkgs-unstable = {
-     url = "github:nixos/nixpkgs/nixos-unstable";
+      url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
     flake-parts = {
@@ -18,24 +18,32 @@
     };
   };
 
-  outputs = 
-  	inputs@{
-	  self,
-	  nixpkgs,
-	  flake-parts,
-	  hd-systems,
-	  ...
-	}:
-	let
-	  inherit (builtins);
-	  inherit (nixpkgs) lib;
-    atllib = import ./lib { inherit lib builtins nixpkgs self inputs; };
-	in {
-      cLibs = atllib; 
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      flake-parts,
+      hd-systems,
+      ...
+    }:
+    let
+      inherit (builtins) ;
+      inherit (nixpkgs) lib;
+      atllib = import ./lib {
+        inherit
+          lib
+          builtins
+          nixpkgs
+          self
+          inputs
+          ;
+      };
+    in
+    {
+      cLibs = atllib;
       nixosModules = import ./modules/nixos;
       hosts = atllib.mapHosts;
 
-
-  };
+    };
 
 }
