@@ -12,6 +12,9 @@
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
     };
+    devshells = {
+      url = "github:numtide/devshell";
+    };
 
     hd-systems = {
       url = "github:nix-systems/default";
@@ -26,28 +29,25 @@
       nixpkgs,
       ...
     }:
-    let
+    let 
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = inputs.hd-systems;
-      flake =
-        let
-          inherit (nixpkgs) lib;
-          atllib = import ./lib {
-            inherit
-              inputs
-              lib
-              builtins
-              nixpkgs
-              self
-              ;
-          };
-        in
-        {
-          nixosModules = import ./modules/nixos;
-          nixosConfigurations = atllib.mapHosts;
-        };
+      imports = [
+        inputs.devshells.flakeModule
+      ];
+      systems = [ "x86_64-linux"];
+      perSystem = { config, pkgs, ... }:
+       {
+         devShells = import ./devshells;
+       };
     };
+    # let
+    #  atllib = import ./lib { inherit nixpkgs inputs; };
+    # in{
+    #   cLibs = atllib;
+    #
+    #   devShells = import ./devshells;
+    # };
   # let
   #   inherit (builtins) ;
   #   inherit (nixpkgs) lib;
