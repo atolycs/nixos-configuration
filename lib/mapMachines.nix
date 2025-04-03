@@ -5,7 +5,7 @@ let
   dynamicAttrs = builtins.listToAttrs (
     map (dir: {
       name = builtins.baseNameOf dir;
-      value = ../hosts/${dir};
+      value = "${dir}";
     }) hostDirs
   );
 in

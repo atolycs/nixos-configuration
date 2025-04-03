@@ -1,7 +1,13 @@
-{ inputs, ... }@args:
+{
+  inputs,
+  args ? { },
+  ...
+}:
 inputs.nixpkgs.lib.nixosSystem {
   specialArgs = {
-    inherit args;
+    inherit
+      args
+      inputs
+      ;
   };
-  modules = [ ../hosts ];
 }

@@ -30,8 +30,6 @@
     let
       inherit (nixpkgs) lib;
       root = ./.;
-    in
-    {
       cLibs = import ./lib {
         inherit
           nixpkgs
@@ -40,6 +38,15 @@
           lib
           ;
       };
+    in
+    {
+      nixosConfigurations = lib.genAttrs (builtins.attrValues cLibs.mapMachines) (
+        name:
+        cLibs.mkMachine {
+          hostname = "nixos-${name}";
+          hostProfile = "${name}";
+        }
+      );
     };
 
 }
