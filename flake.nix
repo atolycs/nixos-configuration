@@ -18,4 +18,20 @@
       url = "github:numtide/flake-utils";
     };
   };
+
+  outputs =
+    {
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      flake-utils,
+      ...
+    }@inputs:
+    let
+
+    in
+    {
+      cLibs = import ./lib { inherit nixpkgs inputs; };
+    };
+
 }
