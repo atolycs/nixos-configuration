@@ -1,7 +1,7 @@
 {
-  inputs ? { },
-  nixpkgs ? { },
-  lib,
+  inputs,
+  nixpkgs,
+  lib ? nixpkgs.lib,
   config ? { },
   ...
 }@args:
@@ -15,8 +15,7 @@ let
       value = import ././${dir};
     }) libraryDirs
   );
-in
-dynamicAttrs
+in dynamicAttrs
 
 # let
 #   # == EXTENSIBLE FUNCTION ==

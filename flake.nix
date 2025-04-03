@@ -35,10 +35,13 @@
       imports = [
         inputs.devshells.flakeModule
       ];
-      systems = [ "x86_64-linux"];
-      perSystem = { config, pkgs, ... }:
+      systems = [ "x86_64-linux" ];
+      perSystem = { config, nixpkgs, lib, root, systems,... }:
        {
-         devShells = import ./devshells;
+        devShells = import ./devshells { inherit nixpkgs systems; };
+       };
+       flake = {
+         #devShells = import ./devshells; 
        };
     };
     # let

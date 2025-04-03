@@ -1,9 +1,9 @@
-{ config,...}:
+{ config, ... }:
 with lib;
 let
   cfg = config.atlcfg;
-   
-in 
+
+in
 {
   options = {
     atlcfg = {
