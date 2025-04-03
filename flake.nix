@@ -28,10 +28,18 @@
       ...
     }@inputs:
     let
-
+      inherit (nixpkgs) lib;
+      root = ./.;
     in
     {
-      cLibs = import ./lib { inherit nixpkgs inputs; };
+      cLibs = import ./lib {
+        inherit
+          nixpkgs
+          inputs
+          root
+          lib
+          ;
+      };
     };
 
 }
