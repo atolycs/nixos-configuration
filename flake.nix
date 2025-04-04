@@ -15,7 +15,7 @@
 
     devshell = {
       url = "github:numtide/devshell";
-      inputs.nxipkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     systems.url = "github:nix-systems/default";
@@ -59,15 +59,15 @@
         systems = import inputs.systems;
 
         flake = {
-          test_code = cLibs.mapMachines;
           nixosConfigurations = lib.genAttrs (cLibs.mapHosts) (
             name:
             cLibs.mkHost {
-              inherit inputs;
               hostname = "nixos-${name}";
               hostProfile = "${name}";
             }
           );
+
+          test_code = cLibs.mapHosts;
         };
         perSystem =
           { pkgs, system, ... }:
@@ -76,7 +76,7 @@
               inherit system;
             };
 
-            devshells = { };
+            devShells = import ./devshells;
           };
       }
     );
