@@ -2,11 +2,11 @@
   description = "Atolycs NixOS configuration";
 
   inputs = {
-    nixpkgs-stable = {
+    nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-24.11";
     };
     nixpkgs-unstable = {
-      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+      url = "github:NixOS/nixpkgs/nixos-unstable";
     };
 
     flake-parts = {
@@ -35,10 +35,12 @@
       {
         imports = [
           inputs.treefmt-nix.flakeModule
-          treefmt.default
         ];
 
         systems = import inputs.systems;
+
+        flake = {
+        };
       }
     );
 }
