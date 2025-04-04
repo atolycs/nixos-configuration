@@ -2,51 +2,43 @@
   description = "Atolycs NixOS configuration";
 
   inputs = {
+    nixpkgs-stable = {
+      url = "github:NixOS/nixpkgs/nixos-24.11";
+    };
     nixpkgs-unstable = {
-      url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    };
-    nixpkgs = {
-      url = "github:nixos/nixpkgs/nixos-24.11";
+      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+    };
+
+    systems.url = "github:nix-systems/default";
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    flake-utils = {
-      url = "github:numtide/flake-utils";
     };
   };
 
   outputs =
     {
-      nixpkgs,
-      nixpkgs-unstable,
-      home-manager,
-      flake-utils,
+      flake-parts,
       ...
     }@inputs:
-    let
-      inherit (nixpkgs) lib;
-      root = ./.;
-      cLibs = import ./lib {
-        inherit
-          nixpkgs
-          inputs
-          root
-          lib
-          ;
-      };
-    in
-    {
-      nixosConfigurations = lib.genAttrs (builtins.attrValues cLibs.mapMachines) (
-        name:
-        cLibs.mkMachine {
-          hostname = "nixos-${name}";
-          hostProfile = "${name}";
-        }
-      );
-    };
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      { withSystem, flake-parts-lib, ... }:
+      let
+        flakeRoot = ./.;
+        cLibs = import ./lib { inherit withSystem; };
+      in
+      {
+        imports = [
+          inputs.treefmt-nix.flakeModule
+          treefmt.default
+        ];
 
+        systems = import inputs.systems;
+      }
+    );
 }
