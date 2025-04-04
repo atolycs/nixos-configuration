@@ -1,4 +1,4 @@
-{ lib, ... }@args:
+{ inputs, ... }@args:
 with args.lib;
 let
   inherit (args) flakeRoot;

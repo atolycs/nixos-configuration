@@ -13,10 +13,20 @@
       url = "github:hercules-ci/flake-parts";
     };
 
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nxipkgs.follows = "nixpkgs";
+    };
+
     systems.url = "github:nix-systems/default";
 
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -43,6 +53,7 @@
       {
         imports = [
           inputs.treefmt-nix.flakeModule
+          inputs.devshell.flakeModule
         ];
 
         systems = import inputs.systems;
@@ -57,8 +68,16 @@
               hostProfile = "${name}";
             }
           );
-
         };
+        perSystem =
+          { pkgs, system, ... }:
+          {
+            _module.args.pkgs = import inputs.nixpkgs {
+              inherit system;
+            };
+
+            devshells = { };
+          };
       }
     );
 }
