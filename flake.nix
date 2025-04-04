@@ -29,8 +29,16 @@
     flake-parts.lib.mkFlake { inherit inputs; } (
       { withSystem, flake-parts-lib, ... }:
       let
+        inherit (inputs.nixpkgs) lib;
         flakeRoot = ./.;
-        cLibs = import ./lib { inherit withSystem; };
+        cLibs = import ./lib {
+          inherit
+            withSystem
+            inputs
+            lib
+            flakeRoot
+            ;
+        };
       in
       {
         imports = [
@@ -40,6 +48,8 @@
         systems = import inputs.systems;
 
         flake = {
+          test_code = cLibs.mapMachines;
+          #nixosConfigurations = cLibs.mapMachines;
         };
       }
     );

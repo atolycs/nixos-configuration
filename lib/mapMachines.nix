@@ -1,12 +1,10 @@
-{ lib, ... }:
-with builtins lib;
+{ lib, ... }@args:
+with args.lib;
 let
-  hostDirs = builtins.filter (x: x != "default.nix") (builtins.attrNames (builtins.readDir ../hosts));
-  dynamicAttrs = builtins.listToAttrs (
-    map (dir: {
-      name = builtins.baseNameOf dir;
-      value = "${dir}";
-    }) hostDirs
+  inherit (args) flakeRoot;
+  hostDirs = builtins.filter (x: x != "default.nix") (
+    builtins.attrNames (builtins.readDir "/${flakeRoot}/hosts")
   );
+  dynamicLists = hostDirs;
 in
-dynamicAttrs
+dynamicLists
