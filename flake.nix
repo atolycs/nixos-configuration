@@ -49,7 +49,15 @@
 
         flake = {
           test_code = cLibs.mapMachines;
-          #nixosConfigurations = cLibs.mapMachines;
+          nixosConfigurations = lib.genAttrs (cLibs.mapMachines) (
+            name:
+            cLibs.mkMachine {
+              inherit inputs;
+              hostname = "nixos-${name}";
+              hostProfile = "${name}";
+            }
+          );
+
         };
       }
     );

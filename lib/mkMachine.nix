@@ -1,8 +1,7 @@
 {
   inputs,
-  args ? { },
   ...
-}:
+}@args:
 inputs.nixpkgs.lib.nixosSystem {
   specialArgs = {
     inherit
@@ -10,4 +9,7 @@ inputs.nixpkgs.lib.nixosSystem {
       inputs
       ;
   };
+
+  modules = [
+  ];
 }
