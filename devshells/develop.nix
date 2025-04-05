@@ -1,4 +1,4 @@
-{ ... }@args:
+{ pkgs }:
 let
   scripts = [
     (pkgs.writeScriptBin "switch-nixos" ''
@@ -6,7 +6,7 @@ let
     '')
   ];
 in
-pkgs.stdenv.mkDerivation {
+pkgs.stdenv.mkDerivation ({
   name = "devNix";
   nativeBuildInputs =
     with pkgs;
@@ -24,4 +24,4 @@ pkgs.stdenv.mkDerivation {
   '';
 
   NIX_CONFIG = "extra-experimental-features = nix-command flakes";
-}
+})

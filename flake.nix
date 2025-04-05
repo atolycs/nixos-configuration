@@ -76,7 +76,7 @@
               inherit system;
             };
 
-            devShells = import ./devshells;
+            devShells = import ./devshells { inherit pkgs; };
           };
       }
     );
