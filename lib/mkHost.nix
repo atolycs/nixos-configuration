@@ -6,11 +6,13 @@ inputs.nixpkgs.lib.nixosSystem {
   specialArgs = {
     inherit
       inputs
+      lib
       hostProfile
+      flakeRoot
       hostname;
   };
 
   modules = [
-    (hostRoot + ./. + "/nixos.nix")
+    (flakeRoot + "/hosts")
   ];
 }
