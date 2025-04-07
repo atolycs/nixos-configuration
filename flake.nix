@@ -71,7 +71,7 @@
             }
           );
 
-          nixosModules = import ./modules/nixos;
+          #nixosModules = import ./modules/nixos;
           test_code = cLibs.mapHosts;
         };
         perSystem =

@@ -1,7 +1,5 @@
 {
-  inputs,
-  hostname,
   ...
-}: rec {
+}: {
+  boot.serial-console.enable = true;
 }
-

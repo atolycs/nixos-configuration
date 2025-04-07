@@ -7,6 +7,7 @@
   ...
 }: {
   imports = [
+    ../modules/nixos
     (./. + "/${hostProfile}/nixos.nix")
   ];
   
