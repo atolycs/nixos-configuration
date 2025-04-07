@@ -1,6 +1,6 @@
-{
+args@{
   ...
-}@args:
+}:
 let
   libraryDirs = builtins.filter (x: x != "default.nix") (builtins.attrNames (builtins.readDir ./.));
   dynamicAttrs = builtins.listToAttrs (
@@ -9,5 +9,4 @@ let
       value = import ././${dir} args;
     }) libraryDirs
   );
-in
-dynamicAttrs
+in dynamicAttrs

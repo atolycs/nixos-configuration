@@ -1,7 +1,6 @@
-{ inputs, ... }@args:
-with args.lib;
+{ ... }@args:
+with args;
 let
-  inherit (args) flakeRoot;
   hostDirs = builtins.filter (x: x != "default.nix") (
     builtins.attrNames (builtins.readDir "/${flakeRoot}/hosts")
   );

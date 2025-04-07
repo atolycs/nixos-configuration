@@ -41,13 +41,15 @@
       let
         inherit (inputs.nixpkgs) lib;
         flakeRoot = ./.;
+        hostRoot = "${flakeRoot}/hosts";
+        homeRoot = "${flakeRoot}/home-manager";
         cLibs = import ./lib {
           inherit
             withSystem
             inputs
             lib
             flakeRoot
-            ;
+          ;
         };
       in
       {
@@ -59,6 +61,7 @@
         systems = import inputs.systems;
 
         flake = {
+          cLibs_test = cLibs;
           nixosConfigurations = lib.genAttrs (cLibs.mapHosts) (
             name:
             cLibs.mkHost {
@@ -75,9 +78,15 @@
             _module.args.pkgs = import inputs.nixpkgs {
               inherit system;
             };
-
+            # treefmt = {
+            #   projectRootFile = "${flakeRoot}/flake.nix";
+            #   programs = {
+            #     nixfmt.enable = true;
+            #   };
+            # };
             devShells = import ./devshells { inherit pkgs; };
           };
+
       }
     );
 }

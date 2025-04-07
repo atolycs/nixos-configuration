@@ -1,20 +1,16 @@
-{
-  inputs,
-  flakeRoot,
-  ...
-}@args:
-let
-  inherit (args) hostProfile hostname;
-in
+args@{ ... }:
+# https://discourse.nixos.org/t/import-from-files-dirs/36372/3
+{ hostname, hostProfile }:
+with args;
 inputs.nixpkgs.lib.nixosSystem {
   specialArgs = {
     inherit
       inputs
-      hostname
       hostProfile
-      ;
+      hostname;
   };
+
   modules = [
-    "${hostname}"
+    (hostRoot + ./. + "/nixos.nix")
   ];
 }
