@@ -1,12 +1,18 @@
 {
+  config,
   hostname,
   hostProfile,
   inputs,
   lib,
-...
+  ...
 }: {
-  stateVersion = "24.11";
   imports = [
     (./. + "/${hostProfile}/nixos.nix")
   ];
+  
+  nixpkgs.hostPlatform = builtins.currentSystem;
+
+  system = {
+    stateVersion = "24.11";
+  };
 }

@@ -34,6 +34,7 @@
   outputs =
     {
       flake-parts,
+      self,
       ...
     }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } (
@@ -70,6 +71,7 @@
             }
           );
 
+          nixosModules = import ./modules/nixos;
           test_code = cLibs.mapHosts;
         };
         perSystem =
