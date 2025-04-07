@@ -13,6 +13,8 @@ pkgs.stdenv.mkDerivation ({
     [
       gh
       git
+      neovim
+      vim
     ]
     ++ scripts;
 
