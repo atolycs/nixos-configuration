@@ -41,6 +41,7 @@
       { withSystem, flake-parts-lib, ... }:
       let
         inherit (inputs.nixpkgs) lib;
+        inherit (flake-parts-lib) importApply;
         flakeRoot = ./.;
         hostRoot = "${flakeRoot}/hosts";
         homeRoot = "${flakeRoot}/home-manager";
@@ -49,6 +50,7 @@
             withSystem
             inputs
             lib
+            self
             flakeRoot
           ;
         };
@@ -68,11 +70,10 @@
             cLibs.mkHost {
               hostname = "nixos-${name}";
               hostProfile = "${name}";
-            }
-          );
-
-          #nixosModules = import ./modules/nixos;
-          test_code = cLibs.mapHosts;
+            });
+          # nixosModules = importApply ./modules/nixos { localFlake = self; inherit withSystem; };
+          nixosModules = import ./modules/nixos;
+          hardwareModules = import ./modules/host-hardware;
         };
         perSystem =
           { pkgs, system, ... }:

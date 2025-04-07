@@ -2,15 +2,15 @@
   config,
   hostname,
   hostProfile,
+  self,
   inputs,
-  lib,
   ...
-}: {
+}:
+{
   imports = [
-    ../modules/nixos
     (./. + "/${hostProfile}/nixos.nix")
   ];
-  
+
   nixpkgs.hostPlatform = builtins.currentSystem;
 
   system = {
