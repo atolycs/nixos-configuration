@@ -18,11 +18,7 @@
     };
 
     boot = {
-      kernelParams = [
-        "console=tty0"
-        "console=ttyS0,115200n8"
-      ];
-      initrd.availableKernelModules = [
+     initrd.availableKernelModules = [
         "virtio_balloon"
         "virtio_blk"
         "virtio_pci"

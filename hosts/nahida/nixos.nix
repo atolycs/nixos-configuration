@@ -2,7 +2,7 @@
 with self;
 {
   imports = [
-    outputs.hardwareModules.kvm
+    outputs.nixosPresets.kvm
   ];
 
 }
