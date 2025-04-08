@@ -64,7 +64,6 @@
         systems = import inputs.systems;
 
         flake = {
-          cLibs_test = cLibs;
           nixosConfigurations = lib.genAttrs (cLibs.mapHosts) (
             name:
             cLibs.mkHost {
