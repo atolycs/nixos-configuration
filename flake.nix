@@ -74,6 +74,7 @@
           # nixosModules = importApply ./modules/nixos { localFlake = self; inherit withSystem; };
           nixosModules = import ./modules/nixos; 
           hardwareModules = import ./modules/host-hardware;
+          nixosPresets = import ./presets;
         };
         perSystem =
           { pkgs, system, ... }:
