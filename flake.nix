@@ -72,7 +72,7 @@
               hostProfile = "${name}";
             });
           # nixosModules = importApply ./modules/nixos { localFlake = self; inherit withSystem; };
-          nixosModules = import ./modules/nixos;
+          nixosModules = import ./modules/nixos; 
           hardwareModules = import ./modules/host-hardware;
         };
         perSystem =

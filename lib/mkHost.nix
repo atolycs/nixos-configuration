@@ -1,4 +1,6 @@
+# cLibs args
 args@{ self, ... }:
+# function args
 # https://discourse.nixos.org/t/import-from-files-dirs/36372/3
 { hostname, hostProfile }:
 with args;
