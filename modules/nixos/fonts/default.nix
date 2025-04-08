@@ -3,7 +3,6 @@
   ...
 }:
 {
-  config = {
     fonts = {
       packages = with pkgs; [
         noto-fonts
@@ -40,5 +39,4 @@
         };
       };
     };
-  };
 }

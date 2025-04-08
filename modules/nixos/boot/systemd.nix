@@ -2,7 +2,6 @@
   pkgs,
   ...
 }: {
-  config = {
     boot = {
      consoleLogLevel = 4;
      initrd.verbose = true;
@@ -13,7 +12,6 @@
       graceful = true;
   };
       efi.canTouchEfiVariables = true;
-  };
   };
   };
 }
