@@ -1,17 +1,22 @@
 {
   pkgs,
   ...
-}: {
+}:
+{
   config = {
     fonts = {
-      packages = with pkgs;
-      [
+      packages = with pkgs; [
         noto-fonts
         noto-fonts-cjk-sans
         noto-fonts-emoji
-        (nerdfonts.override { fonts = ["FiraCode" "DroidSansMono"];})
+        (nerdfonts.override {
+          fonts = [
+            "FiraCode"
+            "DroidSansMono"
+          ];
+        })
       ];
-      
+
       fontDir.enable = true;
 
       fontconfig = {

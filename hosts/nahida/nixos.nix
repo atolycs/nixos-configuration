@@ -1,4 +1,4 @@
-{self, ...}:
+{ self, ... }:
 with self;
 {
   imports = [

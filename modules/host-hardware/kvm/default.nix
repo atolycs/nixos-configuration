@@ -12,13 +12,13 @@
 
   config = {
     services = {
-     qemuGuest = {
-      enable =  true;
-     };
+      qemuGuest = {
+        enable = true;
+      };
     };
 
     boot = {
-     initrd.availableKernelModules = [
+      initrd.availableKernelModules = [
         "virtio_balloon"
         "virtio_blk"
         "virtio_pci"

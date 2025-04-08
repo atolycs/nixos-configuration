@@ -12,7 +12,8 @@ inputs.nixpkgs.lib.nixosSystem {
       hostProfile
       flakeRoot
       self
-      hostname;
+      hostname
+      ;
   };
 
   modules = [

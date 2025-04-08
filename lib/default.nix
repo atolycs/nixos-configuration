@@ -9,4 +9,5 @@ let
       value = import ././${dir} args;
     }) libraryDirs
   );
-in dynamicAttrs
+in
+dynamicAttrs

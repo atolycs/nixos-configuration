@@ -52,7 +52,7 @@
             lib
             self
             flakeRoot
-          ;
+            ;
         };
       in
       {
@@ -69,9 +69,10 @@
             cLibs.mkHost {
               hostname = "nixos-${name}";
               hostProfile = "${name}";
-            });
+            }
+          );
           # nixosModules = importApply ./modules/nixos { localFlake = self; inherit withSystem; };
-          nixosModules = import ./modules/nixos; 
+          nixosModules = import ./modules/nixos;
           hardwareModules = import ./modules/host-hardware;
           nixosPresets = import ./presets;
         };
@@ -81,12 +82,16 @@
             _module.args.pkgs = import inputs.nixpkgs {
               inherit system;
             };
-            # treefmt = {
-            #   projectRootFile = "${flakeRoot}/flake.nix";
-            #   programs = {
-            #     nixfmt.enable = true;
-            #   };
-            # };
+            treefmt = {
+              projectRootFile = "${flakeRoot}/flake.nix";
+              programs = {
+                nixfmt = {
+                  enable = true;
+                  includes = [ "*.nix" ];
+                  excludes = [ "*" ];
+                };
+              };
+            };
             devShells = import ./devshells { inherit pkgs; };
           };
 

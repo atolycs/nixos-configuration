@@ -2,7 +2,8 @@
   self,
   ...
 }:
-with self;{
+with self;
+{
   imports = [
     outputs.hardwareModules.kvm
     outputs.nixosModules.serial
