@@ -1,7 +1,9 @@
 args@{
+  inputs,
   ...
 }:
 let
+
   libraryDirs = builtins.filter (x: x != "default.nix") (builtins.attrNames (builtins.readDir ./.));
   dynamicAttrs = builtins.listToAttrs (
     map (dir: {

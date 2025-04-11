@@ -25,13 +25,15 @@
 
   };
 
-  outputs = {
+  outputs = inputs@{
     nixpkgs,
+    nixpkgs-unstable,
     flake-utils,
     ...
-  }@inputs:
+  }:
     let
        flakeRoot = ./.;
+       inherit (inputs.nixpkgs) lib;
        cLibs = import ./lib {
          inherit 
            inputs
@@ -39,8 +41,20 @@
            flakeRoot
          ;
        };
-    in {
-
-
-    }
+    in flake-utils.lib.eachDefaultSystem (
+      arch:
+      let
+        pkgs = nixpkgs.legacyPackages.${arch};
+      in 
+      {
+        devShells = cLibs.pathTools.maybeLoad ./devShells { inherit pkgs; };
+        nixosConfigurations = lib.genAttrs (cLibs.mapHosts) (
+          name: 
+           cLibs.mkHost {
+             hostname = "nixos-${name}";
+             hostProfile = "${name}";
+           }
+        );
+      }
+    );
 }
