@@ -19,41 +19,44 @@
       url = "github:numtide/flake-utils";
     };
 
-    systems = {
-      url = "github:nix-systems/default";
-    };
+    # systems = {
+    #   url = "github:nix-systems/default";
+    # };
 
   };
 
-  outputs = inputs@{
-    nixpkgs,
-    nixpkgs-unstable,
-    flake-utils,
-    ...
-  }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      flake-utils,
+      ...
+    }:
     let
-       flakeRoot = ./.;
-       inherit (inputs.nixpkgs) lib;
-       cLibs = import ./lib {
-         inherit 
-           inputs
-           lib
-           flakeRoot
-         ;
-       };
-    in flake-utils.lib.eachDefaultSystem (
+      flakeRoot = ./.;
+      inherit (inputs.nixpkgs) lib;
+      cLibs = import ./lib {
+        inherit
+          inputs
+          lib
+          flakeRoot
+          ;
+      };
+    in
+    flake-utils.lib.eachDefaultSystem (
       arch:
       let
         pkgs = nixpkgs.legacyPackages.${arch};
-      in 
+      in
       {
         devShells = cLibs.pathTools.maybeLoad ./devShells { inherit pkgs; };
         nixosConfigurations = lib.genAttrs (cLibs.mapHosts) (
-          name: 
-           cLibs.mkHost {
-             hostname = "nixos-${name}";
-             hostProfile = "${name}";
-           }
+          name:
+          cLibs.mkHost {
+            hostname = "nixos-${name}";
+            hostProfile = "${name}";
+          }
         );
       }
     );

@@ -1,13 +1,9 @@
-args@{inputs, ...}:
+args@{ inputs, ... }:
 with builtins;
 let
-  maybeLoad = path:
-    if pathExists path then 
-      builtins.trace "Loading DevShell Profile: ${path}" (import path { inherit pkgs; })
-    else
-    _: { };
-in 
+  maybeLoad =
+    path: if pathExists path then builtins.trace "Loading: ${path}" (import path) else _: { };
+in
 {
   inherit maybeLoad;
 }
-
