@@ -38,7 +38,7 @@
       ...
     }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } (
-      { withSystem, flake-parts-lib, ... }:
+      { moduleWithSystem, withSystem, flake-parts-lib, ... }:
       let
         inherit (inputs.nixpkgs) lib;
         inherit (flake-parts-lib) importApply;
@@ -72,6 +72,12 @@
             }
           );
           # nixosModules = importApply ./modules/nixos { localFlake = self; inherit withSystem; };
+          #nixosTest = import ./modules/nixos;
+          #nixosModules = nixosModules';
+          # nixosModules = moduleWithSystem(
+          #    perSystem@{config}:
+          #    { ... }: import ./modules/nixos
+          # );
           nixosModules = import ./modules/nixos;
           hardwareModules = import ./modules/host-hardware;
           nixosPresets = import ./presets;
@@ -87,7 +93,7 @@
               programs = {
                 nixfmt = {
                   enable = true;
-                  includes = [ "*.nix" ];
+includes = [ "*.nix" ];
                   excludes = [ "*" ];
                 };
               };
