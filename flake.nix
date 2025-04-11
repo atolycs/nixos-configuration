@@ -41,6 +41,7 @@
           inputs
           lib
           flakeRoot
+          self
           ;
       };
     in
@@ -59,5 +60,14 @@
           }
         );
       }
-    );
+    )// {
+      test_code = import ./lib {
+        inherit
+          inputs
+          lib
+          self
+          flakeRoot
+          ;
+      };
+    };
 }
