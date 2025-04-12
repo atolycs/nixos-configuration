@@ -60,7 +60,8 @@
           }
         );
       }
-    )// {
+    ) // {
+      nixosModules = cLibs.pathTools.maybeLoad ./modules/nixos;
       test_code = import ./lib {
         inherit
           inputs
