@@ -62,6 +62,7 @@
       }
     ) // {
       nixosModules = cLibs.pathTools.maybeLoad ./modules/nixos;
+      nixosPresets = cLibs.pathTools.maybeLoad ./presets;
       test_code = import ./lib {
         inherit
           inputs
