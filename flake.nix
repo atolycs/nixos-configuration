@@ -61,7 +61,7 @@
         );
       }
     ) // {
-      nixosModules =  import ./modules/nixos;
+      nixosModules =  cLibs.pathTools.maybeLoad ./modules/nixos;
       nixosPreset = cLibs.pathTools.maybeLoad ./presets;
       hardwareProfile = cLibs.pathTools.maybeLoad ./modules/hardware { inherit nixpkgs;};
       test_code = import ./lib {
