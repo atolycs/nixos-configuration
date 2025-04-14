@@ -2,8 +2,8 @@
   outputs
 }:
 {
-  #imports = [
-  #  outputs.nixosModules.serial
-  #  outputs.hardwareProfile.kvm
-  #];
+  imports = [
+    outputs.nixosModules.serial
+    outputs.hardwareProfile.kvm
+  ];
 }
