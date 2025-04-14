@@ -14,15 +14,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    systems = {
+       url = "github:nix-systems/default";
+    };
 
     flake-utils = {
       url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
     };
-
-    # systems = {
-    #   url = "github:nix-systems/default";
-    # };
-
   };
 
   outputs =
@@ -63,7 +62,7 @@
     ) // {
       nixosModules =  cLibs.pathTools.maybeLoad ./modules/nixos;
       nixosPreset = cLibs.pathTools.maybeLoad ./presets;
-      hardwareProfile = cLibs.pathTools.maybeLoad ./modules/hardware { inherit nixpkgs;};
+      hardwareProfile = cLibs.pathTools.maybeLoad ./modules/hardware;
       test_code = import ./lib {
         inherit
           inputs
