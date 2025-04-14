@@ -49,7 +49,9 @@ in
       })
 
       ({
-        i18n.supportedLocales = cfg.additional // if (cfg.sortfix) "C.UTF-8/UTF-8" then "";
+        i18n.supportedLocales = mkMerge [
+          (cfg.additional)
+          (if (cfg.sortfix) then "C.UTF-8/UTF-8" else "")];
       })
     ]
   );
