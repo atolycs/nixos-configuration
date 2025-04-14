@@ -3,7 +3,7 @@ with self;
 {
   imports = [
     outputs.nixosPresets.kvm
-
+    outputs.nixosModules.boot.systemd-boot
     ./mountPoint
   ];
 

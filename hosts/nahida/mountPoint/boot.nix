@@ -2,7 +2,7 @@
   self, ...
 }:with self; {
   imports = [
-    outputs.nixosModules.boot.systemd-boot
+    #outputs.nixosModules.boot.systemd-boot
   ];
 
   fileSystems."/boot" = {
