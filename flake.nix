@@ -63,6 +63,7 @@
     ) // {
       nixosModules = cLibs.pathTools.maybeLoad ./modules/nixos {inherit nixpkgs;};
       nixosPresets = cLibs.pathTools.maybeLoad ./presets;
+      hardwareProfiles = cLibs.pathTools.maybeLoad ./modules/hardware { inherit nixpkgs;};
       test_code = import ./lib {
         inherit
           inputs
