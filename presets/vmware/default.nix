@@ -1,5 +1,6 @@
 {outputs, ...}: {
   imports = [
-    outputs.hardwareProfile.vmware 
+    outputs.nixosModules.serial
+    outputs.hardwareProfile.vmware
   ];
 }

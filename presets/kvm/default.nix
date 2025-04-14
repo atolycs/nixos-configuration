@@ -1,9 +1,9 @@
 {
-  outputs,
-  ...
+  outputs
 }:
 {
-  imports = [
-    outputs.nixosModules.serial
-  ];
+  #imports = [
+  #  outputs.nixosModules.serial
+  #  outputs.hardwareProfile.kvm
+  #];
 }
