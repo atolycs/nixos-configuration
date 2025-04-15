@@ -9,7 +9,7 @@
 }:
 {
   imports = [
-    #(flakeRoot + "/modules/config")
+    (flakeRoot + "/modules/config")
     (./. + "/${hostProfile}/nixos.nix")
   ];
   system = {
