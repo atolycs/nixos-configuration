@@ -10,7 +10,6 @@
 #     )
 #   );
 # }
-
 let
   modulesDir = builtins.filter (x: x != "default.nix" && x != "default") (builtins.attrNames (builtins.readDir ./.));
 
@@ -23,7 +22,7 @@ let
   dynamicAttrs = builtins.listToAttrs(
     map( dir: {
     name = builtins.baseNameOf dir;
-    value = builtins.trace "[nixos] Importing Module: ${dir}" ././${dir};
+    value = builtins.trace "[nixos] Importing Module: ${dir}" (safeImport(././${dir}));
     }) modulesDir
   );
   # dynamicAttrs = builtins.mapAttrs (name: module: {

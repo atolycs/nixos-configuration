@@ -6,7 +6,7 @@ with self;
 {
   imports = [
     outputs.hardwareModules.kvm
-    outputs.nixosModules.serial
+    self.nixosModules.serial
   ];
 
   config = {

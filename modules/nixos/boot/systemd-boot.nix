@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   boot = {
       consoleLogLevel = 4;
@@ -12,5 +11,5 @@
         };
         efi.canTouchEfiVariables = true;
       };
-    };
+  };
 }

@@ -61,7 +61,10 @@
           inputs.devshell.flakeModule
           #./modules/nixos
         ];
-
+        # https://github.com/nyukuru/nixos-config/blob/99fd91244516af96822b72af4ab9150000784c2c/parts/modules.nix#L14-L15
+        disabledModules = [
+          "${inputs.flake-parts.outPath}/modules/nixosModules.nix"
+        ];
         systems = import inputs.systems;
 
         flake = {
@@ -96,7 +99,7 @@
               programs = {
                 nixfmt = {
                   enable = true;
-includes = [ "*.nix" ];
+                  includes = [ "*.nix" ];
                   excludes = [ "*" ];
                 };
               };
