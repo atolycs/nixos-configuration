@@ -23,8 +23,8 @@ let
   dynamicAttrs = builtins.listToAttrs(
     map( dir: {
     name = builtins.baseNameOf dir;
-    value = builtins.trace "Importing Module: ${dir}" (safeImport (././${dir}));
-  }) modulesDir
+    value = builtins.trace "[nixos] Importing Module: ${dir}" ././${dir};
+    }) modulesDir
   );
   # dynamicAttrs = builtins.mapAttrs (name: module: {
   #   name = builtins.baseNameOf module;

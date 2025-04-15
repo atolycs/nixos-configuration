@@ -1,4 +1,3 @@
-{moduleWithSystem, ...}:
 { lib, config, ... }:
 let
   inherit (lib)

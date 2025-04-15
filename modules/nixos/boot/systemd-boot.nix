@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
-  config = {
-    boot = {
+  boot = {
       consoleLogLevel = 4;
       initrd.verbose = true;
       kernelParams = [
@@ -14,5 +13,4 @@
         efi.canTouchEfiVariables = true;
       };
     };
-  };
 }
