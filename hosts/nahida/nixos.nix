@@ -4,6 +4,7 @@ with self;
   imports = [
     outputs.nixosPresets.kvm
     self.nixosModules.boot.systemd-boot
+    self.nixosModules.desktop-profiles.gdm
     ./mountPoint
   ];
 
