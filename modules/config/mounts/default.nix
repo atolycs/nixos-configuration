@@ -8,6 +8,14 @@ let
 in 
 {
   options = {
-    atlConfig.mounts = {};
+    atlConfig.mounts = mkOption {
+      type = types.nullOr types.attrOf (
+          types.submodule (
+            import ../../../types/mounts-option.nix {
+              inherit config lib;
+            }
+          )
+        );
+    };
   };
 }
