@@ -2,24 +2,36 @@
   config,
   lib,
   ...
-}@moduleArgs:
+}:
 let
   inherit (lib) mkOption types mkIf;
+  coreFileSystemOpts = 
+    {name, config, ...}:{
+      options = {
+        mountPoint = mkOption {
+          type = types.str;
+        };
+      };
+    };
   cfg = config.atlConfig;
 in 
 {
   options = {
     atlConfig.mounts = mkOption {
+       default = { };
        type = types.nullOr (
-        types.attrsOf (types.submodule [(
-           import ../../../types/mounts-option.nix { inherit config lib; }
-        )])
+        types.attrsOf (types.submodule [
+          #coreFileSystemOpts
+          (
+           import ../../../types/mounts-option.nix
+          )
+        ])
       );
     };
 
   };
   config = {
-    inherit moduleArgs;
+    fileSystems = {};
      # fileSystems = lib.optionalAttrs {
      #
      # };

@@ -12,11 +12,15 @@ with self;
 
 
   atlConfig.mounts = {
-    "/test" = {
-      mountTo = "/home/atolycs/test";
+    "/home/atolycs/test" = {
+      mountFrom = "/test";
       fsType = "tmpfs";
     };
-  };
+    "/home/atolycs/test2" = {
+      mountFrom = "/test2";
+      fsType = "tmpfs";
+    };
+   };
 
   locale.sortfix = true;
   nixpkgs.hostPlatform = "x86_64-linux";
