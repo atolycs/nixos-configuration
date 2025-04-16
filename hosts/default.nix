@@ -10,9 +10,14 @@
 {
   imports = [
     (flakeRoot + "/modules/config")
-    (./. + "/${hostProfile}/nixos.nix")
     self.nixosModules.locale
     self.nixosModules.timezone.JST
+    self.nixosModules.nix
+
+
+    # Add Custom module before this line
+
+    (./. + "/${hostProfile}/nixos.nix")
   ];
 
   locale = {
