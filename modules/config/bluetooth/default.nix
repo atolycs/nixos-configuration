@@ -1,7 +1,7 @@
 {config, lib, ...}:
 let
  
-  inherit (lib) mkOption types;
+  inherit (lib) mkIf mkOption types;
   cfg = config.atlConfig.bluetooth;
 in 
 {

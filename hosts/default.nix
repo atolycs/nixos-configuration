@@ -13,6 +13,7 @@
     self.nixosModules.locale
     self.nixosModules.timezone.JST
     self.nixosModules.nix
+    self.nixosModules.fonts
 
 
     # Add Custom module before this line
