@@ -2,9 +2,9 @@
 args@{ self, ... }:
 # function args
 # https://discourse.nixos.org/t/import-from-files-dirs/36372/3
-{ homeProfile, config }:
+{ homeProfile }:
 with args;
-inputs.home-manager.lib.homeManageConfiguration {
+inputs.home-manager.lib.homeManagerConfiguration {
    extraSpecialArgs = {
     inherit 
       inputs

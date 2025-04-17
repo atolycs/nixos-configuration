@@ -59,6 +59,7 @@
         imports = [
           inputs.treefmt-nix.flakeModule
           inputs.devshell.flakeModule
+          inputs.home-manager.flakeModules.home-manager
           #./modules/nixos
         ];
         # https://github.com/nyukuru/nixos-config/blob/99fd91244516af96822b72af4ab9150000784c2c/parts/modules.nix#L14-L15
@@ -79,7 +80,7 @@
           homeConfigurations = lib.genAttrs (cLibs.mapHomes) (
             name:
             cLibs.mkHome {
-              hostProfile = "${name}";
+              homeProfile = "${name}";
             }
           );
           # nixosModules = importApply ./modules/nixos { localFlake = self; inherit withSystem; };
