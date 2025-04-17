@@ -19,9 +19,7 @@
       default = "";
     };
   };
-  
   config = {
     mountTo = lib.mkDefault name;
-    device = config.mountFrom;
   };
 }

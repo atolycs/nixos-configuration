@@ -11,7 +11,10 @@ with self;
   ];
 
 
-  atlConfig.mounts = {
+  atlConfig.bindfs = 
+    {
+      enable = true;
+    mounts = {
     "/home/atolycs/test" = {
       mountFrom = "/test";
       fsType = "tmpfs";
@@ -21,6 +24,7 @@ with self;
       fsType = "tmpfs";
     };
    };
+    };
 
   locale.sortfix = true;
   nixpkgs.hostPlatform = "x86_64-linux";

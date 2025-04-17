@@ -13,11 +13,17 @@ let
         };
       };
     };
-  cfg = config.atlConfig;
+  cfg = config.atlConfig.bindfs;
 in 
 {
   options = {
-    atlConfig.mounts = mkOption {
+    atlConfig.bindfs = {
+      enable = mkOption {
+        type = types.bool;
+        default = false;
+        description = "Enable Bindfs mount tool";
+      };
+      mounts = mkOption {
        default = { };
        type = types.nullOr (
         types.attrsOf (types.submodule [
@@ -27,14 +33,18 @@ in
           )
         ])
       );
+     };
     };
-
   };
-  config = {
-    fileSystems = {};
-     # fileSystems = lib.optionalAttrs {
-     #
-     # };
+  config = mkIf cfg.enable {
+    #   systemd.mounts = builtins.mapAttrs (name: value: {
+    #   "bindfs-${builtins.baseNameOf name}" = {
+    #     Mount = {
+    #        What = value.mountFrom;
+    #        Where = value.mountTo;
+    #     };
+    #   };
+    # }) cfg.mounts;
   };
   # fileSystems = lib.optionalAttrs (cfg.mounts != null) {
   #    ${cfg.mounts._module.args.name} = { };
