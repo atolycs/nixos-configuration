@@ -1,12 +1,12 @@
 {
-    nix = {
-      settings = {
-        auto-optimise-store = true;
-        trusted-users = [
-          "root"
-          "@wheel"
-        ];
-      };
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
     };
-    programs.nix-ld.enable = true;
+  };
+  programs.nix-ld.enable = true;
 }

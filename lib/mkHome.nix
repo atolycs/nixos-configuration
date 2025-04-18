@@ -5,11 +5,11 @@ args@{ self, ... }:
 { homeProfile }:
 with args;
 inputs.home-manager.lib.homeManagerConfiguration {
-   extraSpecialArgs = {
-    inherit 
+  extraSpecialArgs = {
+    inherit
       inputs
       homeProfile
-    ;
+      ;
   };
 
   modules = [

@@ -2,11 +2,11 @@
   config,
   lib,
   ...
-}: 
+}:
 with lib;
 let
   cfg = config.locale;
-in 
+in
 {
   options = {
     locale = {
@@ -33,22 +33,18 @@ in
 
   config = (
     mkMerge [
-      (
-        {
-          i18n.defaultLocale = cfg.master;
-        }
-      )
+      ({
+        i18n.defaultLocale = cfg.master;
+      })
 
       (mkIf cfg.sortfix {
         i18n.extraLocaleSettings.LC_COLLATE = "C.UTF-8";
       })
 
-      (
-      {
+      ({
         i18n.supportedLocales = cfg.additional ++ (if (cfg.sortfix) then [ "C.UTF-8/UTF-8" ] else [ ]);
-      }
-      )
+      })
 
-   ]
+    ]
   );
 }

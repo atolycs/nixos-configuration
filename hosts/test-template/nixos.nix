@@ -10,8 +10,7 @@ with self;
     ./mountPoint
   ];
 
-
-  # atlConfig.bindfs = 
+  # atlConfig.bindfs =
   #   {
   #     enable = true;
   #   mounts = {

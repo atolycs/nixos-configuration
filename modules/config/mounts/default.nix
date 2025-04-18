@@ -5,8 +5,9 @@
 }:
 let
   inherit (lib) mkOption types mkIf;
-  coreFileSystemOpts = 
-    {name, config, ...}:{
+  coreFileSystemOpts =
+    { name, config, ... }:
+    {
       options = {
         mountPoint = mkOption {
           type = types.str;
@@ -14,7 +15,7 @@ let
       };
     };
   cfg = config.atlConfig.bindfs;
-in 
+in
 {
   options = {
     atlConfig.bindfs = {
@@ -24,16 +25,16 @@ in
         description = "Enable Bindfs mount tool";
       };
       mounts = mkOption {
-       default = { };
-       type = types.nullOr (
-        types.attrsOf (types.submodule [
-          #coreFileSystemOpts
-          (
-           import ../../../types/mounts-option.nix
+        default = { };
+        type = types.nullOr (
+          types.attrsOf (
+            types.submodule [
+              #coreFileSystemOpts
+              (import ../../../types/mounts-option.nix)
+            ]
           )
-        ])
-      );
-     };
+        );
+      };
     };
   };
   config = mkIf cfg.enable {

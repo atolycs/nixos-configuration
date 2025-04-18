@@ -1,15 +1,15 @@
-{config, lib, ...}:
+{ config, lib, ... }:
 let
- 
+
   inherit (lib) mkIf mkOption types;
   cfg = config.atlConfig.bluetooth;
-in 
+in
 {
   options = {
     atlConfig.bluetooth = {
       enable = mkOption {
-         type = types.bool;
-         default = false;
+        type = types.bool;
+        default = false;
       };
     };
   };

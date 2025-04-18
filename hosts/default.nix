@@ -15,7 +15,6 @@
     self.nixosModules.nix
     self.nixosModules.fonts
 
-
     # Add Custom module before this line
 
     (./. + "/${hostProfile}/nixos.nix")

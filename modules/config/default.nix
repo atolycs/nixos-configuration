@@ -1,6 +1,8 @@
 {
-  imports = (builtins.map (module: ./. + "/${module}")
-    (builtins.filter(x: x != "default.nix") (builtins.attrNames (builtins.readDir ./.)))
+  imports = (
+    builtins.map (module: ./. + "/${module}") (
+      builtins.filter (x: x != "default.nix") (builtins.attrNames (builtins.readDir ./.))
+    )
   );
 }
 
@@ -17,7 +19,7 @@
 #       value = import ./. + "/${dir}";
 #     }) configDir
 #   );
-# in 
+# in
 #   dynamicAttrs
 # rec {
 #   config.atlConfig = dynamicAttrs;

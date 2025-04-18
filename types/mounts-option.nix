@@ -1,4 +1,9 @@
-{config, lib, name, ...}:
+{
+  config,
+  lib,
+  name,
+  ...
+}:
 {
   options = {
     mountFrom = lib.mkOption {
@@ -6,12 +11,12 @@
       default = "";
     };
     mountTo = lib.mkOption {
-        type = lib.types.nullOr lib.types.str;
+      type = lib.types.nullOr lib.types.str;
     };
 
     fsType = lib.mkOption {
-        type = lib.types.nullOr lib.types.str;
-        default = "";
+      type = lib.types.nullOr lib.types.str;
+      default = "";
     };
 
     mountOption = lib.mkOption {

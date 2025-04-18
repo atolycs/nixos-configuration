@@ -1,17 +1,17 @@
-{config, lib, ...}:
+{ config, lib, ... }:
 let
- 
+
   inherit (lib) mkOption types;
   cfg = config.atlConfig.console;
-in 
+in
 {
   options = {
     atlConfig = {
       console = {
-       keymap = mkOption {
-         type = types.either types.str types.path;
-         default = "us";
-       };
+        keymap = mkOption {
+          type = types.either types.str types.path;
+          default = "us";
+        };
       };
     };
   };

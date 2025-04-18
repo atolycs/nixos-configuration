@@ -2,7 +2,8 @@
   inputs,
   homeProfile,
   ...
-}: {
+}:
+{
   imports = [
     ./${homeProfile}/home.nix
   ];

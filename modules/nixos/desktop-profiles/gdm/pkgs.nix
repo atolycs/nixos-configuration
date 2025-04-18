@@ -1,15 +1,15 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 let
-  x86_64-graphics = 
+  x86_64-graphics =
     if (!pkgs.stdenv.hostPlatform.isAarch64) then
       {
         enable32Bit = true;
       }
-    else 
+    else
       { };
-   all-graphics = {
+  all-graphics = {
     enable = true;
-   };
+  };
 in
 {
   environment.gnome.excludePackages = (
