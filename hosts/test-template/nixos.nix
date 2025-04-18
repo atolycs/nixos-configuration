@@ -11,20 +11,20 @@ with self;
   ];
 
 
-  atlConfig.bindfs = 
-    {
-      enable = true;
-    mounts = {
-    "/home/atolycs/test" = {
-      mountFrom = "/test";
-      fsType = "tmpfs";
-    };
-    "/home/atolycs/test2" = {
-      mountFrom = "/test2";
-      fsType = "tmpfs";
-    };
-   };
-    };
+  # atlConfig.bindfs = 
+  #   {
+  #     enable = true;
+  #   mounts = {
+  #   "/home/atolycs/test" = {
+  #     mountFrom = "/test";
+  #     fsType = "tmpfs";
+  #   };
+  #   "/home/atolycs/test2" = {
+  #     mountFrom = "/test2";
+  #     fsType = "tmpfs";
+  #   };
+  #  };
+  #   };
 
   locale.sortfix = true;
   nixpkgs.hostPlatform = "x86_64-linux";
