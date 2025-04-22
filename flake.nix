@@ -27,7 +27,7 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
@@ -82,12 +82,12 @@
               hostProfile = "${name}";
             }
           );
-          # homeConfigurations = lib.genAttrs (cLibs.mapHomes) (
-          #   name:
-          #   cLibs.mkHome {
-          #     homeProfile = "${name}";
-          #   }
-          # );
+          homeConfigurations = lib.genAttrs (cLibs.mapHomes) (
+            name:
+            cLibs.mkHome {
+              homeProfile = "${name}";
+            }
+          );
           # nixosModules = importApply ./modules/nixos { localFlake = self; inherit withSystem; };
           #nixosTest = import ./modules/nixos;
           #nixosModules = nixosModules';

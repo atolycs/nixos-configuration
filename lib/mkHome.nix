@@ -5,16 +5,20 @@ args@{ self, ... }:
 { homeProfile }:
 with args;
 inputs.home-manager.lib.homeManagerConfiguration {
+  pkgs = inputs.nixpkgs-unstable.legacyPackages.${builtins.currentSystem};
+
   extraSpecialArgs = {
     inherit
       inputs
       homeProfile
+      pkgs
       ;
   };
 
   modules = [
     ../home-manager
   ];
+  
 }
 
 # inputs.nixpkgs.lib.nixosSystem {
