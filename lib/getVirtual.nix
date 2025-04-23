@@ -19,6 +19,7 @@
 {self, ...}:
 let
   pkgs = self.inputs.nixpkgs.legacyPackages.${builtins.currentSystem};
+  lib = self.inputs.nixpkgs.lib;
   detectScript = 
    builtins.replaceStrings ["\n"] [""] (
     builtins.readFile (
@@ -27,7 +28,6 @@ let
       ''
     )
   );
-
 in {
   vmStat = detectScript;
 }
