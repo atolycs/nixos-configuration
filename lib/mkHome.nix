@@ -18,7 +18,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
   modules = [
     ../home-manager
   ];
-  
+
 }
 
 # inputs.nixpkgs.lib.nixosSystem {

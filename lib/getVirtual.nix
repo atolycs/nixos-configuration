@@ -16,19 +16,19 @@
 #   };
 # }
 
-{self, ...}:
+{ self, ... }:
 let
   pkgs = self.inputs.nixpkgs.legacyPackages.${builtins.currentSystem};
   lib = self.inputs.nixpkgs.lib;
-  detectScript = 
-   builtins.replaceStrings ["\n"] [""] (
+  detectScript = builtins.replaceStrings [ "\n" ] [ "" ] (
     builtins.readFile (
       pkgs.runCommand "detectVirt" { } ''
         (${pkgs.systemd}/bin/systemd-detect-virt || echo "none") > $out
       ''
     )
   );
-in {
+in
+{
   vmStat = detectScript;
 }
 
