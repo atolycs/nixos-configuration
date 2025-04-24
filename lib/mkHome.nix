@@ -4,14 +4,15 @@ args@{ self, ... }:
 # https://discourse.nixos.org/t/import-from-files-dirs/36372/3
 { homeProfile }:
 with args;
+let
+in 
 inputs.home-manager.lib.homeManagerConfiguration {
-  pkgs = inputs.nixpkgs-unstable.legacyPackages.${builtins.currentSystem};
+  pkgs = self.inputs.nixpkgs-unstable.legacyPackages.${builtins.currentSystem};
 
   extraSpecialArgs = {
     inherit
-      inputs
+      self
       homeProfile
-      pkgs
       ;
   };
 

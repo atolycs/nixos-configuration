@@ -1,6 +1,7 @@
 {
   inputs,
   homeProfile,
+  lib,
   ...
 }:
 {
