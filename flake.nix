@@ -78,6 +78,7 @@
           nixosConfigurations = lib.genAttrs (cLibs.mapHosts) (
             name:
             cLibs.mkHost {
+              system = builtins.currentSystem;
               hostname = "nixos-${name}";
               hostProfile = "${name}";
             }
