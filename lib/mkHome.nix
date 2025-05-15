@@ -5,7 +5,7 @@ args@{ self, ... }:
 { homeProfile }:
 with args;
 let
-in 
+in
 inputs.home-manager.lib.homeManagerConfiguration {
   pkgs = self.inputs.nixpkgs-unstable.legacyPackages.${builtins.currentSystem};
 
