@@ -27,5 +27,6 @@ with self;
   #   };
 
   locale.sortfix = true;
-  nixpkgs.hostPlatform = "x86_64-linux";
+  #nixpkgs.hostPlatform = "x86_64-linux";
+  nixpkgs.system = builtins.currentSystem;
 }
