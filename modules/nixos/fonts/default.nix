@@ -17,11 +17,11 @@
     # ];
 
     packages = with pkgs; [
-     noto-fonts
-     noto-fonts-cjk-sans
-     noto-fonts-emoji
-     nerd-fonts._0xproto 
-     nerd-fonts.droid-sans-mono
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      nerd-fonts._0xproto
+      nerd-fonts.droid-sans-mono
     ];
     fontDir.enable = true;
 
