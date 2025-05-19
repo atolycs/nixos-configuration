@@ -13,9 +13,6 @@
 
   inputs = {
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-25.05";
-    };
-    nixpkgs-2411 = {
       url = "github:NixOS/nixpkgs/nixos-24.11";
     };
     nixpkgs-unstable = {
@@ -46,19 +43,21 @@
   };
 
   outputs =
-    {
+    inputs@{
       flake-parts,
       self,
       ...
-    }@inputs:
+    }:
     flake-parts.lib.mkFlake { inherit inputs; } (
       top@{
         moduleWithSystem,
         withSystem,
         flake-parts-lib,
+        getSystem,
         ...
       }:
       let
+        inherit inputs;
         inherit (inputs.nixpkgs) lib;
         inherit (flake-parts-lib) importApply;
         flakeRoot = ./.;
@@ -70,8 +69,7 @@
             inputs
             lib
             self
-            flakeRoot
-            ;
+            flakeRoot;
         };
       in
       {
@@ -87,11 +85,15 @@
         ];
         systems = import inputs.systems;
 
-        flake = {
+        flake = let
+          system = if builtins ? currentSystem then builtins.currentSystem else "";
+        in {
+          #legacyPackages = import inputs.nixpkgs.legacyPackages.${pkgs.system};
           cLibs_test = cLibs;
           nixosConfigurations = lib.genAttrs (cLibs.mapHosts) (
-            name:
+            name: 
             cLibs.mkHost {
+              inherit system;
               hostname = "nixos-${name}";
               hostProfile = "${name}";
             }
