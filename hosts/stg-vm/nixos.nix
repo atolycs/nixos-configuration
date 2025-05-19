@@ -9,7 +9,7 @@ with self;
     self.nixosModules.desktop-profiles.gdm
     ./mountPoint
   ];
-
+  atlConfig.user.enable = true;
   networking.hostName = "atlas";
   # atlConfig.bindfs =
   #   {
