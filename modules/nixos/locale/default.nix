@@ -42,7 +42,7 @@ in
       })
 
       ({
-        i18n.supportedLocales = cfg.additional ++ (if (cfg.sortfix) then [ "C.UTF-8/UTF-8" ] else [ ]);
+        i18n.extraLocales = cfg.additional ++ (if (cfg.sortfix) then [ "C.UTF-8/UTF-8" ] else [ ]);
       })
 
     ]
