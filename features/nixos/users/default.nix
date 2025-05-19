@@ -22,6 +22,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     #programs.bash.enable = true;
+    programs.vim.enable = true;
     users.extraUsers.${username} = {
       isNormalUser = true;
       extraGroups = ["wheel" "cdrom"] ++ extraGroups;
