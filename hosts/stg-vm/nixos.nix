@@ -3,8 +3,8 @@
 with self;
 {
   imports = [
-    self.nixosModules.boot.systemd-boot
     self.nixosPresets.kvm
+    self.nixosPresets.vmware
     self.nixosModules.boot.systemd-boot
     self.nixosModules.desktop-profiles.gdm
     ./mountPoint
