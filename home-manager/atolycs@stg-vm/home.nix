@@ -27,9 +27,16 @@
         ];
         bartype = "Trilands";
         reloadstyle = true;
+        dbradius = 71.0;
+        dborder = true;
+        dshadow = true;
       };
     };
   };
-
-  systemd.user.startServices = "sd"
+  home = lib.mkIf config.atlConfig.user.enable {
+    username = config.atlConfig.user.username;
+    homeDirectory = "/home/${config.atlConfig.user.username}";
+    enableNixpkgsReleaseCheck = false;
+  };
+  systemd.user.startServices = "sd-switch";
 }

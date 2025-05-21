@@ -71,8 +71,9 @@
             lib
             self
             flakeRoot
-            ;
+          ;
         };
+        currentSystem = cLibs.getCurrentSystem;
       in
       {
         imports = [
@@ -86,19 +87,39 @@
           "${inputs.flake-parts.outPath}/modules/nixosModules.nix"
         ];
         systems = import inputs.systems;
+        
+        perSystem =
+          { pkgs, system, ... }:
+          {
+            _module.args.pkgs = import inputs.nixpkgs {
+              inherit system;
+            };
+
+            legacyPackages = inputs.nixpkgs.legacyPackages.${system};
+            treefmt = {
+              projectRootFile = "./flake.nix";
+              programs = {
+                nixfmt = {
+                  enable = true;
+                };
+              };
+            };
+            devShells = import ./devshells { inherit pkgs; };
+        };
 
         flake = {
           cLibs_test = cLibs;
           nixosConfigurations = lib.genAttrs (cLibs.mapHosts) (
-            name:
-            cLibs.mkHost {
-              hostname = "nixos-${name}";
-              hostProfile = "${name}";
-            }
+              name:
+              cLibs.mkHost {
+                hostname = "nixos-${name}";
+                hostProfile = "${name}";
+              }
           );
           homeConfigurations = lib.genAttrs (cLibs.mapHomes) (
-            name:
+            name: 
             cLibs.mkHome {
+              system = currentSystem;
               homeProfile = "${name}";
             }
           );
@@ -115,22 +136,6 @@
           hardwareModules = import ./modules/host-hardware;
           nixosPresets = import ./presets;
         };
-        perSystem =
-          { pkgs, system, ... }:
-          {
-            _module.args.pkgs = import inputs.nixpkgs {
-              inherit system;
-            };
-            treefmt = {
-              projectRootFile = "./flake.nix";
-              programs = {
-                nixfmt = {
-                  enable = true;
-                };
-              };
-            };
-            devShells = import ./devshells { inherit pkgs; };
-          };
 
       }
     );
