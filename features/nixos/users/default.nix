@@ -24,6 +24,7 @@ in {
     #programs.bash.enable = true;
     programs.vim.enable = true;
     users.extraUsers.${username} = {
+      enable = cfg.enable;
       isNormalUser = true;
       extraGroups = ["wheel" "cdrom"] ++ extraGroups;
     };
