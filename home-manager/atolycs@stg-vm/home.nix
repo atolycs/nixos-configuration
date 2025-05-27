@@ -2,11 +2,18 @@
   home-manager,
   self,
   pkgs,
+  lib,
+  config,
   ...
 }:
+let
+  
+in 
+#with lib.hm.gvariant;
 {
   imports = [
-    self.homeModules.desktop-manager.gdm
+    #self.homeModules.desktop-manager.gdm
+    self.homeModules.default
   ];
 
   desktop-manager.gdm = {
@@ -21,9 +28,9 @@
     dconf = {
       "org/gnome/shell/extensions/openbar" = {
         accent-color = [
-          '0.000'
-          '0.750'
-          '0.750'
+          "0.000"
+          "0.750"
+          "0.750"
         ];
         bartype = "Trilands";
         reloadstyle = true;

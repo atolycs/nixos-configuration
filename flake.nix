@@ -135,6 +135,7 @@
           nixosModules = import ./modules/nixos;
           hardwareModules = import ./modules/host-hardware;
           nixosPresets = import ./presets;
+          homeModules.default = import ./modules/home-manager;
         };
 
       }
