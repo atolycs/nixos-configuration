@@ -9,7 +9,7 @@
 }:
 {
   imports = [
-    (flakeRoot + "/features/nixos")
+    #(flakeRoot + "/features/nixos")
     self.nixosModules.locale
     self.nixosModules.timezone.JST
     self.nixosModules.nix

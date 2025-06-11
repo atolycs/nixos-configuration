@@ -42,10 +42,14 @@ in
       };
     };
   };
-  home = lib.mkIf config.atlConfig.user.enable {
-    username = config.atlConfig.user.username;
-    homeDirectory = "/home/${config.atlConfig.user.username}";
-    enableNixpkgsReleaseCheck = false;
+  home = {
+    username = "dummy";
+    homeDirectory = "/home/dummy";
   };
+  # home = lib.mkIf config.atlConfig.user.enable {
+  #   username = config.atlConfig.user.username;
+  #   homeDirectory = "/home/${config.atlConfig.user.username}";
+  #   enableNixpkgsReleaseCheck = false;
+  # };
   systemd.user.startServices = "sd-switch";
 }

@@ -80,6 +80,7 @@
           inputs.treefmt-nix.flakeModule
           inputs.devshell.flakeModule
           inputs.home-manager.flakeModules.home-manager
+          (flakeRoot + "/modules/config")
           #./modules/nixos
         ];
         # https://github.com/nyukuru/nixos-config/blob/99fd91244516af96822b72af4ab9150000784c2c/parts/modules.nix#L14-L15
