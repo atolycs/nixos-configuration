@@ -23,14 +23,18 @@ let
     else
       throw "Invalid or recursive import detected: ${filePath}";
 
-  dynamicAttrs = builtins.listToAttrs (
-    map (dir: {
-      name = builtins.baseNameOf dir;
-      value = builtins.trace "[homeModules] Importing Module: ${dir}" (safeImport (././${dir}));
-    }) modulesDir
-  );
+  moduleList = map (dir: builtins.trace "[homeModules] Importing Module: ${dir}" (safeImport (././${dir}))) modulesDir;
+  # dynamicAttrs = builtins.listToAttrs (
+  #   map (dir: {
+  #     name = builtins.baseNameOf dir;
+  #     value = builtins.trace "[homeModules] Importing Module: ${dir}" (safeImport (././${dir}));
+  #   }) modulesDir
+  # );
 in 
-dynamicAttrs
+{
+  imports = moduleList;
+}
+  #dynamicAttrs
 # dynamicAttrs = builtins.mapAttrs (name: module: {
 #   name = builtins.baseNameOf module;
 #   value = ././${module};
