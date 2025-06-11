@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.desktop-manager.gdm;
+  cfg = config.desktopManager.gdm;
   pacakges = with pkgs; [
     gnomeExtensions.user-themes
     gnomeExtensions.kimpanel
@@ -20,7 +20,7 @@ with lib.hm.gvariant;
 with lib;
 {
   options = {
-    desktop-manager.gdm = {
+    desktopManager.gdm = {
       packages = lib.mkOption {
         type = lib.types.nullOr (lib.types.listOf lib.types.package);
         default = [];
@@ -46,7 +46,10 @@ with lib;
   config = {
     home.packages = packages ++ cfg.packages;
     
-    xdg.enable = true;
+    xdg = {
+      enable = true;
+      userDirs.enable = true;
+    };
 
     dconf = {
       enable = true;

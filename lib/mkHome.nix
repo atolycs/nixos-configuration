@@ -9,7 +9,7 @@ with args;
 let
 in
 inputs.home-manager.lib.homeManagerConfiguration {
-  pkgs = inputs.nixpkgs.legacyPackages.${builtins.currentSystem}; 
+  pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux; 
 
   extraSpecialArgs = {
     inherit

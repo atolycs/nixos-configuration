@@ -41,7 +41,7 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      #inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
@@ -135,7 +135,8 @@
           nixosModules = import ./modules/nixos;
           hardwareModules = import ./modules/host-hardware;
           nixosPresets = import ./presets;
-          homeModules.default = import ./modules/home-manager;
+          homeManagerModules = import ./modules/home-manager;
+          homeModules.default = ./modules/home-manager;
         };
 
       }

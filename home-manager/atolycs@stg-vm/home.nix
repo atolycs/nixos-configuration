@@ -1,4 +1,5 @@
 {
+  builtins,
   home-manager,
   self,
   pkgs,
@@ -7,16 +8,17 @@
   ...
 }:
 let
-  
+  test_code = builtins.trace "Tracing Path..." config;
 in 
 #with lib.hm.gvariant;
 {
   imports = [
     #self.homeModules.desktop-manager.gdm
-    self.homeModules.default
+    #self.homeModules.default
+    #self.homeManagerModules
   ];
 
-  desktop-manager.gdm = {
+  desktopManager.gdm = {
     packages = with pkgs; [
       gnomeExtensions.open-bar
     ];
