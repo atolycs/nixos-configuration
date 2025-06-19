@@ -71,7 +71,7 @@
             lib
             self
             flakeRoot
-          ;
+            ;
         };
         currentSystem = cLibs.getCurrentSystem;
       in
@@ -88,7 +88,7 @@
           "${inputs.flake-parts.outPath}/modules/nixosModules.nix"
         ];
         systems = import inputs.systems;
-        
+
         perSystem =
           { pkgs, system, ... }:
           {
@@ -106,19 +106,19 @@
               };
             };
             devShells = import ./devshells { inherit pkgs; };
-        };
+          };
 
         flake = {
           cLibs_test = cLibs;
           nixosConfigurations = lib.genAttrs (cLibs.mapHosts) (
-              name:
-              cLibs.mkHost {
-                hostname = "nixos-${name}";
-                hostProfile = "${name}";
-              }
+            name:
+            cLibs.mkHost {
+              hostname = "nixos-${name}";
+              hostProfile = "${name}";
+            }
           );
           homeConfigurations = lib.genAttrs (cLibs.mapHomes) (
-            name: 
+            name:
             cLibs.mkHome {
               system = currentSystem;
               homeProfile = "${name}";

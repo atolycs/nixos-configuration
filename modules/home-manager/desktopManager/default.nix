@@ -23,7 +23,9 @@ let
     else
       throw "Invalid or recursive import detected: ${filePath}";
 
-  moduleList = map (dir: builtins.trace "[desktopManager] Importing Module...: ${dir}" (safeImport (././${dir}))) modulesDir;
+  moduleList = map (
+    dir: builtins.trace "[desktopManager] Importing Module...: ${dir}" (safeImport (././${dir}))
+  ) modulesDir;
 
   # dynamicAttrs = builtins.listToAttrs (
   #   map (dir: {
@@ -31,14 +33,15 @@ let
   #     value = builtins.trace "[desktop-manager] Importing Module: ${dir}" (safeImport (././${dir}));
   #   }) modulesDir
   # );
-in {
+in
+{
   imports = moduleList;
 }
 # dynamicAttrs = builtins.mapAttrs (name: module: {
 #   name = builtins.baseNameOf module;
 #   value = ././${module};
 # }) modulesDir;
-  #dynamicAttrs
+#dynamicAttrs
 #   in {
 #   # flake.nixosModules = moduleWithSystem(
 #   #   preSystem@{ config }: {

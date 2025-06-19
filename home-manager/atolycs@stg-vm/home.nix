@@ -9,7 +9,7 @@
 }:
 let
   test_code = builtins.trace "Tracing Path..." config;
-in 
+in
 #with lib.hm.gvariant;
 {
   imports = [

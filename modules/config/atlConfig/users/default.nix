@@ -5,7 +5,7 @@
 }:
 let
   cfg = config.atlConfig.user;
-in 
+in
 {
   options.atlConfig.user = {
     enable = lib.mkEnableOption "Enable My User";
@@ -16,5 +16,5 @@ in
     };
   };
 
-  config.atlConfig.user = {};
+  config.atlConfig.user = { };
 }

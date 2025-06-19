@@ -29,7 +29,8 @@ let
       value = builtins.trace "[nixos] Importing Module: ${dir}" (safeImport (././${dir}));
     }) modulesDir
   );
-in dynamicAttrs
+in
+dynamicAttrs
 # dynamicAttrs = builtins.mapAttrs (name: module: {
 #   name = builtins.baseNameOf module;
 #   value = ././${module};

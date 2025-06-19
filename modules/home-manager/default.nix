@@ -19,22 +19,24 @@ let
   safeImport =
     filePath:
     if builtins.pathExists filePath && filePath != ./default.nix then
-      import filePath 
+      import filePath
     else
       throw "Invalid or recursive import detected: ${filePath}";
 
-  moduleList = map (dir: builtins.trace "[homeModules] Importing Module: ${dir}" (safeImport (././${dir}))) modulesDir;
+  moduleList = map (
+    dir: builtins.trace "[homeModules] Importing Module: ${dir}" (safeImport (././${dir}))
+  ) modulesDir;
   # dynamicAttrs = builtins.listToAttrs (
   #   map (dir: {
   #     name = builtins.baseNameOf dir;
   #     value = builtins.trace "[homeModules] Importing Module: ${dir}" (safeImport (././${dir}));
   #   }) modulesDir
   # );
-in 
+in
 {
   imports = moduleList;
 }
-  #dynamicAttrs
+#dynamicAttrs
 # dynamicAttrs = builtins.mapAttrs (name: module: {
 #   name = builtins.baseNameOf module;
 #   value = ././${module};

@@ -23,13 +23,13 @@ with lib;
     desktopManager.gdm = {
       packages = lib.mkOption {
         type = lib.types.nullOr (lib.types.listOf lib.types.package);
-        default = [];
+        default = [ ];
         description = "Additional Package list";
       };
 
       enable-plugins = lib.mkOption {
         type = lib.types.nullOr (lib.types.listOf lib.types.str);
-        default = [];
+        default = [ ];
         description = "Enable plugin list";
       };
 
@@ -41,11 +41,9 @@ with lib;
     };
   };
 
-
-
   config = {
     home.packages = packages ++ cfg.packages;
-    
+
     xdg = {
       enable = true;
       userDirs.enable = true;

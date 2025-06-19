@@ -7,7 +7,7 @@
 }:
 {
   imports = [
-    self.homeModules.default 
+    self.homeModules.default
     ./${homeProfile}/home.nix
   ];
 
